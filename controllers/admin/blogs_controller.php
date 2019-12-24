@@ -359,6 +359,8 @@ class blogs_controller extends vendor_backend_controller {
 	}
 
 	public function handleDeleteMany($ids, $model) {
+		// echo "Start <br/>"; echo '<pre>'; print_r($app['prs']);echo '</pre>';exit("End Data");
+
 		if ($model->delRelativeRecords($ids)){
 			$data = [
 				'status' => true,

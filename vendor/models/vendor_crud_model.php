@@ -88,10 +88,16 @@ class vendor_crud_model extends vendor_main_model {
 		return $this->con->query($sql);
 	}
 	
-	public function delRelativeRecords($ids=null, $conditions=null) {
+	public function delRelativeRecords($ids=null, $conditions=null, $controller=null) {
 		if($conditions)	$conditions = ' and '.$conditions;
 		$tables = $this->table;
 		$innerJoin = "";
+		$arr_ids = explode(",", $ids);
+		$tabe_m = substr($this->table, 0, -1 ).'_model';
+		$bm = new $tabe_m;
+
+		// echo "Start <br/>"; echo '<pre>'; print_r($tabe_m);echo '</pre>';exit("End Data");
+
 
 		if(isset($this->relationships) && isset($this->relationships['hasMany'])) {
 			$hasManyArr = (vendor_app_util::is_multi_array($this->relationships['hasMany']))?
@@ -105,7 +111,21 @@ class vendor_crud_model extends vendor_main_model {
 			}
 		}
 
-		// echo "Start <br/>"; echo '<pre>'; print_r($this->table.$innerJoin);echo '</pre>';exit("End Data");
+
+
+		foreach ($arr_ids as $value) {
+			$this->record = $bm->getRecord($value);
+			if($this->record['featured_image'] && file_exists(RootURI."/media/upload/" .$this->controller.'/'.$this->record['featured_image']))
+					unlink(RootURI."/media/upload/" .$this->controller.'/'.$this->record['featured_image']);
+			
+			// if($this->record['featured_image'] && file_exists(RootURI."/media/upload/blogs/".$this->record['featured_image']))
+			// 	unlink(RootURI."/media/upload/blogs/".$this->record['featured_image']);
+
+			
+		}
+
+
+
 
 		$ids = vendor_html_helper::processSQLString($ids);
 		$sql = "DELETE ".$tables." FROM ".$this->table.$innerJoin." WHERE $this->table.id in ($ids) $conditions";

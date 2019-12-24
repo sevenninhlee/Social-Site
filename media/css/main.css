@@ -1,0 +1,138 @@
+.easy-autocomplete-container{
+	top:25px;
+	z-index: 99999 !important;
+}
+.Add_box .easy-autocomplete.eac-plate-dark{
+	width: 100% !important;
+}
+.btn-review{
+	background-color: #4e7dbf;
+	padding: 3px 15px;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+	border:1px solid #4e7dbf;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+}
+
+.btn-review:hover{
+	background-color: #fff;
+	color: #4e7dbf;
+}
+
+.btn-review:first-child{
+	margin-right: 20px;
+}
+
+/**/
+.detail a {
+	color: #0254EB
+}
+.detail a:visited {
+	color: #0254EB
+}
+.detail a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.detail .morecontent span {
+	display: none;
+}
+.detail .comment {
+	width: 100%;
+	margin: 10px;
+}
+/**/
+.Add_box .text-danger{
+	font-size: 16px;
+}
+.register_active{
+	/*display: none;*/
+}
+.controls_btn {
+	text-align: right;
+}
+.error_search, .img_search{
+	display: none;
+	margin: 5px 0 0 0;
+}
+#data_found{
+	display: none;	
+}
+#import_gl{
+	float: right;
+}
+#legend legend{
+	padding: 15px 0;
+}
+.search_google{
+	display: none;
+}
+#search_google label{
+	text-align: right;
+}
+#myModalSearch .modal-header {
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+#myModalSearch .modal-header h5 {
+    padding: 15px 0;
+}
+#myModalSearch  .modal-body{
+	overflow: hidden;
+}
+.text-danger {
+    color: #f30a06;
+}
+#form-addbook{
+	display: none;
+}
+/**/
+.owl-carousel .img-responsive{
+	height: 300px !important;
+	padding: 5px !important;
+}
+/**/
+.img-responsive{
+	width: 100%;
+}
+.width100{
+	width: 100px;
+}
+/*.white_box > img {
+	max-height: 350px;
+}*/
+.show_main_section .img-responsive{
+	max-height: 125px;
+}
+.carousel-inner .img-responsive{
+	max-height: 358px;
+}
+.carousel-indicators .img-responsive{
+	max-height: 64px;
+}
+/**/
+.txt_des, .txt_des h1, .txt_des h2, .txt_des h3, .txt_des h4, .txt_des h5, .txt_des p, .txt_des li, .txt_des span{
+	font-size: 14px !important;
+	font-family: 'Arial',sans-serif !important;
+	font-weight: normal;
+}
+.txt_des img {
+	width: 100% !important;
+	height: auto !important;
+}
+.searchData{
+	display: none;
+}
+.white_box p>img {
+	width: 100% !important;
+	height: auto !important;
+}
+.edit-data-search{
+	display: none;
+}
+.add_book .body_form {
+	min-height: auto !important;
+}

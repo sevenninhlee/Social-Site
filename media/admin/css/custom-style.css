@@ -1,0 +1,220 @@
+.nav-stacked>li>a, .nav-stacked>li.active>a, .nav-stacked>li.active>a:hover {
+	color: white;
+	font-size: 18px !important;
+}
+.nav-stacked>li a:hover {
+	background-color: #337ab7;
+}
+.btn-delete-table{
+	border: 0;
+	background-color: transparent;
+	font-size: 13px;
+	color: #747373;
+	font-weight: 700;
+}
+.tbl_body .checkbox label{
+	color: white;
+}
+
+/* Blog-categories */
+.txt_box_blog_category{
+	width: 100%;
+}
+.sidebar-menu .treeview-menu{
+	padding-left: 0;
+}
+.sidebar-menu .treeview-menu li.active a{
+	color: white;
+}
+.sidebar-menu .treeview-menu li a{
+	padding-left: 30px;
+	font-family: 'Arial',sans-serif;
+	color: rgb(164, 164, 164);
+}
+.btn-custom{
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 14px;
+}
+.btn-custom-apply{
+	background: #0085ba;
+	box-shadow: 0 1px 0 #126792;
+	border-radius: 4px;
+	font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+	text-shadow: 0 -1px 1px #126792, 1px 0 1px #126792, 0 1px 1px #126792, -1px 0 1px #126792;
+	border: 0;
+}
+.btn-custom:hover{
+	background-color: #3e7fb4;
+	color: white;
+}
+input{
+	border-radius: 5px;
+}
+select::after{
+	border-radius: 5px;
+}
+
+/* -----------Profile--------------- */
+.profile-table{
+	margin-bottom: 50px;
+}
+.profile-table tr{
+	padding: 10px;
+	height: 40px;
+}
+.features li a{
+	font-size: 13px;
+}
+
+/* loadmore */
+/* 
+
+
+#blog_table_comments tbody tr {
+    display:none;
+    padding: 10px;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    margin-bottom: 5px;
+    background-color: #f1f1f1;
+}
+
+#loadMore {
+    padding: 10px;
+    text-align: center;
+    background-color: #33739E;
+    color: #fff;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 1px 1px #ccc;
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+	-o-transition: all 600ms ease-in-out;
+}
+#loadMore:hover {
+    background-color: #fff;
+    color: #33739E;
+} */
+
+.tabletShow {
+	text-align: center !important;
+}
+div.table-responsive{
+	border-radius: 5px !important;
+}
+.height400{
+	min-height: 400px;
+}
+.static-page-item{
+	border-bottom: 1px solid rgba(98, 96, 96, 0.516);
+}
+.static-page-item:hover a.title{
+	background-color: #126792;
+	color: white;
+}
+/* form for search */
+.form_search{
+	/*margin-right: 5px;*/
+}
+input.search{
+	/* width: 70%;
+	min-width: 350px; */
+	float: left;
+	margin-bottom: 5px;
+}
+.controls img{
+	max-width: 100%;
+}
+.btn-search{
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+	padding: 6px 10px;
+	background-color: #fff;
+	border:1px solid #d9dad9;
+	font-weight: 700;
+	border-radius: 4px;
+	float: left;
+}
+/*form edit*/
+#featured_image{
+	margin-top: 5px;
+}
+/*cmt_select_act*/
+.cmt_select_act{
+	margin: 10px 0 5px 0;
+}
+/*body_view*/
+.body_form{
+	min-height: 550px;
+	padding:  10px 15px;
+}
+.box_form{
+	margin: 0 !important;
+}
+.form-group-list{
+	overflow: hidden;
+}
+.input-sm{
+	height: 20px;
+}
+span.text-hidden{
+	height: 21px;
+	overflow: hidden;
+	display: block;
+}
+.btn > a {
+	color: #fff !important;
+	text-decoration: none !important;
+}
+.show_replies{
+	cursor: pointer;
+}
+
+div.table-responsive{
+	border-radius: 0 !important;
+}
+@media only screen and (min-width: 1024px) {
+	div.table-responsive{
+		overflow-x: hidden;
+	}
+}
+p.show_replies{
+	width: 100px;
+	float: left;
+	height: 32.85px !important;
+	background-color:rgb(79, 184, 79);
+	border-radius: 5px;
+	color: white;
+	padding-top: 7px;
+}
+/*button.delItem-record{
+	float: right;
+}*/
+.dropdown-menu {
+	list-style: none;
+  	/*height: 166px;*/
+  	overflow: hidden;
+}
+.show_cont {
+  	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}

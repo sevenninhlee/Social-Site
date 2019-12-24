@@ -100,7 +100,7 @@ class friends_controller extends aside_bar_data_controller
 		$id = 0;
 		if($id1) $id = $id1['id'];
 		if($id2) $id = $id2['id'];
-		if ($friend->delRelativeRecords($id)){
+		if ($friend->delRelativeRecords($id, null, $this->controller)){
 			$data = [
 				'status' => true,
 				'message' => 'Delete successful!'

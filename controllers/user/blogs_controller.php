@@ -115,7 +115,7 @@ class blogs_controller extends aside_bar_data_controller
 	}
 
 	public function handleDeleteMany($ids, $model) {
-		if ($model->delRelativeRecords($ids)){
+		if ($model->delRelativeRecords($ids, null, $this->controller)){
 			$data = [
 				'status' => true,
 				'message' => 'Delete successful!'

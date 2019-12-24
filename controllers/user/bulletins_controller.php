@@ -98,7 +98,7 @@ class bulletins_controller extends aside_bar_data_controller
 	public function delete() {
 		$bm = new bulletin_model();
 		$id = $_POST['id'];
-		if ($bm->delRelativeRecords($id)){
+		if ($bm->delRelativeRecords($id, null, $this->controller)){
 			$data = [
 				'status' => true,
 				'message' => 'Delete successful!'

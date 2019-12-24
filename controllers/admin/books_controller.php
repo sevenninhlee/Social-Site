@@ -375,7 +375,7 @@ class books_controller extends vendor_backend_controller {
 	}
 
 	public function handleDeleteMany($ids, $model) {
-		if ($model->delRelativeRecords($ids)){
+		if ($model->delRelativeRecords($ids, null, $this->controller)){
 			$data = [
 				'status' => true,
 				'message' => 'Delete successful!'

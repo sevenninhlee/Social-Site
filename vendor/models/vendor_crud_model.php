@@ -105,7 +105,7 @@ class vendor_crud_model extends vendor_main_model {
 			}
 		}
 
-		echo "Start <br/>"; echo '<pre>'; print_r($this->table.$innerJoin);echo '</pre>';exit("End Data");
+		// echo "Start <br/>"; echo '<pre>'; print_r($this->table.$innerJoin);echo '</pre>';exit("End Data");
 
 		$ids = vendor_html_helper::processSQLString($ids);
 		$sql = "DELETE ".$tables." FROM ".$this->table.$innerJoin." WHERE $this->table.id in ($ids) $conditions";

@@ -269,7 +269,7 @@ h4{
 .media {
     background-color: #fff;
     padding: 0px;
-    height: 112px;
+    /* height: 112px; */
 }
 .about_box .media{
   height: auto;
@@ -830,8 +830,11 @@ input[type="file"]{
 .tab-menu{
 	overflow-y: hidden;
 }
+.main-heading{
+	padding-left: 20px;
+}
 .tab-menu .tab-pane{
-	padding: 20px;
+	/* padding: 20px; */
 	background: white;
 }
 .tab-menu .nav>li>a:focus,.tab-menu .nav>li>a:hover {

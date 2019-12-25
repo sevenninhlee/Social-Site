@@ -3,6 +3,8 @@ class bookshelf_book_controller extends aside_bar_data_controller
 {
 	public function index()
 	{
+		if ($this->isUserLogged) {
+
 		$bm = new book_article_model();
 		$rtm = new review_rating_model();
 		$book = new book_category_model();
@@ -96,6 +98,22 @@ class bookshelf_book_controller extends aside_bar_data_controller
 				}
 			}
 		}
+
+		} else {
+
+			$status_name = 'owner_status';
+			$user_id = $_GET['user'] ? $_GET['user'] : null;
+	
+			$am = new action_model();
+			$this->records = $am->getActionStatus('book_articles', 'book_article_model', 'current', 1, $user_id, $status_name);
+			$this->recRecords = $am->getActionStatus('book_articles', 'book_article_model', 'recommanded', 1, $user_id, $status_name);
+			$this->favRecords = $am->getActionStatus('book_articles', 'book_article_model', 'favorite', 1, $user_id, $status_name);
+	
+			$rvm = new review_rating_model();
+			$this->revRecords = $rvm->getUserReviewModel('book_articles', $user_id, 'book_article_model', 1, 'owner_status');
+				
+		}
+
 		$this->display();
 	}
 

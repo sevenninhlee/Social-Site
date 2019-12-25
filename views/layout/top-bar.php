@@ -7,9 +7,9 @@
         
         <li class="<?=($app['ctl']=='blogs' && $app['act'] == 'index')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'blogs', 'act' => 'index?user='.((isset($_GET['user']))?$_GET['user']: $_SESSION['user']['id'] )]); ?>">Blogs</a></li>
         
-        <li class="<?=($app['ctl']=='book_groups' && $app['area'] == 'user')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'book-groups']); ?>">Book Groups</a></li> 
+        <li class="<?=($app['ctl']=='book_groups' && $app['area'] == 'user')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'book-groups?user='.((isset($_GET['user']))?$_GET['user']: $_SESSION['user']['id'] )]); ?>">Book Groups</a></li> 
         
-        <li class="<?=($app['ctl']=='bookshelf_book')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'bookshelf_book']); ?>">Bookshelf & Book Reviews</a></li> 
+        <li class="<?=($app['ctl']=='bookshelf_book')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'bookshelf_book?user='.((isset($_GET['user']))?$_GET['user']: $_SESSION['user']['id'] )]); ?>">Bookshelf & Book Reviews</a></li> 
         
         <li class="<?=($app['ctl']=='friends' && $app['act'] == 'index')? 'active':'';?>"><a href="<?php echo vendor_app_util::url(['area' => 'user','ctl'=>'friends', 'act' => 'index?user='.((isset($_GET['user']))?$_GET['user']: $_SESSION['user']['id'] )]); ?>">Friends</a></li>
         

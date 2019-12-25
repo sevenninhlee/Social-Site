@@ -76,7 +76,8 @@
                                           <?php if($this->isUserLogged):?>
                                         <span style="margin-right: 20px;" class="f400"><a href="<?=vendor_app_util::url(array('ctl'=>'queries', 'act' => 'edit/'.$record['id'])); ?>" class="color3c6db5 edit-btn">Edit</a> 
                                         <span class="hidden-xs">|</span> <a id="hide_<?php echo $record['id'] ?>" class="color3c6db5 hide-text" data="<?php echo $record['id'] ?>"><?php if($record['owner_status'] == 1) echo "Hide"; else echo "Unhide";?></a> 
-                                        <span class="hidden-xs">|</span> <button style="float:none;font-weight: inherit; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteQueriesArticle">Delete</button> </span>
+                                        <span class="hidden-xs">|</span> 
+                                        <button style="float:none;font-weight: 400; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteQueriesArticle">Delete</button> </span>
                                         <?php endif;?>
                                         <a href="<?php echo RootURL."queries/view/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                     </div>
@@ -88,26 +89,17 @@
                           </div>
                         </div>                        
                       </div> 
-                      <div class="tab-pane fade" id="queries">
-                        
-                      </div>
-                      <div class="tab-pane fade" id="querieshelf">
-                        
-                      </div>  
-                      <div class="tab-pane fade" id="friends">
-                        
-                      </div>                            
                     </div>
                   </div>
                 </div> 
                 
               </div>
             </div>
-            <div class="row">
+            <div>
               <nav aria-label="Page navigation" class="pagi_nation">
                 <?php html_helper::pagination($this->records['norecords'], $this->records['nocurp'], $this->records['curp'], $this->records['nopp']); ?>
               </nav>
-            </div>             
+          </div> 
           </div>
           <?php include_once 'views/layout/'.$this->layout.'right-bar.php'; ?>
         </div>

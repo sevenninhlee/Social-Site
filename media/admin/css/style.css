@@ -801,9 +801,9 @@ h4{
 /* .tab-menu{
 	overflow-y: hidden;
 } */
-.tab-menu .tab-pane{
+/* .tab-menu .tab-pane{
 	padding: 20px;
-}
+} */
 .tab-menu .nav>li>a:focus,.tab-menu .nav>li>a:hover {
     background-color: #337ab7;
 }
@@ -1456,7 +1456,8 @@ h2.ffmily{
 	padding: 15px 20px;
 }
 .panel-default.pro-panel>.panel-heading {
-    color: #3c6db5;
+	color: #3c6db5;
+	padding: 10px 0 !important;
     background-color: #fff;
     border-color: transparent;
 }

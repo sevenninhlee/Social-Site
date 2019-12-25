@@ -10,41 +10,32 @@
       <div class="col-md-9">
             <h2><?= ($this->record['title']) ?></h2>
             <div class="white_box">
-              <p class="cate_txt"> 
-              <p style="display:none;">
-              <span>Author:</span> 
-              <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
-              <p>
+            <p class="cate_txt"> <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
               <span>Category:
               </span> 
               <?php 
-										if($this->category == null){
-											echo '<span>Unkown category</span>';
-										}else {
-											$cat_str = "";
-											foreach ($this->category as $key => $value) {
-												$cat_str.=$value['name']." | ";
-											}
-											echo '<span>'.rtrim($cat_str," | ").'</span>';
-										}
-							    ?>
+                    if($this->category == null){
+                      echo '<span>Unkown category</span>';
+                    }else {
+                      $cat_str = "";
+                      foreach ($this->category as $key => $value) {
+                        $cat_str.=$value['name']." | ";
+                      }
+                      echo '<span>'.rtrim($cat_str," | ").'</span>';
+                    }
+                  ?>
               |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
               <?php if($this->record['featured_image']){ ?>
                 <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['featured_image']) ? 'queries/'.$this->record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="baner_blog" style="width:100%;height:auto;">   
               <?php } ?>
                 <div class="space30"></div>
-                  <!-- <p> <?= ($this->record['description']) ?> </p> -->
 
                   <div class="read_more">
                     <?php  echo $this->record['description'] ; ?>
                   </div>
                 </div>
-              </div>                                    
-            </div>
             
-            <!-- <div>
-                <?php html_helper::like(1,'review_rating_model',$this->checkUserLike, $this->totalLike)?>
-            </div> -->
+            
             <div class="white_box2 space30">
               <h3>SHARE THIS ANSWER</h3>
 
@@ -135,7 +126,6 @@
               </div>
 						  <?php } ?>
               </div>
-              <!-- <h5>Add Answer:</h5> -->
               <hr>
               <form>
                 
@@ -163,9 +153,8 @@
 
               </form>
             </div>
-          </div>
-        </div>            
-      </div>
+            </div>                                    
+
       <div class="col-md-3">
         <?php include_once 'views/layout/'.$this->layout.'find_us_blog_category.php'; ?>
         <a href="<?=vendor_app_util::url(array('ctl'=>'user/queries', 'act' => 'add')); ?>" class="btn btn_compose" type="button" isCheckUser= "<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo 'yes'; else echo 'no' ?>" >Create A Queries</a>
@@ -188,8 +177,9 @@
         </div>
       <?php } ?> 
       </div>
+
+      </div>
     </div>
-  </div>
 </section>
 
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>

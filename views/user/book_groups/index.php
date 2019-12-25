@@ -77,9 +77,9 @@
                                           <a><span class="color3c6db5">| </span>
                                           <span class="fsize14 color3c6db5 hide-text padright20" id="hide_<?php echo $record['id'] ?>" alt="Organizer" data="<?php echo $record['id'] ?>"><?php if($record['owner_status'] == 1) echo "Hide"; else echo "Unhide";?></span>
                                         <?php else:?>
-                                          <?php if (!$record['checkUser']): ?>
+                                          <!-- <?php if (!$record['checkUser']): ?>
                                           <a href="#"><span class="padright20 danger-txt f400">Join</span></a>
-                                          <?php endif;?>
+                                          <?php endif;?> -->
                                         <?php endif;?>
                                           <a href="<?php echo RootURL."book-groups/review/".$record['slug']  ?>"><span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                     </div>

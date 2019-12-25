@@ -77,6 +77,8 @@
             </div>
 
             <div class="space30"></div>
+            <br/><br/>
+
             <?php if($app['ctl'] === 'home' or $app['ctl'] === 'profile') {?>
               <h2>Queries</h2>
             <?php }else { ?>

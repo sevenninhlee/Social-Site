@@ -97,6 +97,8 @@
             </div>
           <?php endif; ?>
           </div>
+          </div>
+
           <div class="col-md-3">
             <?php include_once 'views/layout/' . $this->layout . 'find_us_blog_category.php'; ?>
             <div class="space30"></div>
@@ -131,7 +133,6 @@
               </div>
             <?php } ?>
           </div>
-      </div>
     </div>
 </section>
 

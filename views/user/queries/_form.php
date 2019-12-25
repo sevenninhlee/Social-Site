@@ -61,7 +61,7 @@
 											}
 										?>							
 										<select name="categories_arr[]" id="input-categories_id" multiple class="form-control selectpicker">
-											<?php foreach ($this->categories['data'] as $record) { ?>
+											<?php foreach ($this->categories as $record) { ?>
 											<?php if(in_array($record['id'],$array_select)){ ?>
 											<option value="<?php echo $record['id']?>" selected='selected'>
 												<?php echo $record['name']?>

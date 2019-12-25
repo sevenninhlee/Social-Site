@@ -48,6 +48,16 @@ class queries_controller extends right_bar_data_controller
 			include "views/".$app['areaPath']."staticpages/error.php";
 			exit();
 		}
+		$um = new user_model();
+		$user = $um->getRecord($this->record['user_id']);
+		$this->record['username'] = $user['firstname'].' '.$user['lastname'];
+		$this->record['user_avatar'] = $user['avata'];
+		$bulletin = new bulletin_model();
+		$this->record['user_bulletin'] = mysqli_fetch_assoc($bulletin->getAllRecords(
+			'*',
+			[ 'conditions' => "user_id={$this->record['user_id']}",'order'=>'updated DESC']
+		))['content'];
+		
 		$this->obj_id = $id[1];
 		
 		$queries = new queries_category_model();
@@ -55,7 +65,6 @@ class queries_controller extends right_bar_data_controller
 		
 		$reviews = new review_rating_model();
 		$this->reviews = $reviews->getUserRating($userID, $id[1], "queries_article_model");
-		// echo "Start <br/>"; echo '<pre>'; print_r($this->reviews);echo '</pre>';exit("End Data");
 
 		$rpCondition .= " AND table_model = 'queries_article_model' AND object_article_id = {$id[1]} AND review_parent_id != 0";
 		$this->reply = $reviews->getAllRecords('users.*, review_ratings.*', ['conditions'=>$rpCondition, 'joins'=>['user'], 'order'=>'created ASC']);

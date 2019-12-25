@@ -27,20 +27,21 @@
 
                     <div class="media-body">
                       <h5 class="f700"><?= ($this->record['title']) ?></h5>
-                      <p><span class="f700">Author: <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a></span> | <span class="f700">
-                      Category: 
-                      <?php 
-                      if($this->category == null){
-                        echo '<span>Unkown category</span>';
-                      }else {
-                        $cat_str = "";
-                        foreach ($this->category as $key => $value) {
-                          $cat_str.=$value['name']." | ";
-                        }
-                        echo '<span>'.rtrim($cat_str," | ").'</span>';
-                      }
-							        ?>
-                      | <span class="f700">Date:</span>  <?php vendor_app_util::formatDate($this->record['created']); ?></p>
+                      <p class="cate_txt"> <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
+                        <span>Category:
+                        </span> 
+                        <?php 
+                              if($this->category == null){
+                                echo '<span>Unkown category</span>';
+                              }else {
+                                $cat_str = "";
+                                foreach ($this->category as $key => $value) {
+                                  $cat_str.=$value['name']." | ";
+                                }
+                                echo '<span>'.rtrim($cat_str," | ").'</span>';
+                              }
+                            ?>
+                        |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
                     </div>
                   </div>
                 </div>

@@ -9,13 +9,9 @@
       <div class="col-md-9">
             <h2><?= ($this->record['title']) ?></h2>
             <div class="white_box">
-              <p class="cate_txt"> 
-              <p style="display:none;">
-                <span>Author:</span> 
-                <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>">
-                <?= ($this->record['username']) ?></a>  |  
-              <p>
-              <span>Category:</span>
+            <p class="cate_txt"> <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
+              <span>Category:
+              </span> 
               <?php 
 										if($this->category == null){
 											echo '<span>Unkown category</span>';
@@ -26,9 +22,7 @@
 											}
 											echo '<span>'.rtrim($cat_str," | ").'</span>';
 										}
-							?>
-              <!-- <a><?= $this->category['name'] ?></a> -->
-              
+							    ?>
               |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
               <?php if($this->record['featured_image']){ ?>
               <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['featured_image']) ? 'news/'.$this->record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="baner_new" style="width:100%;height:auto;">   

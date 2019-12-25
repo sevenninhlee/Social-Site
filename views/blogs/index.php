@@ -54,7 +54,7 @@
                               }
                             ?> 
                             | <span>Author:</span><a href="<?php echo (vendor_app_util::url(["area"=>'user', "ctl"=>"profile", "act"=>"index?user=".$record['user_id']])) ?>"><?php echo $record['username'] ?></a></p>
-                            <span class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></span>
+                            <span class="txt_des"><?php if(strlen($record['short_description']) > 300)  echo substr($record['short_description'], 0, 300).'...'; else echo $record['short_description'] ; ?></span>
                             <div class="grey_box">
                             <a href="<?php echo (vendor_app_util::url(["ctl"=>"blogs", "act"=>"view/".$record['slug']])) ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                             </div>

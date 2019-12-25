@@ -63,7 +63,7 @@ class blogs_controller extends aside_bar_data_controller
 
 		$conditions = '';
 		$blog = new blog_category_model();
-		$this->categories = $blog->allp('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
+		$this->categories = $blog->all('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
 		$this->display();
 	}
 

@@ -29,7 +29,8 @@ class queries_controller extends aside_bar_data_controller
 	public function add() {
 		$conditions = '';
 		$bcm = new queries_category_model();
-		$this->categories = $bcm->allp('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
+		$this->categories = $bcm->all('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
+		
 		if(isset($_POST['btn_submit'])) {
 			$bm = new queries_article_model();
 			$queriesData = $_POST['queries'];

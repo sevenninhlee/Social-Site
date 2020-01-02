@@ -6,61 +6,57 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <h2>Opinions &amp; Debates</h2>   
+          <h2 class="f700"><?= ($this->record['title']) ?></h2>
             <div class="white_box">
-              <div class="row">
-                <div class="">
-                <?php if($this->record['featured_image']){ ?>
-                  <div class="col-md-4">
-                    <div class="media-left">
-                      <?php if (strpos($this->record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+
+            <p class="cate_txt"> <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
+                <span>Category:
+                </span> 
+                <?php 
+                      if($this->category == null){
+                        echo '<span>Unkown category</span>';
+                      }else {
+                        $cat_str = "";
+                        foreach ($this->category as $key => $value) {
+                          $cat_str.=$value['name']." | ";
+                        }
+                        echo '<span>'.rtrim($cat_str," | ").'</span>';
+                      }
+                    ?>
+                |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
+
+              <?php if($this->record['featured_image']){ ?>
+                 <?php if (strpos($this->record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                         <img src="<?php echo $this->record['featured_image']?>" class="img-responsive" width=150; height=200;>
                       <?php } else { ?>
                         <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['featured_image']) ? 'opinions_debates/'.$this->record['featured_image'] : "no_picture.png" ?>" class="img-responsive" width=150; height=200;>
                         <?php } ?> 
-                    </div>
-                  </div>
-                  <div class="col-md-8">
-                  <?php } else { ?>
-                    <div class="col-md-12">
-                  <?php } ?>
+              <?php } ?>
+                <div class="space30"></div>
+              <p><?= ($this->record['description']) ?></p>
 
-                    <div class="media-body">
-                      <h5 class="f700"><?= ($this->record['title']) ?></h5>
-                      <p class="cate_txt"> <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a>  |  
-                        <span>Category:
-                        </span> 
-                        <?php 
-                              if($this->category == null){
-                                echo '<span>Unkown category</span>';
-                              }else {
-                                $cat_str = "";
-                                foreach ($this->category as $key => $value) {
-                                  $cat_str.=$value['name']." | ";
-                                }
-                                echo '<span>'.rtrim($cat_str," | ").'</span>';
-                              }
-                            ?>
-                        |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <p><?php  echo $this->record['description'] ; ?></p>
+
               <div class="about_box">
                 <div class="media">
-                  <div class="pull-left">
-                    <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['user_avatar']) ? 'users/'.$this->record['user_avatar'] : "no_picture.png" ?>" style="width:100px;height:100px;" class="img-responsive center-block" alt="about-author">
+                  <div class="col-md-3">
+                    <div class="row pull-left">
+                      <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['user_avatar']) ? 'users/'.$this->record['user_avatar'] : "no_picture.png" ?>" style="width:100px;height:100px;" class="img-responsive center-block" alt="about-author">
+                    </div>
                   </div>
-                  <div class="media-body">
-                    <div class="bio_txt">
-                      <p class="profile_txt"><span>About: <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a></span></p>
-                      <p><?= ($this->record['user_bulletin']) ?></p>
+                  <div class="col-md-9">
+                    <div class="row media-body">
+                      <div class="bio_txt">
+                        <p class="profile_txt"><span>About: <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a></span></p>
+                        <p><?= ($this->record['user_bulletin']) ?></p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>        
+              </div>
+
+
+
             <div class="white_box2 space30">
               <h3>SHARE THIS NEW</h3>
               <a class="btn btn_fb" type="button">Facebook</a>
@@ -173,7 +169,7 @@
                 </div>
               </form>
             </div>
-        </div>
+            </div>
       <div class="col-md-3">
         <?php include_once 'views/layout/'.$this->layout.'find_us_blog_category.php'; ?>
         <a href="javascript:void(0)" class="btn btn_compose" type="button" isCheckUser= "<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo 'yes'; else echo 'no' ?>" >Compose A Opinions</a>
@@ -195,7 +191,6 @@
         </div>
       <?php } ?>         
       </div>
-    </div>
   </div>
 </section>
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>

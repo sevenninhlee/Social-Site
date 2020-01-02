@@ -24,7 +24,7 @@
               </div>
             <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."opinions_debates/view/".$this->opinion[0]['slug'] ?>"><?php if(strlen($this->opinion[0]['title']) > 20)  echo substr($this->opinion[0]['title'], 0, 20).'...'; else echo $this->opinion[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."opinions_debates/view/".$this->opinion[0]['slug'] ?>"><?php echo $this->opinion[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->opinion[0]['description']) > 20)  echo substr($this->opinion[0]['description'], 0, 20).'...'; else echo $this->opinion[0]['description'] ; ?></p>
               </div>
@@ -50,7 +50,7 @@
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."books/book_review/".$this->book[0]['slug'] ?>"><?php if(strlen($this->book[0]['title']) > 20)  echo substr($this->book[0]['title'], 0, 20).'...'; else echo $this->book[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."books/book_review/".$this->book[0]['slug'] ?>"><?php echo $this->book[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->book[0]['description']) > 20)  echo substr($this->book[0]['description'], 0, 20).'...'; else echo $this->book[0]['description'] ; ?></p>
               </div>
@@ -70,7 +70,7 @@
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."blogs/view/".$this->blog[0]['slug'] ?>"><?php if(strlen($this->blog[0]['title']) > 20)  echo substr($this->blog[0]['title'], 0, 20).'...'; else echo $this->blog[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."blogs/view/".$this->blog[0]['slug'] ?>"><?php  echo $this->blog[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->blog[0]['description']) > 20)  echo substr($this->blog[0]['description'], 0, 20).'...'; else echo $this->blog[0]['description'] ; ?></p>
               </div>
@@ -92,7 +92,7 @@
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."queries/view/".$this->query[0]['slug'] ?>"><?php if(strlen($this->query[0]['title']) > 20)  echo substr($this->query[0]['title'], 0, 20).'...'; else echo $this->query[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."queries/view/".$this->query[0]['slug'] ?>"><?php echo $this->query[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->query[0]['description']) > 20)  echo substr($this->query[0]['description'], 0, 20).'...'; else echo $this->query[0]['description'] ; ?></p>
               </div>

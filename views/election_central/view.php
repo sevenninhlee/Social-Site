@@ -10,11 +10,7 @@ include_once 'views/layout/outside/' . $this->layout . 'headerOutside.php';
         <h2><?= ($this->record['title']) ?></h2>
         <div class="white_box">
           <p class="cate_txt">
-            <p style="display:none;">
-              <span>Author:</span>
-              <a href="<?php echo (vendor_app_util::url(["ctl" => "user", "act" => "profile/index?user=" . $this->record['user_id']])) ?>">
-                <?= ($this->record['username']) ?></a> |
-              <p>
+                <span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a> |
                 <span>Category:</span>
                 <?php
                 if ($this->category == null) {

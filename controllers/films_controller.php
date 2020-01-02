@@ -49,6 +49,17 @@ class films_controller extends right_bar_data_controller {
 			include "views/".$app['areaPath']."staticpages/error.php";
 			exit();
 		}
+
+		$um = new user_model();
+		$user = $um->getRecord($this->record['user_id']);
+		$this->record['username'] = $user['firstname'].' '.$user['lastname'];
+		$this->record['user_avatar'] = $user['avata'];
+		$bulletin = new bulletin_model();
+		$this->record['user_bulletin'] = mysqli_fetch_assoc($bulletin->getAllRecords(
+			'*',
+			[ 'conditions' => "user_id={$this->record['user_id']}",'order'=>'updated DESC']
+		))['content'];
+
 		if(strpos($this->record['link'], "https://www.youtube.com/") !== false){
 			$this->record['link'] = $this->getYoutubeEmbedUrl($this->record['link']);
 		}

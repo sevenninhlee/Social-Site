@@ -14,9 +14,7 @@
         <div class="row space30">
           <div class="col-md-12">
             <div class="white_box">
-              <iframe width="100%" height="500" src=" <?= $this->record['link'] ?>"></iframe>
-              <div class="space30"></div>
-              <p>Year: <?= $this->record['year'] ?> | Category: 
+             <p><span>Author:</span> <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$this->record['user_id']])) ?>"><?= ($this->record['username']) ?></a> | Category: 
               <?php 
 										if($this->category == null){
 											echo '<span>Unkown category</span>';
@@ -28,7 +26,9 @@
 											echo '<span>'.rtrim($cat_str," | ").'</span>';
 										}
 							?>
-              </p>
+              | Year: <?= $this->record['year'] ?> </p>
+              <iframe width="100%" height="500" src=" <?= $this->record['link'] ?>"></iframe>
+              <div class="space30"></div>
               <p><?= $this->record['description'] ?></p>
             </div>
             <div class="white_box2 space30">

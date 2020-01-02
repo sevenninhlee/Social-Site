@@ -66,7 +66,7 @@
                                  
                                 </p>
                                   <h3><a href="<?php echo RootURL."blogs/view/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
-                                  <div class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></div>
+                                  <div class="txt_des"><?php if(strlen($record['short_description']) > 300)  echo substr($record['short_description'], 0, 300).'...'; else echo $record['short_description'] ; ?></div>
                                   <div class="grey_box gray1">
                                     <?php if($this->isUserLogged):?>
                                       <span class="f400"><a href="<?=vendor_app_util::url(array('ctl'=>'blogs', 'act' => 'edit/'.$record['id'])); ?>" class="color3c6db5 edit-btn">Edit</a> 

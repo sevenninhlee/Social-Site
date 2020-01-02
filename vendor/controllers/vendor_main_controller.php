@@ -38,6 +38,10 @@ class vendor_main_controller {
 
 	public function uploadImg($flies, $newSize=null) {
 		$arrt	=	explode("/", $flies["image"]["type"]);
+		
+		$name_arr = explode('.', $flies["image"]["name"]);
+		$file_name = join(".", array_slice($name_arr ,0, -1)); 
+		
 		$type	=	end($arrt);
 		if (($flies["image"]["size"] < 200000000)
 			&& in_array($type, $this->allowedExts)) {
@@ -45,7 +49,7 @@ class vendor_main_controller {
 				return false;
 		    }
 			$ulfd = RootURI.UploadREL .$this->controller.'/';
-			$newfn = time().rand(10000,99999).'.'.$type;
+			$newfn = $file_name.'_'.time().rand(10000,99999).'.'.$type;
 		    if (!file_exists($ulfd . $newfn)) {
 				// mkdir($ulfd, 0777, true);  //create directory if not exist
 				// chmod($ulfd, 0777);

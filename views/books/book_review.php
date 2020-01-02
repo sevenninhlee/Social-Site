@@ -48,7 +48,7 @@
                   | Year: <span class="f400"><a><?= ($this->record['year']) ?></a></span> ISBN: <span class="f400"><a><?= ($this->record['ISBN']) ?></a></span></p>
                   <!-- <p> <?= ($this->record['description']) ?> </p> -->
 
-                  <div class="read_more">
+                  <div class="read_more1">
                     <?php  echo $this->record['description'] ; ?>
                   </div>
                 </div>

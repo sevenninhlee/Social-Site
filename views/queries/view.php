@@ -30,7 +30,7 @@
               <?php } ?>
                 <div class="space30"></div>
 
-                  <div class="read_more">
+                  <div class="read_more1">
                     <?php  echo $this->record['description'] ; ?>
                   </div>
                 </div>

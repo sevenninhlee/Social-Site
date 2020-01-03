@@ -12,7 +12,8 @@ class home_controller extends vendor_main_controller {
 		$menvironment_article = new environment_article_model();
 
 		// $this->film_articles = $film_article->getFourRecord();
-		$this->blog_articles = $blog_article->getFourRecord(' AND featured_my_blog = 1 ');
+		$this->blog_articles = $blog_article->getFourRecord(' AND featured_my_blog = 1 AND admin_status = 1 ');
+		$this->community_blog = $blog_article->getFourRecord(' AND community_blog = 1 AND admin_status = 0');
 		// $this->book_group_articles = $book_group_article->getFourRecord();
 
 		$conditions = 'admin_status = 1 AND owner_status = 1 AND add_homepage = 1';

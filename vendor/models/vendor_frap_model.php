@@ -35,7 +35,7 @@ class vendor_frap_model extends vendor_fra_model {
 	}
 
 	public function getFourRecord($where = ''){
-		$sql = 'SELECT * FROM '.$this->table.' WHERE admin_status = 1 AND owner_status = 1 AND add_homepage = 1'.$where.' ORDER BY created DESC';
+		$sql = 'SELECT * FROM '.$this->table.' WHERE owner_status = 1 AND add_homepage = 1'.$where.' ORDER BY created DESC';
 		$allRow = $this->con->query($sql);
 		$listpost = array();
 		while( $row =  $allRow->fetch_assoc()) {  

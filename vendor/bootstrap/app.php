@@ -16,12 +16,39 @@ if(isset($_GET["pr"])) {
 		$prs[0] = "page";
 		$prs[1] = "index";
 	}
+
+	// $par = $_GET["pr"];
+	// if(preg_match('/\/$/', $par) && !preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
+	// 	$par = substr($par, 0, -1);
+	// }
+
+	// if(preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
+	// 	$app['linkpage'] = "null";
+	// 	$prs = explode("/","404/index");
+	// }
+	// else{
+
+	// 	$link_url = $_SERVER['REQUEST_URI'];
+	// 	if(preg_match('/viec-lam\/(.*)-(\d+).html/', $link_url, $matches)){
+	// 		$prs = explode("/","jobs/view/".$matches[1].'/'.$matches[2]);
+	// 		$app['linkpage'] = "tuyen-dung-viec-lam-chi-tiet";
+	// 		break;
+	// 	}
+
+	// 	echo "Start <br/>"; echo '<pre>'; print_r($par);echo '</pre>';exit("End Data");
+
+	// }
+
+
+
+	
 } else {
 	$uriSplit = explode("/", $_SERVER['PHP_SELF']);
 	$requestUriConfig = $_SERVER["REQUEST_URI"];	
 	if ($uriSplit[1] != "index.php") {
 		$requestUriConfig = substr($_SERVER["REQUEST_URI"], strlen($uriSplit[1]) + 1);
 	}
+	
 	if($_SERVER['PHP_SELF']!="/index.php") {		
 		$prs = explode("/",substr($requestUriConfig, 1));	
 	}
@@ -33,7 +60,6 @@ if($noPrs) {
 	if($prs[0]=="admin") {
 		$app['area'] = 'admin';
 		$app['areaPath'] = 'admin/';
-		// echo "Start <br/>"; echo '<pre>'; print_r($prs[1]);echo '</pre>';exit("End Data");
 		array_shift($prs);
 		$noPrs--;
 	} else if($prs[0]=="api" || $prs[0]=="user"){

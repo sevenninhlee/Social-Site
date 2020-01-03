@@ -95,6 +95,35 @@
           <?php } ?>
         <?php } ?>
       </div>
+
+      <h5 class="block-title"><a href="http://enlight21.com/blogs">Community Blogs</a></h5>
+      <div class="block-wrapper">
+        <?php foreach ($this->community_blog as $record) { ?>
+          <?php if($record['featured_image']){ ?>
+          <div class="item">
+            <div class="top">
+              <span class="title">
+                <a style="color: #333;" href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
+                <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
+              </span>
+              <a href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>">
+                <img src="<?= UploadURI . 'blogs/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive center-block" alt="film">
+              </a>
+            </div>
+          </div>
+          <?php } else { ?>
+            <div class="item clearfix">
+            <div class="row">
+              <span class="title" style="font-weight: 200; color: #333;">
+                <a href="<?php echo RootURL . "news/view/" . $record['slug'] ?>"><?=$record['title']?></a>
+                <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
+              </span>
+            </div>
+          </div>
+          <?php } ?>
+        <?php } ?>
+      </div>
+
       <h5 style="margin-top: 50px;" class="block-title"><a href="http://enlight21.com/book-groups">Book Groups</a></h5>
       <div class="block-wrapper">
         <?php foreach ($this->book_group_articles as $record) { ?>

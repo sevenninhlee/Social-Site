@@ -111,7 +111,7 @@
     <!-- start footer -->
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script type="text/javascript">
-  var rootUrl   = "<?=RootURL;?>";
+   rootUrl   = "<?=RootURL;?>";
 </script>   
 <script src="<?php echo RootREL; ?>media/js/friend.js"></script>
 <script>

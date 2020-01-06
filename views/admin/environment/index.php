@@ -19,7 +19,7 @@
 	var nocurp 		= parseInt(<?php echo $this->records['nocurp']; ?>);
 	var curp 		= parseInt(<?php echo $this->records['curp']; ?>);
 	var nopp 		= parseInt(<?php echo $this->records['nopp']; ?>);
-	var getDisable  = <?=(isset($app['prs']['status']) && ($app['prs']['status']==='0'))? 1:0;?>
+	var getDisable  = "<?=(isset($app['prs']['status']) && ($app['prs']['status']==='0'))? 1:0;?>"
 </script>
 
 <div class="col-md-10 col-sm-9 pad0" id="page_environment">

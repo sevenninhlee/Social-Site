@@ -394,7 +394,7 @@ function delRecord(id, act) {
 
 //------------------Function changeStatus ----------------------------------------------------------------
 function changeStatus(ItemID, ItemStatus, act) {
-	console.log(ItemID, ItemStatus, act);
+	console.log(ItemID, ItemStatus, act, ctl_page);
 	urlEdit = rootUrl+'admin/'+ctl_page+'/'+act+'/id='+ItemID;
 	$.ajax({
 		method: "POST",

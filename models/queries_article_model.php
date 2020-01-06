@@ -28,7 +28,7 @@ class queries_article_model extends vendor_pagination_model
 
 	public function setToUnknownCategories($ids){
 		$sql = "UPDATE queries_articles SET categories_id = 0 WHERE categories_id in (".$ids.")";
-		$allRow = $this->con->queries($sql);
+		$allRow = $this->con->query($sql);
 	}
 
 	public function readPaging($from_record_num, $records_per_page, $filed_oder_by, $conditions)

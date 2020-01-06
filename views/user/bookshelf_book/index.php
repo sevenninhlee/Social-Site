@@ -789,7 +789,7 @@ $(document).ready(function(){
   }); 
 });
 
-var data = <?php echo json_encode($this->records); ?>;
+var data = "<?php echo json_encode($this->records); ?>";
 var RootREL = "<?php echo RootREL; ?>";
 
 // Favorite

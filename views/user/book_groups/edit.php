@@ -651,8 +651,8 @@ $(document).ready(function(){
   
 });
 
-var data = <?php echo json_encode($this->records); ?>;
-var book_group_id = <?php echo $this->record['id']; ?>;
+var data = "<?php echo json_encode($this->records); ?>";
+var book_group_id = "<?php echo $this->record['id']; ?>";
 var RootREL = "<?php echo RootREL; ?>";
 
 // Current

@@ -93,8 +93,13 @@ class vendor_crud_model extends vendor_main_model {
 		$tables = $this->table;
 		$innerJoin = "";
 		$arr_ids = explode(",", $ids);
-		$tabe_m = substr($this->table, 0, -1 ).'_model';
+		if (substr($this->table, strlen($tables) - 10 , -1 ) == "categorie" ) {
+			$tabe_m = substr($this->table, 0, -3 ).'y_model';
+		} else {
+			$tabe_m = substr($this->table, 0, -1 ).'_model';
+		}
 		$bm = new $tabe_m;
+
 
 		if(isset($this->relationships) && isset($this->relationships['hasMany'])) {
 			$hasManyArr = (vendor_app_util::is_multi_array($this->relationships['hasMany']))?
@@ -116,6 +121,7 @@ class vendor_crud_model extends vendor_main_model {
 
 		$ids = vendor_html_helper::processSQLString($ids);
 		$sql = "DELETE ".$tables." FROM ".$this->table.$innerJoin." WHERE $this->table.id in ($ids) $conditions";
+
 		return $this->con->query($sql);
 	}
 	

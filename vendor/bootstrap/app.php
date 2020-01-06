@@ -4,13 +4,10 @@ $app['ctl'] = "home";
 $prs = [];
 
 if(isset($_GET["pr"])) {
-
 	$par = $_GET["pr"];
-	if(strpos($str_url, "index.php?pr")){
-		$app['linkpage'] = "null";
-		$prs = explode("/","404/index");
-
-	}else if(strpos($str_url, "blogs/view")){
+	$str_url = $_SERVER['REQUEST_URI'];
+	// echo "Start <br/>"; echo '<pre>'; print_r($str_url);echo '</pre>';exit("End Data");
+    if(strpos($str_url, "blogs/view")){
 		$app['linkpage'] = "null";
 		$prs = explode("/","404/index");
 	}else if(strpos($str_url, "news/view")){
@@ -57,32 +54,30 @@ if(isset($_GET["pr"])) {
 			}
 
 			$link_url = $_SERVER['REQUEST_URI'];
-			if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","blogs/view/".$matches[1]);
-			} else if(preg_match('/news\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","news/view/".$matches[1]);
-			} else if(preg_match('/films\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","films/review/".$matches[1]);
-			} else if(preg_match('/books\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","books/book_review/".$matches[1]);
-			} else if(preg_match('/book-groups\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","book-groups/review/".$matches[1]);
-			} else if(preg_match('/opinions-debates\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","opinions-debates/view/".$matches[1]);
-			} else if(preg_match('/queries\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","queries/view/".$matches[1]);
-			} else if(preg_match('/election-central\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","election-central/view/".$matches[1]);
-			} else if(preg_match('/must-reads\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","must-reads/view/".$matches[1]);
-			} else if(preg_match('/environment\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
-				$prs = explode("/","environment/view/".$matches[1]);
-			} 
 
-
-
-				// echo "Start <br/>"; echo '<pre>'; print_r($matches);echo '</pre>';exit("End Data");
-
+			if (!preg_match('/index\?cat=/', $link_url, $matches) && !preg_match('/index\?page=/', $link_url, $matches) && !preg_match('/index\?search=/', $link_url, $matches) ) {
+				if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","blogs/view/".$matches[1]);
+				} else if(preg_match('/news\/(.*)/', $link_url, $matches) && !preg_match('/user\/news/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","news/view/".$matches[1]);
+				} else if(preg_match('/films\/(.*)/', $link_url, $matches) && !preg_match('/user\/films/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","films/review/".$matches[1]);
+				} else if(preg_match('/books\/(.*)/', $link_url, $matches) && !preg_match('/user\/books/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","books/book_review/".$matches[1]);
+				} else if(preg_match('/book-groups\/(.*)/', $link_url, $matches) && !preg_match('/user\/book-groups/', $link_url) && !preg_match('/admin/', $link_url) && !preg_match('/book-groups\/book-review/', $link_url) ){
+					$prs = explode("/","book_groups/review/".$matches[1]);
+				} else if(preg_match('/opinions-debates\/(.*)/', $link_url, $matches) && !preg_match('/user\/opinions-debates/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","opinions_debates/view/".$matches[1]);
+				} else if(preg_match('/queries\/(.*)/', $link_url, $matches) && !preg_match('/user\/queries/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","queries/view/".$matches[1]);
+				} else if(preg_match('/election-central\/(.*)/', $link_url, $matches) && !preg_match('/user\/election-central/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","election_central/view/".$matches[1]);
+				} else if(preg_match('/must-reads\/(.*)/', $link_url, $matches) && !preg_match('/user\/must-reads/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","must_reads/view/".$matches[1]);
+				} else if(preg_match('/environment\/(.*)/', $link_url, $matches) && !preg_match('/user\/environment/', $link_url) && !preg_match('/admin/', $link_url) ){
+					$prs = explode("/","environment/view/".$matches[1]);
+				} 
+			}
 
 		}
 		

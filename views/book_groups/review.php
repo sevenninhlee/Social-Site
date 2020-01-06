@@ -111,7 +111,7 @@
                     <span class="f700 by-txt color555554">Description: </span>
                     <?php if(strlen($currentBook['description']) > 400)  echo substr($currentBook['description'], 0, 400).'...'; else echo $currentBook['description'] ; ?>
                     </div>
-                      <!-- href="<?php echo (vendor_app_util::url(["ctl"=>"book_groups", "act"=>"book_review/".$currentBook['book_group_id']])) ?>"  -->
+                      <!-- href="<?php echo (vendor_app_util::url(["ctl"=>"book_groups", "act"=>"book-review/".$currentBook['book_group_id']])) ?>"  -->
                     <a 
                       class="read-txt read_more_bgr"
                       style="cursor: pointer;"
@@ -189,7 +189,7 @@
             if (parseInt(element) == parseInt(user_id) ) {
               confirm("You need be licensed to continue...");
             } else {
-              window.location.href = (rootUrl+'book-groups/book_review/'+bgr_id);
+              window.location.href = (rootUrl+'book-groups/book-review/'+bgr_id);
             }
           });
        }

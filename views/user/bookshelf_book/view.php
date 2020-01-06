@@ -43,7 +43,7 @@
                               <div class="row title-part space30" >
                                 <div class="col-sm-3">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>">
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>">
                                       <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                       <?php } else { ?>
@@ -53,7 +53,7 @@
                                   </div>
                                 </div>
                                 <div class="col-sm-9">
-                                    <h3><a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                                    <h3><a href="<?php echo RootURL."books/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                     <p class="cate_txt" style="font-weight:400;"><span style="font-weight:900; font-size:15px">By:</span><?php echo $record['author'] ?></p>
                                     <p class="cate_txt" style="font-weight:400;"><span style="font-weight:900; font-size:15px">ISBN:</span><?php echo $record['ISBN'] ?></p>
                                     <div class="txt_des"> 
@@ -61,7 +61,7 @@
                                     </div>
 
                                   <div class="grey_box gray1">
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" class="pull-right" > <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>" class="pull-right" > <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                   </div>
                                 </div>
                               </div>
@@ -74,7 +74,7 @@
                               <div class="row title-part space30" >
                                 <div class="col-sm-3">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>">
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>">
                                       <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                       <?php } else { ?>
@@ -84,7 +84,7 @@
                                   </div>
                                 </div>
                                 <div class="col-sm-9">
-                                    <h3><a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                                    <h3><a href="<?php echo RootURL."books/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                     <p class="cate_txt" style="font-weight:400;"><span style="font-weight:900; font-size:15px">By: </span><?php echo $record['author'] ?></p>
                                     <p class="cate_txt" style="font-weight:400;"><span style="font-weight:900; font-size:15px">ISBN: </span><?php echo $record['ISBN'] ?></p>
                                     <div class="txt_des"> 
@@ -92,7 +92,7 @@
                                     </div>
 
                                   <div class="grey_box gray1">
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                   </div>
                                 </div>
                               </div>
@@ -103,14 +103,14 @@
                             <?php foreach($this->recRecords as $key => $record) { ?>
 
                               <div class="item" >
-                                <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>">
+                                <a href="<?php echo RootURL."books/".$record['slug'] ?>">
                                   <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                     <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } else { ?>
                                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } ?>
                                 </a>  
-                                <p class="text-center space10"><a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></p>  
+                                <p class="text-center space10"><a href="<?php echo RootURL."books/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></p>  
                               </div>
 
                             <?php } ?>
@@ -121,14 +121,14 @@
                              <?php foreach($this->revRecords as $key => $record) { ?>
 
                               <div class="item" >
-                                <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>">
+                                <a href="<?php echo RootURL."books/".$record['slug'] ?>">
                                   <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                     <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } else { ?>
                                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } ?>
                                 </a>
-                                <p class="text-center space10"><a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></p>  
+                                <p class="text-center space10"><a href="<?php echo RootURL."books/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></p>  
                               </div>
 
                             <?php } ?>

@@ -48,12 +48,12 @@
                                 <div class="col-md-6 col-sm-6 title-part title-part-<?php echo $record['id']; if($record['owner_status'] == 0) echo " opa6" ;?>">
                                   <div class="white_box white_bx">
                                     <div class="img-box">
-                                      <a href="<?php echo RootURL."book-groups/review/". $record['slug'] ?>">
+                                      <a href="<?php echo RootURL."book-groups/". $record['slug'] ?>">
                                         <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'book_groups/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; style="height: 220px !important;" >
                                       </a>                 
                                     </div>
                                     <div class="img-desc">
-                                      <h3 class="f700"><a href="<?php echo RootURL."book-groups/review/". $record['slug'] ?>" style="color: #333"><?php echo $record['title'];?></a></h3>
+                                      <h3 class="f700"><a href="<?php echo RootURL."book-groups/". $record['slug'] ?>" style="color: #333"><?php echo $record['title'];?></a></h3>
                                       <p>By: <span class="f400"><?php echo $record['users_firstname'].' '.$record['users_lastname'];?></span></p>
                                       <p>Category: <span class="f400"> 
                                       <?php 
@@ -81,7 +81,7 @@
                                           <a href="#"><span class="padright20 danger-txt f400">Join</span></a>
                                           <?php endif;?> -->
                                         <?php endif;?>
-                                          <a href="<?php echo RootURL."book-groups/review/".$record['slug']  ?>"><span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                          <a href="<?php echo RootURL."book-groups/".$record['slug']  ?>"><span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                     </div>
                                   </div>
                                 </div>
@@ -95,12 +95,12 @@
                                 <div class="col-md-6 col-sm-6 title-part title-part-<?php echo $record['book_group_article_user_id']; if($record['book_group_owner_status'] == 0) echo " opa6" ;?>">
                                   <div class="white_box white_bx">
                                     <div class="img-box">
-                                      <a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>">
+                                      <a href="<?php echo RootURL."book-groups/".$record['slug'] ?>">
                                       <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'book_groups/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; style="height: 220px !important;" >
                                       </a>               
                                     </div>
                                     <div class="img-desc">
-                                      <h3 class="f700"><a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'];?></a></h3>
+                                      <h3 class="f700"><a href="<?php echo RootURL."book-groups/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'];?></a></h3>
                                       <p>By: <span class="f400"><?php echo $record['firstname'].' '.$record['lastname'];?></span></p>
                                       <p>Category: <span class="f400"><?php echo $record['title'];?></span></p>
                                       <p>Users: <span class="f400"><?php echo $record['userNum'];?></span></p>
@@ -116,7 +116,7 @@
                                           <a href="#"><span class="padright20 danger-txt f400">Join</span></a>
                                           <?php endif;?>
                                         <?php endif;?>
-                                          <a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>"><span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                          <a href="<?php echo RootURL."book-groups/".$record['slug'] ?>"><span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                     </div>
                                   </div>
                                 </div>

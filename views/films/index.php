@@ -29,12 +29,12 @@
              <div class="col-md-6 col-sm-6">
                 <div class="white_box">
                   <div class="img-box">
-                    <a href="<?php echo RootURL."films/review/".$record['slug'] ?>">
+                    <a href="<?php echo RootURL."films/".$record['slug'] ?>">
                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'films/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; style="height: 220px !important">
                     </a>
                   </div>
                   <div class="img-desc" style="min-height:170px;">
-                    <h3 class="f700"><a href="<?php echo RootURL."films/review/".$record['slug'] ?>" style="color: #333"><?php if(strlen($record['title']) > 30)  echo substr($record['title'], 0, 30).'...'; else echo $record['title'] ; ?></a></h3>
+                    <h3 class="f700"><a href="<?php echo RootURL."films/".$record['slug'] ?>" style="color: #333"><?php if(strlen($record['title']) > 30)  echo substr($record['title'], 0, 30).'...'; else echo $record['title'] ; ?></a></h3>
                     <p>Category: 
                       <span class="f400">
                       <?php 
@@ -53,7 +53,7 @@
                     <span class="space10 txt_des" style="height: 80px;"><?php if(strlen($record['description']) > 80)  echo substr($record['description'], 0, 80).'...'; else echo $record['description'] ; ?></span>    
                   </div>
                   <div class="grey_box">
-                    <a href="<?php echo RootURL."films/review/".$record['slug'] ?>"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                    <a href="<?php echo RootURL."films/".$record['slug'] ?>"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                   </div>
                 </div>
               </div>
@@ -97,10 +97,10 @@
         <?php foreach($this->newFilms as $key => $newFilm) { ?>
         <div class="white_box no-padding">
             <div class="img-box" >
-            <a href="<?php echo RootURL."films/review/".$newFilm['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newFilm['featured_image']) ? 'films/'.$newFilm['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."films/".$newFilm['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newFilm['featured_image']) ? 'films/'.$newFilm['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."films/review/".$newFilm['slug'] ?>"><?= $newFilm['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."films/".$newFilm['slug'] ?>"><?= $newFilm['title'] ?></a></h4>
             <p>Category: 
               <span class="f400">
               <?php 

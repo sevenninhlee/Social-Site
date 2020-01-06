@@ -171,10 +171,10 @@
         <?php foreach($this->newNews as $key => $newNew) { ?>
         <div class="white_box no-padding">
             <div class="img-box">
-            <a href="<?php echo RootURL."news/view/".$newNew['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newNew['featured_image']) ? 'news/'.$newNew['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."news/".$newNew['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newNew['featured_image']) ? 'news/'.$newNew['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."news/view/".$newNew['slug'] ?>"><?= $newNew['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."news/".$newNew['slug'] ?>"><?= $newNew['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newNew['new_categories_name'] ?></span></p>
             </div>              
         </div>

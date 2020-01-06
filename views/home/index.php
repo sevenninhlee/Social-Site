@@ -8,10 +8,10 @@
       <div class="block-wrapper">
         <?php foreach ($this->film_articles as $record) { ?>
           <div class="item">
-            <a href="<?php echo RootURL . "films/review/" . $record['slug'] ?>">
+            <a href="<?php echo RootURL . "films/" . $record['slug'] ?>">
               <img class="img-responsive center-block" src="<?= UploadURI . 'films/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" alt="film">
             </a>
-            <span class="title"><a style="color: #333;" href="<?php echo RootURL . "films/review/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a></span>
+            <span class="title"><a style="color: #333;" href="<?php echo RootURL . "films/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a></span>
           </div>
         <?php } ?>
       </div>
@@ -24,14 +24,14 @@
       <?php if($this->listNew[0]['featured_image']){ ?> 
         <div style="border-bottom: 1px solid #CCC" class="item">
           <img src="<?= UploadURI . 'news/' . (($this->listNew[0]['featured_image']) ? $this->listNew[0]['featured_image'] : 'no_picture.png'); ?>" class="img-responsive" alt="...">
-          <span class="title"><a style="font-size: 32px" href="<?php echo RootURL . "news/view/" . $this->listNew[0]['slug'] ?>"><?=$this->listNew[0]['title']?></a></span>
+          <span class="title"><a style="font-size: 32px" href="<?php echo RootURL . "news/" . $this->listNew[0]['slug'] ?>"><?=$this->listNew[0]['title']?></a></span>
           <p class="description"><?=$this->listNew[0]['short_description']?></p>
         </div>
         <?php } else { ?>
             <div class="item clearfix">
               <div class="row">
                 <span class="title">
-                <a href="<?php echo RootURL . "news/view/" . $this->listNew[0]['slug'] ?>"><?=$this->listNew[0]['title']?></a></span>
+                <a href="<?php echo RootURL . "news/" . $this->listNew[0]['slug'] ?>"><?=$this->listNew[0]['title']?></a></span>
                 <p class="description"><?=$this->listNew[0]['short_description']?></p>
             </div>
           </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="right">
               <span class="title">
-                <a href="<?php echo RootURL . "news/view/" . $record['slug'] ?>">
+                <a href="<?php echo RootURL . "news/" . $record['slug'] ?>">
                   <?=$record['title']?>
                 </a>
               </span>
@@ -58,7 +58,7 @@
           <?php } else { ?>
             <div class="item-small">
               <div class="row">
-                <span style="font-weight: bold; font-size: 20px;" class="title"><a style="color: #121212;" href="<?php echo RootURL . "news/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                <span style="font-weight: bold; font-size: 20px;" class="title"><a style="color: #121212;" href="<?php echo RootURL . "news/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                 <p class="description"><?=$record['short_description'] ?></p>
             </div>
           </div>
@@ -87,7 +87,7 @@
             <div class="item clearfix">
             <div class="row">
               <span class="title" style="font-weight: 200; color: #333;">
-                <a href="<?php echo RootURL . "news/view/" . $record['slug'] ?>"><?=$record['title']?></a>
+                <a href="<?php echo RootURL . "news/" . $record['slug'] ?>"><?=$record['title']?></a>
                 <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
               </span>
             </div>
@@ -115,7 +115,7 @@
             <div class="item clearfix">
             <div class="row">
               <span class="title" style="font-weight: 200; color: #333;">
-                <a href="<?php echo RootURL . "news/view/" . $record['slug'] ?>"><?=$record['title']?></a>
+                <a href="<?php echo RootURL . "news/" . $record['slug'] ?>"><?=$record['title']?></a>
                 <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
               </span>
             </div>
@@ -130,10 +130,10 @@
           <div class="item">
             <div class="top">
               <span class="title">
-                 <a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "book-groups/review/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a>
+                 <a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "book-groups/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a>
                  <br/> <span style="font-size: 14px;"> <?=$record['short_description'] ?></span>
               </span>
-              <a href="<?php echo RootURL . "book-groups/review/" . $record['slug'] ?>" style="color: #333;">
+              <a href="<?php echo RootURL . "book-groups/" . $record['slug'] ?>" style="color: #333;">
                 <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                   <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                 <?php } else { ?>
@@ -170,7 +170,7 @@
                 <img src="<?= UploadURI . 'election_central/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive" alt="...">
               </div>
               <div class="col-md-8">
-                <span class="title"><a href="<?php echo RootURL . "election-central/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                <span class="title"><a href="<?php echo RootURL . "election-central/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                 <p class="description"><?=$record['short_description'] ?></p>
               </div>
             </div>
@@ -179,7 +179,7 @@
           <div class="row">
             <div class="item clearfix">
               <div class="col-md-12">
-                <span class="title"><a href="<?php echo RootURL . "election-central/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                <span class="title"><a href="<?php echo RootURL . "election-central/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                 <p class="description"><?=$record['short_description'] ?></p>
               </div>
             </div>
@@ -199,7 +199,7 @@
                 <img src="<?= UploadURI . 'must_reads/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive" alt="...">
               </div>
               <div class="col-md-8">
-                <span class="title"><a href="<?php echo RootURL . "must-reads/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                <span class="title"><a href="<?php echo RootURL . "must-reads/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                 <p class="description"><?=$record['short_description'] ?></p>
               </div>
             </div>
@@ -208,7 +208,7 @@
           <div class="row">
             <div class="item clearfix">
               <div class="col-md-12">
-                <span class="title"><a href="<?php echo RootURL . "must-reads/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                <span class="title"><a href="<?php echo RootURL . "must-reads/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                 <p class="description"><?=$record['short_description'] ?></p>
               </div>
             </div>
@@ -227,7 +227,7 @@
                   <img src="<?= UploadURI . 'environment/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive" alt="...">
                 </div>
                 <div class="col-md-8">
-                  <span class="title"><a href="<?php echo RootURL . "environment/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                  <span class="title"><a href="<?php echo RootURL . "environment/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                   <p class="description"><?=$record['short_description'] ?></p>
                 </div>
               </div>
@@ -236,7 +236,7 @@
             <div class="row">
               <div class="item clearfix">
                 <div class="col-md-12">
-                  <span class="title"><a href="<?php echo RootURL . "environment/view/" . $record['slug'] ?>"><?=$record['title']?></a></span>
+                  <span class="title"><a href="<?php echo RootURL . "environment/" . $record['slug'] ?>"><?=$record['title']?></a></span>
                   <p class="description"><?=$record['short_description'] ?></p>
                 </div>
               </div>
@@ -253,12 +253,12 @@
           <div class="item">
             <div class="top">
             <?php if($record['featured_image']){ ?>
-              <span class="title"><a style="color: #333;" href="<?php echo RootURL . "queries/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
-              <a href="<?php echo RootURL . "queries/view/" . $record['slug'] ?>" style="color: #333;">
+              <span class="title"><a style="color: #333;" href="<?php echo RootURL . "queries/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <a href="<?php echo RootURL . "queries/" . $record['slug'] ?>" style="color: #333;">
                 <img src="<?= UploadURI . 'queries/' . $record['featured_image']  ?>" class="img-responsive center-block" alt="film">
               </a>
             <?php } else { ?>
-              <span style="width: 100%;" class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "queries/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <span style="width: 100%;" class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "queries/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
             <?php } ?>
              
             </div>
@@ -271,8 +271,8 @@
           <div class="item">
             <div class="top">
             <?php if($record['featured_image']){ ?>
-              <span class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "opinions-debates/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
-              <a href="<?php echo RootURL . "opinions-debates/view/" . $record['slug'] ?>" style="color: #333;">
+              <span class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "opinions-debates/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <a href="<?php echo RootURL . "opinions-debates/" . $record['slug'] ?>" style="color: #333;">
                   <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                     <img src="<?php echo $record['featured_image']?>" class="img-responsive" width=150; height=200;>
                   <?php } else { ?>
@@ -280,7 +280,7 @@
                   <?php } ?> 
               </a>
             <?php } else { ?>
-              <span style="width: 100%;" class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "opinions-debates/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <span style="width: 100%;" class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "opinions-debates/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
             <?php } ?>
              
             </div>
@@ -293,8 +293,8 @@
           <div class="item">
             <div class="top">
             <?php if($record['featured_image']){ ?>
-              <span class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "books/book_review/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
-              <a href="<?php echo RootURL . "books/book_review/" . $record['slug'] ?>" style="color: #333;">
+              <span class="title"><a style="color: #333;font-weight:bold;" href="<?php echo RootURL . "books/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <a href="<?php echo RootURL . "books/" . $record['slug'] ?>" style="color: #333;">
                 <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                   <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                 <?php } else { ?>
@@ -302,7 +302,7 @@
                 <?php } ?>
               </a>
             <?php } else { ?>
-              <span style="width: 100%;" class="title"><a style="color: #333;" href="<?php echo RootURL . "books/view/" . $record['id'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
+              <span style="width: 100%;" class="title"><a style="color: #333;" href="<?php echo RootURL . "books/" . $record['id'] ?>" title="<?=$record['title']?>"><?php  echo $record['title']; ?></a></span>
             <?php } ?>
              
             </div>

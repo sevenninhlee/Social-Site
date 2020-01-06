@@ -181,11 +181,11 @@
         <div class="white_box no-padding">
         <?php if($newOpinion['featured_image']){ ?>
             <div class="img-box">
-            <a href="<?php echo RootURL."opinions_debates/view/".$newOpinion['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newOpinion['featured_image']) ? 'opinions_debates/'.$newOpinion['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."opinions-debates/".$newOpinion['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newOpinion['featured_image']) ? 'opinions_debates/'.$newOpinion['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
             <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."opinions_debates/view/".$newOpinion['slug'] ?>"><?= $newOpinion['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."opinions-debates/".$newOpinion['slug'] ?>"><?= $newOpinion['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newOpinion['opinion_debate_categories_name'] ?></span></p>
             </div>              
         </div>

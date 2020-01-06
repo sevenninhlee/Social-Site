@@ -30,7 +30,7 @@
                 <?php if($record['featured_image']){ ?>
                   <div class="col-sm-3">
                     <div class="img-box">
-                      <a href="<?php echo (vendor_app_util::url(["ctl"=>"queries", "act"=>"view/".$record['slug']])) ?>">
+                      <a href="<?php echo RootURL."queries/".$record['slug'] ?>" >
                           <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'queries/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="queries-3" width=100%;>
                       </a>
                     </div>
@@ -39,7 +39,7 @@
                   <?php } else { ?>
                     <div class="col-sm-12"> 
                     <?php } ?>                
-                    <h3><span>Question: </span><a href="<?php echo (vendor_app_util::url(["ctl"=>"queries", "act"=>"view/".$record['slug']])) ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                    <h3><span>Question: </span><a  href="<?php echo RootURL."queries/".$record['slug'] ?>"  style="color: #333"><?php echo $record['title'] ?></a></h3>
                     <p class="cate_txt">
                       <span>Category:
                       </span>
@@ -60,7 +60,7 @@
 
                     <div class="grey_box gray1">
                       <span class="f700"><?php echo $record['getTotalAll']['total_likes']; ?> Likes | <?php echo $record['getTotalAll']['total_reviews']; ?> Answers </span> 
-                      <a href="<?php echo (vendor_app_util::url(["ctl"=>"queries", "act"=>"view/".$record['slug']])) ?>" class="pull-right"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                      <a  href="<?php echo RootURL."queries/".$record['slug'] ?>" class="pull-right"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                     </div>
                   </div>
                 </div>
@@ -107,11 +107,11 @@
         <div class="white_box no-padding">
           <?php if($newQuery['featured_image']){ ?>
               <div class="img-box">
-              <a href="<?php echo RootURL."queries/view/".$newQuery['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newQuery['featured_image']) ? 'queries/'.$newQuery['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+              <a href="<?php echo RootURL."queries/".$newQuery['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newQuery['featured_image']) ? 'queries/'.$newQuery['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
               </div>
           <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."queries/view/".$newQuery['slug'] ?>"><?= $newQuery['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."queries/".$newQuery['slug'] ?>"><?= $newQuery['title'] ?></a></h4>
             <p>Category: 
               <span class="f400">
                 <?php 

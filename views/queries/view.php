@@ -166,11 +166,11 @@
         <div class="white_box no-padding">
         <?php if($newQuery['featured_image']){ ?>
           <div class="img-box">
-            <a href="<?php echo RootURL."queries/view/".$newQuery['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newQuery['featured_image']) ? 'queries/'.$newQuery['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."queries/".$newQuery['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newQuery['featured_image']) ? 'queries/'.$newQuery['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
           </div>
         <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."queries/view/".$newQuery['slug'] ?>"><?= $newQuery['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."queries/".$newQuery['slug'] ?>"><?= $newQuery['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newNew['film_categories_name'] ?></span></p>               
             </p>
             </div>              

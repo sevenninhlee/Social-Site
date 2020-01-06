@@ -75,7 +75,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li <?=($app['ctl']=='book_groups' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'book_groups', 'act' => 'index')); ?>">Book Groups</a></li>
+          <li <?=($app['ctl']=='book_groups' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'book-groups', 'act' => 'index')); ?>">Book Groups</a></li>
         </ul>
       </li>
 
@@ -113,8 +113,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li <?=($app['ctl']=='election_central' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'election_central', 'act' => 'categories')); ?>">Categories</a></li>
-        <li <?=($app['ctl']=='election_central' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'election_central', 'act' => 'index')); ?>">Election Centrals</a></li>
+        <li <?=($app['ctl']=='election_central' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'election-central', 'act' => 'categories')); ?>">Categories</a></li>
+        <li <?=($app['ctl']=='election_central' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'election-central', 'act' => 'index')); ?>">Election Centrals</a></li>
         </ul>
       </li>
 
@@ -126,8 +126,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li <?=($app['ctl']=='must_reads' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'must_reads', 'act' => 'categories')); ?>">Categories</a></li>
-        <li <?=($app['ctl']=='must_reads' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'must_reads', 'act' => 'index')); ?>">Must Reads</a></li>
+        <li <?=($app['ctl']=='must_reads' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'must-reads', 'act' => 'categories')); ?>">Categories</a></li>
+        <li <?=($app['ctl']=='must_reads' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'must-reads', 'act' => 'index')); ?>">Must Reads</a></li>
         </ul>
       </li>
 
@@ -153,8 +153,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li <?=($app['ctl']=='opinions_debates' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'opinions_debates', 'act' => 'categories')); ?>">Categories</a></li>
-        <li <?=($app['ctl']=='opinions_debates' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'opinions_debates', 'act' => 'index')); ?>">Opinions Debates</a></li>
+        <li <?=($app['ctl']=='opinions_debates' && $app['act']=='categories')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'opinions-debates', 'act' => 'categories')); ?>">Categories</a></li>
+        <li <?=($app['ctl']=='opinions_debates' && $app['act']=='index')? 'class="active"':'';?>><a href="<?=vendor_app_util::url(array('ctl'=>'opinions-debates', 'act' => 'index')); ?>">Opinions Debates</a></li>
         </ul>
       </li>
 

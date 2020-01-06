@@ -31,7 +31,7 @@
                   <?php if ($record['featured_image']) { ?>
                     <div class="col-sm-5">
                         <div class="img-box">
-                          <a href="<?php echo RootURL . "must-reads/view/" . $record['slug'] ?>" style="color: #333">
+                          <a href="<?php echo RootURL . "must-reads/" . $record['slug'] ?>" style="color: #333">
                             <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'must_reads/' . $record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="must_reads-<?= $record['id'] ?>" style="max-height:177px;">
                           </a>
                         </div>
@@ -108,11 +108,11 @@
               <div class="white_box no-padding">
                 <?php if ($newMustReads['featured_image']) { ?>
                   <div class="img-box">
-                    <a href="<?php echo RootURL . "must-reads/view/" . $newMustReads['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newMustReads['featured_image']) ? 'must_reads/' . $newMustReads['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+                    <a href="<?php echo RootURL . "must-reads/" . $newMustReads['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newMustReads['featured_image']) ? 'must_reads/' . $newMustReads['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
                   </div>
                 <?php } ?>
                 <div class="img-desc">
-                  <h4 style="word-break: break-all;" class="f700"><a style="color: #333" href="<?php echo RootURL . "must-reads/view/" . $newMustReads['slug'] ?>"><?= $newMustReads['title'] ?></a></h4>
+                  <h4 style="word-break: break-all;" class="f700"><a style="color: #333" href="<?php echo RootURL . "must-reads/" . $newMustReads['slug'] ?>"><?= $newMustReads['title'] ?></a></h4>
                   <p>Category:
                     <span class="f400">
                       <?php

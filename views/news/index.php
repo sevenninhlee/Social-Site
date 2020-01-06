@@ -29,7 +29,7 @@
                           <?php if($record['featured_image']){ ?>
                           <div class="col-sm-5">
                             <div class="img-box">
-                              <a href="<?php echo RootURL."news/view/".$record['slug'] ?>" style="color: #333">
+                              <a href="<?php echo RootURL."news/".$record['slug'] ?>" style="color: #333">
                               <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'news/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="news-<?=$record['id']?>" style="max-height:177px;">
                               </a>
                             </div>
@@ -38,7 +38,7 @@
                           <?php } else { ?>
                             <div class="col-sm-12">
                             <?php } ?>
-                            <h3><a href="<?php echo (vendor_app_util::url(["ctl"=>"news", "act"=>"view/".$record['slug']])) ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                            <h3><a href="<?php echo RootURL."news/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
 
                             <p class="cate_txt"> <span>Category:</span>
                             <?php 
@@ -56,7 +56,7 @@
                             <div class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></div>
 
                             <div class="grey_box">
-                            <a href="<?php echo (vendor_app_util::url(["ctl"=>"news", "act"=>"view/".$record['slug']])) ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                            <a href="<?php echo RootURL."news/".$record['slug'] ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                             </div>
                           </div>
                         </div>
@@ -102,11 +102,11 @@
         <div class="white_box no-padding">
           <?php if($newNew['featured_image']){ ?>
             <div class="img-box">
-            <a href="<?php echo RootURL."news/view/".$newNew['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newNew['featured_image']) ? 'news/'.$newNew['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."news/".$newNew['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newNew['featured_image']) ? 'news/'.$newNew['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
           <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."news/view/".$newNew['slug'] ?>"><?= $newNew['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."news/".$newNew['slug'] ?>"><?= $newNew['title'] ?></a></h4>
             <p>Category: 
               <span class="f400">
                 <?php 

@@ -32,7 +32,7 @@
                     <?php if ($record['featured_image']) { ?>
                       <div class="col-sm-5">
                         <div class="img-box">
-                          <a href="<?php echo (vendor_app_util::url(["ctl" => "opinions-debates", "act" => "view/" . $record['slug']])) ?>">
+                          <a href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>" >
                             <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'opinions_debates/' . $record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="opinion_debate-3" width=100%;>
                           </a>
                         </div>
@@ -41,13 +41,13 @@
                       <?php } else { ?>
                         <div class="col-sm-12">
                         <?php } ?>
-                        <h3><a href="<?php echo (vendor_app_util::url(["ctl" => "opinions-debates", "act" => "view/" . $record['slug']])) ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                        <h3><a href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>"  style="color: #333"><?php echo $record['title'] ?></a></h3>
                         <span class="txt_des"><?php if (strlen($record['description']) > 300)  echo substr($record['description'], 0, 300) . '...';
                                                   else echo $record['description']; ?></span>
 
                         <div class="grey_box gray1">
                           <span class="f700"><?php echo $record['getTotalAll']['total_likes']; ?> Likes | <?php echo $record['getTotalAll']['total_reviews']; ?> Reviews
-                            <a href="<?php echo (vendor_app_util::url(["ctl" => "opinions-debates", "act" => "view/" . $record['slug']])) ?>" class="pull-right"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                            <a  href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>" class="pull-right"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                         </div>
                         </div>
                       </div>
@@ -100,11 +100,11 @@
 
               <?php if($newOpinion['featured_image']){ ?>
                 <div class="img-box">
-                  <a href="<?php echo RootURL . "opinions-debates/view/" . $newOpinion['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newOpinion['featured_image']) ? 'opinions_debates/' . $newOpinion['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+                  <a href="<?php echo RootURL . "opinions-debates/" . $newOpinion['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newOpinion['featured_image']) ? 'opinions_debates/' . $newOpinion['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
                 </div>
               <?php } ?>
                 <div class="img-desc">
-                  <h4 class="f700"><a style="color: #333" href="<?php echo RootURL . "opinions-debates/view/" . $newOpinion['slug'] ?>"><?= $newOpinion['title'] ?></a></h4>
+                  <h4 class="f700"><a style="color: #333" href="<?php echo RootURL . "opinions-debates/" . $newOpinion['slug'] ?>"><?= $newOpinion['title'] ?></a></h4>
                   <p>Category:
                     <span class="f400">
                       <?php

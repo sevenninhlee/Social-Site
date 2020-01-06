@@ -174,11 +174,11 @@
         <div class="white_box no-padding">
         <?php if($newEnvironment['featured_image']){ ?>
             <div class="img-box">
-            <a href="<?php echo RootURL."environment/view/".$newEnvironment['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newEnvironment['featured_image']) ? 'environment/'.$newEnvironment['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."environment/".$newEnvironment['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newEnvironment['featured_image']) ? 'environment/'.$newEnvironment['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
         <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."environment/view/".$newEnvironment['slug'] ?>"><?= $newEnvironment['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."environment/".$newEnvironment['slug'] ?>"><?= $newEnvironment['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newEnvironment['environment_categories_name'] ?></span></p>
             </div>              
         </div>

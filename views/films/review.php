@@ -184,10 +184,10 @@
         <?php foreach($this->newFilms as $key => $newFilm) { ?>
         <div class="white_box no-padding">
             <div class="img-box">
-            <a href="<?php echo RootURL."films/review/".$newFilm['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newFilm['featured_image']) ? 'films/'.$newFilm['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."films/".$newFilm['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newFilm['featured_image']) ? 'films/'.$newFilm['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."films/review/".$newFilm['slug'] ?>"><?= $newFilm['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."films/".$newFilm['slug'] ?>"><?= $newFilm['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newFilm['film_categories_name'] ?></span></p>
             </div>              
         </div>

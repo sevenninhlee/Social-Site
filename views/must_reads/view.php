@@ -174,11 +174,11 @@
         <div class="white_box no-padding">
         <?php if ($newMustReads['featured_image']) { ?>
             <div class="img-box">
-            <a href="<?php echo RootURL."must_reads/view/".$newMustReads['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newMustReads['featured_image']) ? 'must_reads/'.$newMustReads['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."must-reads/".$newMustReads['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newMustReads['featured_image']) ? 'must_reads/'.$newMustReads['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
         <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."must_reads/view/".$newMustReads['slug'] ?>"><?= $newMustReads['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."must-reads/".$newMustReads['slug'] ?>"><?= $newMustReads['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newMustReads['must_reads_categories_name'] ?></span></p>
             </div>              
         </div>

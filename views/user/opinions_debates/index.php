@@ -51,7 +51,7 @@
                               <?php if($record['featured_image']){ ?>
                                 <div class="col-sm-5">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."opinions-debates/view/".$record['slug'] ?>">
+                                    <a href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>">
                                       <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="opinions_debates-3" width=100%;>
                                       <?php } else { ?>
@@ -64,7 +64,7 @@
                                 <?php } else {  ?>
                                   <div class="col-sm-12">
                                 <?php } ?>
-                                  <h3 class="m0"><a href="<?php echo RootURL."opinions-debates/view/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> 
+                                  <h3 class="m0"><a href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> 
                                   <p class="cate_txt space5"> 
                                   <span>Category:</span>
                                   <?php 
@@ -88,7 +88,7 @@
                                        <?php if($this->isUserLogged):?>
                                         <a class="fsize14 color3c6db5 edit-btn" href="<?php echo RootURL."user/opinions-debates/edit/".$record['id'] ?>">Edit</a> <span class="color3c6db5">|</span> <a id="hide_<?php echo $record['id'] ?>" class="color3c6db5 hide-text" data="<?php echo $record['id'] ?>"><?php if($record['owner_status'] == 1) echo "Hide"; else echo "Unhide";?></a> <span class="color3c6db5">|</span> <button style="margin-right: 10px !important;float:none;font-weight: inherit; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteOpinionArticle">Delete</button> </span><span class="f700">
                                       <?php endif;?>
-                                        <a href="<?php echo RootURL."opinions-debates/view/".$record['slug'] ?>"><i class="fa fa-file-text-o" aria-hidden="true" style="color: #737374;"></i></span> Read More</a></p>
+                                        <a href="<?php echo RootURL."opinions-debates/".$record['slug'] ?>"><i class="fa fa-file-text-o" aria-hidden="true" style="color: #737374;"></i></span> Read More</a></p>
                                   </div>
                                 </div>
                               </div>

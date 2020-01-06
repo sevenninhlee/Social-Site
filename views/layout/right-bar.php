@@ -20,11 +20,11 @@
             <div class="media">
             <?php if($this->opinion[0]['featured_image']){ ?>
               <div class="pull-left">
-                <a href="<?php echo RootURL."opinions_debates/view/".$this->opinion[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->opinion[0]['featured_image']) ? 'opinions_debates/'.$this->opinion[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
+                <a href="<?php echo RootURL."opinions-debates/".$this->opinion[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->opinion[0]['featured_image']) ? 'opinions_debates/'.$this->opinion[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
               </div>
             <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."opinions_debates/view/".$this->opinion[0]['slug'] ?>"><?php echo $this->opinion[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."opinions-debates/".$this->opinion[0]['slug'] ?>"><?php echo $this->opinion[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->opinion[0]['description']) > 20)  echo substr($this->opinion[0]['description'], 0, 20).'...'; else echo $this->opinion[0]['description'] ; ?></p>
               </div>
@@ -40,7 +40,7 @@
             <div class="media">
             <?php if($this->book[0]['featured_image']){ ?>
               <div class="pull-left">
-                <a href="<?php echo RootURL."books/book_review/".$this->book[0]['slug'] ?>">
+                <a href="<?php echo RootURL."books/".$this->book[0]['slug'] ?>">
                 <?php if (strpos($this->book[0]['featured_image'], "http://books.google.com/books/") !== false) { ?>
                   <img src="<?php echo $this->book[0]['featured_image']?>" class="img-responsive width100" alt="book-3" width=100%;>
                 <?php } else { ?>
@@ -50,7 +50,7 @@
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."books/book_review/".$this->book[0]['slug'] ?>"><?php echo $this->book[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."books/".$this->book[0]['slug'] ?>"><?php echo $this->book[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->book[0]['description']) > 20)  echo substr($this->book[0]['description'], 0, 20).'...'; else echo $this->book[0]['description'] ; ?></p>
               </div>
@@ -88,11 +88,11 @@
             <div class="media">
             <?php if($this->query[0]['featured_image']){ ?>
               <div class="pull-left">
-                <a href="<?php echo RootURL."queries/view/".$this->query[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->query[0]['featured_image']) ? 'queries/'.$this->query[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
+                <a href="<?php echo RootURL."queries/".$this->query[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->query[0]['featured_image']) ? 'queries/'.$this->query[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."queries/view/".$this->query[0]['slug'] ?>"><?php echo $this->query[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."queries/".$this->query[0]['slug'] ?>"><?php echo $this->query[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->query[0]['description']) > 20)  echo substr($this->query[0]['description'], 0, 20).'...'; else echo $this->query[0]['description'] ; ?></p>
               </div>

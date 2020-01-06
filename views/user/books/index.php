@@ -38,7 +38,7 @@
                               <div class="row title-part title-part-<?php echo $record['id'];  if($key >= 1) echo " space30" ; if($record['owner_status'] == 0) echo " opacity4" ;?>">
                                 <div class="col-sm-3">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>">
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>">
                                       <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                       <?php } else { ?>
@@ -65,7 +65,7 @@
                                       </a>
                                   | <span>Author: </span><?php echo $record['author'] ?>
           
-                                  <h3><a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                                  <h3><a href="<?php echo RootURL."books/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                   <p><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></p>
 
                                   <div class="grey_box gray1">
@@ -74,7 +74,7 @@
                                     <span class="hidden-xs">|</span> <a id="hide_<?php echo $record['id'] ?>" class="color3c6db5 hide-text" data="<?php echo $record['id'] ?>"><?php if($record['owner_status'] == 1) echo "Hide"; else echo "Unhide";?></a> 
                                     <span class="hidden-xs">|</span> <button style="float:none;font-weight: inherit; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteBookArticle">Delete</button> </span>
                                     <?php endif;?>
-                                    <a href="<?php echo RootURL."books/book_review/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                    <a href="<?php echo RootURL."books/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                   </div>
                                 </div>
                               </div>

@@ -112,19 +112,19 @@
 								<div class="checkbox">
 									<input type="checkbox" name="" alt="<?=$record['id'];?>" id="<?php echo("checkbox-".$record['id']);?>">
 									<label for="<?php echo("checkbox-".$record['id']);?>">
-										<a target="_blank" href="<?php echo RootURL."must_reads/view/".$record['slug'] ?>" id="viewUser<?=$record['id'];?>">
+										<a target="_blank" href="<?php echo RootURL."must-reads/".$record['slug'] ?>" id="viewUser<?=$record['id'];?>">
 									<?php echo $record['title']; ?>
 								</a>	
 									</label>
 								</div>
 								<ul class="list-inline">
 									<li>
-										<a target="_blank" class='btn-delete-table' href="<?php echo RootURL."must_reads/view/".$record['slug'] ?>">
+										<a target="_blank" class='btn-delete-table' href="<?php echo RootURL."must-reads/".$record['slug'] ?>">
 											View
 										</a>	
 									</li>
 									<li>
-										<a class='btn-delete-table' href="<?php echo (vendor_app_util::url(["ctl"=>"must_reads", "act"=>"edit/".$record['id']])) ?>" id="<?php echo("edit".$record['id']);?>" type="button" >Edit</a>
+										<a class='btn-delete-table' href="<?php echo (vendor_app_util::url(["ctl"=>"must-reads", "act"=>"edit/".$record['id']])) ?>" id="<?php echo("edit".$record['id']);?>" type="button" >Edit</a>
 									</li>
 									<li>
 										<button id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteMustReadsArticle">Delete</button>
@@ -162,7 +162,7 @@
 
 							<td class="webShow" id="<?php echo("featured_image".$record['id']);?>">
 								<p class="andrew">
-									<a target="_blank" href="<?php echo RootURL."must_reads/view/".$record['slug'] ?>" id="featured_imageViewUser<?=$record['id'];?>">
+									<a target="_blank" href="<?php echo RootURL."must-reads/".$record['slug'] ?>" id="featured_imageViewUser<?=$record['id'];?>">
 										<img style="width:150px" src="<?=UploadURI.$app['ctl'].'/'.(($record['featured_image'])? $record['featured_image']: 'no_picture.png'); ?>">
 									</a>
 								</p>

@@ -40,7 +40,7 @@
                               <?php if($record['featured_image']){ ?>
                                 <div class="col-sm-3">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."queries/view/".$record['slug'] ?>">
+                                    <a href="<?php echo RootURL."queries/".$record['slug'] ?>">
                                         <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'queries/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="queries-3" width=100%;>
                                     </a>
                                   </div>
@@ -49,7 +49,7 @@
                                 <?php } else {  ?>
                                   <div class="col-sm-12">
                                 <?php } ?>
-                                  <h3 ><span class="f700">Question:</span><a href="<?php echo RootURL."queries/view/".$record['slug'] ?>"><span class="f400"><?php echo $record['title'] ?> </a> </span></h3>
+                                  <h3 ><span class="f700">Question:</span><a href="<?php echo RootURL."queries/".$record['slug'] ?>"><span class="f400"><?php echo $record['title'] ?> </a> </span></h3>
                                   <p class="cate_txt space5">
                                   <span>Category:</span>
                                   <?php 
@@ -79,7 +79,7 @@
                                         <span class="hidden-xs">|</span> 
                                         <button style="float:none;font-weight: 400; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteQueriesArticle">Delete</button> </span>
                                         <?php endif;?>
-                                        <a href="<?php echo RootURL."queries/view/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                        <a href="<?php echo RootURL."queries/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                     </div>
                                   </div>
 

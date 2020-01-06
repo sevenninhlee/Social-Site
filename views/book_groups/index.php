@@ -31,11 +31,11 @@
 
                   <?php  if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) { ?>
                         <?php if ($record['isDisapprove']) { ?>
-                          <a class="isDisapprove" href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>">
+                          <a class="isDisapprove" href="<?php echo RootURL."book-groups/".$record['slug'] ?>">
                                <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'book_groups/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; style="height: 220px !important;" >
                           </a>
                         <?php  }else { ?>
-                          <a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>">
+                          <a href="<?php echo RootURL."book-groups/".$record['slug'] ?>">
                                <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'book_groups/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; style="height: 220px !important;" >
                           </a>
                         <?php  } ?>
@@ -45,7 +45,7 @@
                           </a>
                     <?php  } ?>
 
-                    <!-- <a href="<?php echo RootURL."book_groups/review/".$record['slug'] ?>">
+                    <!-- <a href="<?php echo RootURL."book_groups/".$record['slug'] ?>">
                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'book_groups/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%; >
                     </a> -->
                   </div>
@@ -56,13 +56,13 @@
                         <?php if ($record['isDisapprove']) { ?>
                           <h3 class="f700"><a href="" class="isDisapprove" style="color: #333"><?php echo $record['title'] ?></a></h3>
                         <?php  }else { ?>
-                           <h3 class="f700"><a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                           <h3 class="f700"><a href="<?php echo RootURL."book-groups/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                         <?php  } ?>
                     <?php  }else { ?>
                         <h3 class="f700"><a href="javascript:void(0)" class="DisapproveLg" style="color: #333"><?php echo $record['title'] ?></a></h3>
                     <?php  } ?>
 
-                    <!-- <h3 class="f700"><a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> -->
+                    <!-- <h3 class="f700"><a href="<?php echo RootURL."book-groups/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> -->
                     <p>By: <span class="f400"><?php echo $record['users_firstname'].' '.$record['users_lastname'];?></span></p>
                     <p>Category: <span class="f400"><?php echo $record['book_categories_name'] ?></span></p>
                         <!-- if($record['ListCate'] == null){
@@ -82,7 +82,7 @@
                         <?php if ($record['isDisapprove']) { ?>
                             <a href="" class="isDisapprove"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                         <?php  }else { ?>
-                            <a href="<?php echo RootURL."book-groups/review/".$record['slug'] ?>"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                            <a href="<?php echo RootURL."book-groups/".$record['slug'] ?>"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                         <?php  } ?>
                     <?php  }else { ?>
                        <a href="javascript:void(0)" class="DisapproveLg"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>

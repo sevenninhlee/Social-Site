@@ -114,14 +114,14 @@
 								<div class="checkbox">
 									<input type="checkbox" name="" alt="<?=$record['id'];?>" id="<?php echo("checkbox-".$record['id']);?>">
 									<label for="<?php echo("checkbox-".$record['id']);?>">
-										<a target="_blank" href="<?php echo RootURL."books/book_review/".$record['slug']?>" id="viewUser<?=$record['id'];?>">
+										<a target="_blank" href="<?php echo RootURL."books/".$record['slug']?>" id="viewUser<?=$record['id'];?>">
 									<?php echo $record['title']; ?>
 								</a>	
 									</label>
 								</div>
 								<ul class="list-inline">
 									<li>
-										<a target="_blank" class='btn-delete-table' href="<?php echo RootURL."books/book_review/".$record['slug']?>" id="viewUser<?=$record['id'];?>">
+										<a target="_blank" class='btn-delete-table' href="<?php echo RootURL."books/".$record['slug']?>" id="viewUser<?=$record['id'];?>">
 											View
 										</a>	
 									</li>
@@ -166,7 +166,7 @@
 
 							<td class="webShow" id="<?php echo("featured_image".$record['id']);?>">
 								<p class="andrew">
-									<a target="_blank" href="<?php echo RootURL."books/book_review/review/".$record['id']?>" id="featured_imageViewUser<?=$record['id'];?>">
+									<a target="_blank" href="<?php echo RootURL."books/".$record['slug']?>" id="featured_imageViewUser<?=$record['id'];?>">
 										<?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
 					                    <img style="width:150px" src="<?php echo $record['featured_image']?>" class="img-responsive">
 					                  <?php } else { ?>

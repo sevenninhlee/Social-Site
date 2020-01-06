@@ -30,7 +30,7 @@
 	<li><a href="https://www.realclearpolitics.com/epolls/latest_polls/democratic_nomination_polls/" target="_blank">Latest Dem 2020 Presidential Primary Polls&nbsp;</a></li>
 	<li><a href="https://www.realclearpolitics.com/epolls/latest_polls/national_president/" target="_blank">Latest General Election Presidential Polls</a></li>
 	<li><a href="https://projects.fivethirtyeight.com/polls/" target="_blank">Latest Presidential Approval Polls</a></li>
-	<li><a href="http://enlight21.com/election_central/view/candidates-positions-2020-democratic-candidates" >2020 Democratic Party Candidates and Positions</a></li>
+	<li><a href="http://enlight21.com/election_central/candidates-positions-2020-democratic-candidates" >2020 Democratic Party Candidates and Positions</a></li>
 </ol></div>
         <?php if (!empty($this->records['data'])) : ?>
           <div class="row">
@@ -42,7 +42,7 @@
                     <?php if ($record['featured_image']) { ?>
                       <div class="col-sm-5">
                         <div class="img-box">
-                          <a href="<?php echo RootURL . "election-central/view/" . $record['slug'] ?>" style="color: #333">
+                          <a href="<?php echo RootURL . "election-central/" . $record['slug'] ?>" style="color: #333">
                             <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'election_central/' . $record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="election_central-<?= $record['id'] ?>" style="max-height:177px;">
                           </a>
                         </div>
@@ -118,11 +118,11 @@
               <div class="white_box no-padding">
                 <?php if ($newElectionCentral['featured_image']) { ?>
                   <div class="img-box">
-                    <a href="<?php echo RootURL . "election-central/view/" . $newElectionCentral['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newElectionCentral['featured_image']) ? 'election_central/' . $newElectionCentral['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+                    <a href="<?php echo RootURL . "election-central/" . $newElectionCentral['slug'] ?>"><img style="max-height: 255px;" src="<?php echo RootREL; ?>media/upload/<?= ($newElectionCentral['featured_image']) ? 'election_central/' . $newElectionCentral['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
                   </div>
                 <?php } ?>
                 <div class="img-desc">
-                  <h4 class="f700"><a style="color: #333" href="<?php echo RootURL . "election-central/view/" . $newElectionCentral['slug'] ?>"><?= $newElectionCentral['title'] ?></a></h4>
+                  <h4 class="f700"><a style="color: #333" href="<?php echo RootURL . "election-central/" . $newElectionCentral['slug'] ?>"><?= $newElectionCentral['title'] ?></a></h4>
                   <p>Category:
                     <span class="f400">
                       <?php

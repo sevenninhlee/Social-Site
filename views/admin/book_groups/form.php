@@ -187,7 +187,7 @@
 											                </td>
 											                <td style="width: 15%" class="btn-act text-center">
 											                	<button type="button" class="btn btn-info change_status_blogs" >
-											                		<a href="<?php echo (vendor_app_util::url(["ctl"=>"books", "act"=>"view/".$book['book_id']])) ?>">View
+											                		<a  href="<?php echo RootURL."books/".$book['slug']?>"  >View
 																	</a>
 											                	</button>
 											                	<button id="delItem<?php echo $book['book_group_id']; ?>" type="button" class="btn btn-danger delItem-record" alt="<?php echo $book['book_group_id']; ?>,deleteBookGroupArticleBook" data-toggle="tooltip" data-placement="bottom" title="Delete!"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
@@ -239,7 +239,7 @@
 												                </td>
 												                <td style="width: 15%" class="btn-act text-center">
 												                	<button type="button" class="btn btn-info change_status_blogs" >
-												                		<a href="<?php echo (vendor_app_util::url(["ctl"=>"books", "act"=>"view/".$book['book_id']])) ?>">View
+												                		<a   href="<?php echo RootURL."books/".$book['slug']?>" >View
 																		</a>
 												                	</button>
 												                	<button type="button" class="btn btn-danger delItem-record" alt="<?php echo $book['book_group_id']; ?>,deleteBookGroupArticleBook" data-toggle="tooltip" data-placement="bottom" title="Delete!"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

@@ -30,7 +30,7 @@
                         <?php if($record['featured_image']){ ?>
                           <div class="col-sm-5">
                             <div class="img-box">
-                              <a href="<?php echo RootURL."blogs/view/".$record['slug']?>" style="color: #333">
+                              <a href="<?php echo RootURL."blogs/".$record['slug']?>" style="color: #333">
                               <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'blogs/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="blog-3" style="max-height:177px;">
                               </a>
                             </div>
@@ -39,7 +39,7 @@
                           <?php } else { ?>
                             <div class="col-sm-12">
                             <?php } ?>
-                            <h3><a href="<?php echo (vendor_app_util::url(["ctl"=>"blogs", "act"=>"view/".$record['slug']])) ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                            <h3><a href="<?php echo RootURL."blogs/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                             <p class="cate_txt"> 
                             <span>Category:</span>
                             <?php 
@@ -56,7 +56,7 @@
                             | <span>Author:</span><a href="<?php echo (vendor_app_util::url(["area"=>'user', "ctl"=>"profile", "act"=>"index?user=".$record['user_id']])) ?>"><?php echo $record['username'] ?></a></p>
                             <span class="txt_des"><?php if(strlen($record['short_description']) > 300)  echo substr($record['short_description'], 0, 300).'...'; else echo $record['short_description'] ; ?></span>
                             <div class="grey_box">
-                            <a href="<?php echo (vendor_app_util::url(["ctl"=>"blogs", "act"=>"view/".$record['slug']])) ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                            <a href="<?php echo RootURL."blogs/".$record['slug'] ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                             </div>
                           </div>
                         </div>
@@ -103,11 +103,11 @@
         <div class="white_box no-padding">
         <?php if($newBlog['featured_image']){ ?>
             <div class="img-box">
-              <a href="<?php echo RootURL."blogs/view/".$newBlog['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newBlog['featured_image']) ? 'blogs/'.$newBlog['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+              <a href="<?php echo RootURL."blogs/".$newBlog['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newBlog['featured_image']) ? 'blogs/'.$newBlog['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
         <?php } ?>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."blogs/view/".$newBlog['slug'] ?>"><?= $newBlog['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."blogs/".$newBlog['slug'] ?>"><?= $newBlog['title'] ?></a></h4>
             <p>Category: 
               <span class="f400">
                 <?php 

@@ -34,6 +34,18 @@
             </div>
 
             <div class="form-group">
+              <div class="row">
+                <div class="col-sm-3">
+                  <label>Username</label>
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" name="user[username]" class="form-control" required>
+                  <p class='text-danger error-username'></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
                 <div class="row">
                   <div class="col-sm-3">
                     <label>Email<span>*</span></label>

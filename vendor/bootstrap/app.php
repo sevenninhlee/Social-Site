@@ -4,42 +4,48 @@ $app['ctl'] = "home";
 $prs = [];
 
 if(isset($_GET["pr"])) {
-	$prs = explode("/",$_GET["pr"]);
-	if ($prs[0] && strlen($prs[0]) > 0 && count(explode("-", $prs[0])) > 1 ) {
-		$prs[0] = str_replace("-", "_", $prs[0]);
+
+	$par = $_GET["pr"];
+	if(strpos($str_url, "index.php?pr")){
+		$app['linkpage'] = "null";
+		$prs = explode("/","404/index");
+
+	}else if(strpos($str_url, "blogs/view")){
+		$app['linkpage'] = "null";
+		$prs = explode("/","404/index");
+	} else {
+
+		if(preg_match('/\/$/', $par) && !preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
+			$par = substr($par, 0, -1);
+		}
+		if(preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
+			$app['linkpage'] = "null";
+			$prs = explode("/","404/index");
+		} else{ 
+
+			$prs = explode("/",$_GET["pr"]);
+			if ($prs[0] && strlen($prs[0]) > 0 && count(explode("-", $prs[0])) > 1 ) {
+				$prs[0] = str_replace("-", "_", $prs[0]);
+			}
+			if ($prs[1] && strlen($prs[1]) > 0 && count(explode("-", $prs[1])) > 1 ) {
+				$prs[1] = str_replace("-", "_", $prs[1]);
+			}
+			if ($prs[0] == "privacy_policy" || $prs[0] == "terms_of_use" || $prs[0] == "about" ) {
+				$prs[2] = str_replace("_", "-", $prs[0]);
+				$prs[0] = "page";
+				$prs[1] = "index";
+			}
+
+			$link_url = $_SERVER['REQUEST_URI'];
+			if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user/', $link_url) && !preg_match('/admin/', $link_url) ){
+				$prs = explode("/","blogs/view/".$matches[1]);
+			}
+				// echo "Start <br/>"; echo '<pre>'; print_r($matches);echo '</pre>';exit("End Data");
+
+
+		}
+		
 	}
-	if ($prs[1] && strlen($prs[1]) > 0 && count(explode("-", $prs[1])) > 1 ) {
-		$prs[1] = str_replace("-", "_", $prs[1]);
-	}
-	if ($prs[0] == "privacy_policy" || $prs[0] == "terms_of_use" || $prs[0] == "about" ) {
-		$prs[2] = str_replace("_", "-", $prs[0]);
-		$prs[0] = "page";
-		$prs[1] = "index";
-	}
-
-	// $par = $_GET["pr"];
-	// if(preg_match('/\/$/', $par) && !preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
-	// 	$par = substr($par, 0, -1);
-	// }
-
-	// if(preg_match('/\/\/$/', $_SERVER['REQUEST_URI'])){
-	// 	$app['linkpage'] = "null";
-	// 	$prs = explode("/","404/index");
-	// }
-	// else{
-
-	// 	$link_url = $_SERVER['REQUEST_URI'];
-	// 	if(preg_match('/viec-lam\/(.*)-(\d+).html/', $link_url, $matches)){
-	// 		$prs = explode("/","jobs/view/".$matches[1].'/'.$matches[2]);
-	// 		$app['linkpage'] = "tuyen-dung-viec-lam-chi-tiet";
-	// 		break;
-	// 	}
-
-	// 	echo "Start <br/>"; echo '<pre>'; print_r($par);echo '</pre>';exit("End Data");
-
-	// }
-
-
 
 	
 } else {

@@ -35,6 +35,8 @@
                                   <li><span class="f700 title-part">First Name:</span><span class="deatil-part edit-firstname"><?=$this->user['firstname']?></span><a href="javascript:void(0)" class='Edit' act='firstname' value='<?=$this->user['firstname']?>'><?='Edit'?></a></li>
 
                                   <li><span class="f700 title-part">Last Name:</span><span class="deatil-part edit-lastname"><?=$this->user['lastname']?></span><a href="javascript:void(0)" class='Edit' act='lastname' value='<?=$this->user['lastname']?>'><?='Edit'?></a></li>
+                                 
+                                  <li><span class="f700 title-part">Username:</span><span class="deatil-part edit-username"><?=$this->user['username']?></span><a href="javascript:void(0)" class='Edit' act='username' value='<?=$this->user['username']?>'><?='Edit'?></a></li>
 
                                   <li><span class="f700 title-part">Gender:</span><span class="deatil-part edit-gender"><?=$app['gender'][$this->user['gender']]?></span><a href="javascript:void(0)" class='Edit' act='gender' value='<?=$this->user['gender']?>'><?='Edit'?></a></li>
 

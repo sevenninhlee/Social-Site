@@ -75,10 +75,10 @@
           <div class="item">
             <div class="top">
               <span class="title">
-                <a style="color: #333;" href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
+                <a style="color: #333;" href="<?php echo RootURL . "blogs/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
                 <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
               </span>
-              <a href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>">
+              <a href="<?php echo RootURL . "blogs/" . $record['slug'] ?>">
                 <img src="<?= UploadURI . 'blogs/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive center-block" alt="film">
               </a>
             </div>
@@ -103,10 +103,10 @@
           <div class="item">
             <div class="top">
               <span class="title">
-                <a style="color: #333;" href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
+                <a style="color: #333;" href="<?php echo RootURL . "blogs/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
                 <br/><span style="font-size:15px" class="author"><?= $record['author'] ?></span>
               </span>
-              <a href="<?php echo RootURL . "blogs/view/" . $record['slug'] ?>">
+              <a href="<?php echo RootURL . "blogs/" . $record['slug'] ?>">
                 <img src="<?= UploadURI . 'blogs/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive center-block" alt="film">
               </a>
             </div>

@@ -66,11 +66,11 @@
             <div class="media">
             <?php if($this->blog[0]['featured_image']){ ?>
               <div class="pull-left">
-                <a href="<?php echo RootURL."blogs/view/".$this->blog[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->blog[0]['featured_image']) ? 'blogs/'.$this->blog[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
+                <a href="<?php echo RootURL."blogs/".$this->blog[0]['slug'] ?>"><img src="<?php echo RootREL; ?>media/upload/<?= ($this->blog[0]['featured_image']) ? 'blogs/'.$this->blog[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="side_img"></a>
               </div>
               <?php } ?>
               <div class="media-body">
-                <p><a href="<?php echo RootURL."blogs/view/".$this->blog[0]['slug'] ?>"><?php  echo $this->blog[0]['title'] ; ?></a></p>
+                <p><a href="<?php echo RootURL."blogs/".$this->blog[0]['slug'] ?>"><?php  echo $this->blog[0]['title'] ; ?></a></p>
 
                 <p><?php if(strlen($this->blog[0]['description']) > 20)  echo substr($this->blog[0]['description'], 0, 20).'...'; else echo $this->blog[0]['description'] ; ?></p>
               </div>

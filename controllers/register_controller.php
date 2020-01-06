@@ -25,6 +25,7 @@ class register_controller extends vendor_main_controller {
 			}
 			$userData['firstname'] = $user['firstname'];
 			$userData['lastname'] = $user['lastname'];
+			$userData['username'] = $user['username'];
 			$userData['email'] = $user['email'];
 			$userData['password'] = $user['password'];
 			$userData['phone'] = $user['phone'];

@@ -67,7 +67,8 @@ class profile_controller extends aside_bar_data_controller
 			$userData['firstname'] = $_POST['firstname'];
 		}else if(isset($_POST['lastname'])){
 			$userData['lastname'] = $_POST['lastname'];
-
+		}else if(isset($_POST['username'])){
+			$userData['username'] = $_POST['username'];
 		}else if(isset($_POST['datebirth'])){
 			$userData['datebirth'] = $_POST['datebirth'];
 		}else if(isset($_POST['gender'])){

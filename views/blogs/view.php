@@ -174,10 +174,10 @@
         <?php foreach($this->newBlogs as $key => $newBlog) { ?>
         <div class="white_box no-padding">
             <div class="img-box">
-            <a href="<?php echo RootURL."blogs/view/".$newBlog['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newBlog['featured_image']) ? 'blogs/'.$newBlog['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
+            <a href="<?php echo RootURL."blogs/".$newBlog['slug'] ?>"><img style="max-height: 255x;" src="<?php echo RootREL; ?>media/upload/<?= ($newBlog['featured_image']) ? 'blogs/'.$newBlog['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3"></a>
             </div>
             <div class="img-desc">
-            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."blogs/view/".$newBlog['slug'] ?>"><?= $newBlog['title'] ?></a></h4>
+            <h4 class="f700"><a style="color: #333" href="<?php echo RootURL."blogs/".$newBlog['slug'] ?>"><?= $newBlog['title'] ?></a></h4>
             <p>Category: <span class="f400"><?= $newBlog['blog_categories_name'] ?></span></p>
             </div>              
         </div>

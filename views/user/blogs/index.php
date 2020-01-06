@@ -41,7 +41,7 @@
                               <?php if($record['featured_image']){ ?>
                                 <div class="col-sm-5">
                                   <div class="img-box">
-                                    <a href="<?php echo RootURL."blogs/view/".$record['slug'] ?>" style="color: #333"><img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'blogs/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="blog-3"></a>
+                                    <a href="<?php echo RootURL."blogs/".$record['slug'] ?>" style="color: #333"><img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'blogs/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="blog-3"></a>
                                   </div>
                                 </div>
                                 <div class="col-sm-7">
@@ -65,7 +65,7 @@
                                   | <span>Author:</span><a href="<?php echo (vendor_app_util::url(["ctl"=>"profile", "act"=>"index?user=".$record['user_id']])) ?>"><?= $record['username'] ?></a>
                                  
                                 </p>
-                                  <h3><a href="<?php echo RootURL."blogs/view/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+                                  <h3><a href="<?php echo RootURL."blogs/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                   <div class="txt_des"><?php if(strlen($record['short_description']) > 300)  echo substr($record['short_description'], 0, 300).'...'; else echo $record['short_description'] ; ?></div>
                                   <div class="grey_box gray1">
                                     <?php if($this->isUserLogged):?>
@@ -73,7 +73,7 @@
                                       <span class="hidden-xs">|</span> <a id="hide_<?php echo $record['id'] ?>" class="color3c6db5 hide-text" data="<?php echo $record['id'] ?>"><?php if($record['featured_my_blog'] == 0) echo "Private"; else echo "Public";?></a> 
                                       <span class="hidden-xs">|</span> <button style="float:none;font-weight: inherit; border: 0; background-color: transparent; font-size: 15px; color: #337ab7; " id="delItem<?php echo $record['id']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['id']; ?>,deleteBlogArticle">Delete</button> </span>
                                       <?php endif;?>
-                                      <a href="<?php echo RootURL."blogs/view/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                                      <a href="<?php echo RootURL."blogs/".$record['slug'] ?>" class="pull-right"> <span class="f700"><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                                   </div>
                                 </div>
                               </div>

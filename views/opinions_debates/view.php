@@ -26,7 +26,7 @@
                 |  <span>Date:</span> <?php vendor_app_util::formatDate($this->record['created']); ?></p> 
 
               <?php if($this->record['featured_image']){ ?>
-                 <?php if (strpos($this->record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                 <?php if (strpos($this->record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                         <img src="<?php echo $this->record['featured_image']?>" class="img-responsive" width=150; height=200;>
                       <?php } else { ?>
                         <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['featured_image']) ? 'opinions_debates/'.$this->record['featured_image'] : "no_picture.png" ?>" class="img-responsive" width=150; height=200;>

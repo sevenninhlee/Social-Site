@@ -93,7 +93,7 @@
                       style="cursor: pointer;"
                       checkMember = "<?= $this->checkUser ?>"
                       data = "<?= $currentBook['book_group_id'] ?>, <?= $currentBook['user_id_not_read'] ?>">
-                      <?php if (strpos($currentBook['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                      <?php if (strpos($currentBook['featured_image'], "https://books.google.com/books/") !== false) { ?>
                           <img src="<?php echo $currentBook['featured_image']?>" class="img-responsive" alt="book-3">
                         <?php } else { ?>
                           <img src="<?php echo RootREL; ?>media/upload/<?= ($currentBook['featured_image']) ? 'books/'.$currentBook['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" >
@@ -133,7 +133,7 @@
                       style="cursor: pointer;"
                       checkMember = "<?= $this->checkUser ?>"
                       data = "<?= $record['book_group_id'] ?>, <?= $record['user_id_not_read'] ?>">
-                        <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                        <?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                           <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                         <?php } else { ?>
                           <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>

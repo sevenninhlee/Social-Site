@@ -40,7 +40,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <a href="http://enlight21.com/"><img src="<?php echo RootREL; ?>media/admin/img/logo.png" class="img-responsive" alt="logo"></a>
+            <a href="https://enlight21.com/"><img src="<?php echo RootREL; ?>media/admin/img/logo.png" class="img-responsive" alt="logo"></a>
           </div>
         </div>
       </div>

@@ -178,7 +178,7 @@
 											                <td><?php if(!empty($book['author'])) echo $book['author']; else echo 'Null'; ?></td>
 											                <td><?php if(!empty($book['ISBN'])) echo $book['ISBN']; else echo 'Null'; ?></td>
 											                <td style="width: 15%">
-																<?php if (strpos($book['featured_image'], "http://books.google.com/books/") !== false) { ?>
+																<?php if (strpos($book['featured_image'], "https://books.google.com/books/") !== false) { ?>
 												                    <img style="width:65%" src="<?php echo $book['featured_image']?>" class="img-responsive">
 												                  <?php } else { ?>
 												                    <img style="width:65%" src="<?=UploadURI.'books'.'/'.(($book['featured_image'])? $book['featured_image']: 'no_picture.png'); ?>" class="img-responsive">
@@ -233,7 +233,7 @@
 												                <td><?php if(!empty($book['author'])) echo $book['author']; else echo 'Null'; ?></td>
 												                <td><?php if(!empty($book['ISBN'])) echo $book['ISBN']; else echo 'Null'; ?></td>
 												                <td style="width: 15%">
-																	<?php if (strpos($book['featured_image'], "http://books.google.com/books/") !== false) { ?>
+																	<?php if (strpos($book['featured_image'], "https://books.google.com/books/") !== false) { ?>
 												                    <img style="width:65%" src="<?php echo $book['featured_image']?>" class="img-responsive">
 												                  <?php } else { ?>
 												                    <img style="width:65%" src="<?=UploadURI.'books'.'/'.(($book['featured_image'])? $book['featured_image']: 'no_picture.png'); ?>" class="img-responsive">

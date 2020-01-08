@@ -41,7 +41,7 @@
             <?php if($this->book[0]['featured_image']){ ?>
               <div class="pull-left">
                 <a href="<?php echo RootURL."books/".$this->book[0]['slug'] ?>">
-                <?php if (strpos($this->book[0]['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                <?php if (strpos($this->book[0]['featured_image'], "https://books.google.com/books/") !== false) { ?>
                   <img src="<?php echo $this->book[0]['featured_image']?>" class="img-responsive width100" alt="book-3" width=100%;>
                 <?php } else { ?>
                   <img src="<?php echo RootREL; ?>media/upload/<?= ($this->book[0]['featured_image']) ? 'books/'.$this->book[0]['featured_image'] : "no_picture.png" ?>" class="img-responsive width100" alt="book-3" width=100%;>

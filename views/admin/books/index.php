@@ -167,7 +167,7 @@
 							<td class="webShow" id="<?php echo("featured_image".$record['id']);?>">
 								<p class="andrew">
 									<a target="_blank" href="<?php echo RootURL."books/".$record['slug']?>" id="featured_imageViewUser<?=$record['id'];?>">
-										<?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+										<?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
 					                    <img style="width:150px" src="<?php echo $record['featured_image']?>" class="img-responsive">
 					                  <?php } else { ?>
 					                    <img style="width:150px" src="<?=UploadURI.'books'.'/'.(($record['featured_image'])? $record['featured_image']: 'no_picture.png'); ?>" class="img-responsive">

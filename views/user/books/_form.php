@@ -198,7 +198,7 @@
 									<input type="hidden" name="book[img_search_api]" id="img_search_api" class="img_search_api" value="<?= (isset($this->record['featured_image'])) ? $this->record['featured_image'] : null ?>">
 									<p class="img_search"><img src=""></p>
 									<?php if (isset($this->record['featured_image'])) { ?>
-										<?php if (strpos($this->record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+										<?php if (strpos($this->record['featured_image'], "https://books.google.com/books/") !== false) { ?>
 											<p class="img_data"><img src="<?php echo $this->record['featured_image'] ?>"></p>
 										<?php } else { ?>
 											<?php if (isset($this->record['featured_image'])) { ?>

@@ -30,7 +30,7 @@
 	<li><a href="https://www.realclearpolitics.com/epolls/latest_polls/democratic_nomination_polls/" target="_blank">Latest Dem 2020 Presidential Primary Polls&nbsp;</a></li>
 	<li><a href="https://www.realclearpolitics.com/epolls/latest_polls/national_president/" target="_blank">Latest General Election Presidential Polls</a></li>
 	<li><a href="https://projects.fivethirtyeight.com/polls/" target="_blank">Latest Presidential Approval Polls</a></li>
-	<li><a href="http://enlight21.com/election-central/candidates-positions-2020-democratic-candidates" >2020 Democratic Party Candidates and Positions</a></li>
+	<li><a href="https://enlight21.com/election-central/candidates-positions-2020-democratic-candidates" >2020 Democratic Party Candidates and Positions</a></li>
 </ol></div>
         <?php if (!empty($this->records['data'])) : ?>
           <div class="row">

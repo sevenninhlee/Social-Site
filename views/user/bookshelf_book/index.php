@@ -573,7 +573,7 @@
                                 <div class="col-sm-3">
                                   <div class="img-box">
                                     <a href="<?php echo RootURL."books/".$record['slug'] ?>">
-                                      <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                                      <?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                       <?php } else { ?>
                                         <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>
@@ -604,7 +604,7 @@
                                 <div class="col-sm-3">
                                   <div class="img-box">
                                     <a href="<?php echo RootURL."books/".$record['slug'] ?>">
-                                      <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                                      <?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                                         <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                       <?php } else { ?>
                                         <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>
@@ -632,7 +632,7 @@
                             <?php foreach($this->recRecords as $key => $record) { ?>
                               <div class="item" >
                                 <a href="<?php echo RootURL."books/".$record['slug'] ?>">
-                                  <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                                  <?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                                     <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } else { ?>
                                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>
@@ -650,7 +650,7 @@
 
                               <div class="item" >
                                 <a href="<?php echo RootURL."books/".$record['slug'] ?>">
-                                  <?php if (strpos($record['featured_image'], "http://books.google.com/books/") !== false) { ?>
+                                  <?php if (strpos($record['featured_image'], "https://books.google.com/books/") !== false) { ?>
                                     <img src="<?php echo $record['featured_image']?>" class="img-responsive" alt="book-3" width=100%;>
                                   <?php } else { ?>
                                     <img src="<?php echo RootREL; ?>media/upload/<?= ($record['featured_image']) ? 'books/'.$record['featured_image'] : "no_picture.png" ?>" class="img-responsive" alt="book-3" width=100%;>

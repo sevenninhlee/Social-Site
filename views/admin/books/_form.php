@@ -99,7 +99,7 @@
 						      <div class="controls col-md-7">
 						      	<?php if($app['act'] !='add'){ ?>
 						      		<?php if(isset($this->record['data'][0]['featured_image'])) { ?>
-						      			<?php if (strpos($this->record['data'][0]['featured_image'], "http://books.google.com/books/") !== false) { ?>
+						      			<?php if (strpos($this->record['data'][0]['featured_image'], "https://books.google.com/books/") !== false) { ?>
 						                    <img src="<?php echo $this->record['data'][0]['featured_image']?>" class="img-responsive">
 						                  <?php } else { ?>
 						                    <img src="<?=UploadURI.'books'.'/'.(($this->record['data'][0]['featured_image'])? $this->record['data'][0]['featured_image']: 'no_picture.png'); ?>" class="img-responsive">

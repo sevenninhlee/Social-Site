@@ -22,7 +22,7 @@
             <div class="white_box">                  
               <div class="media heightclass">
                 <div class="media-left" style="width: 160px;">
-                  <?php if (strpos($this->record['book_articles_featured_image'], "http://books.google.com/books/") !== false) { ?>
+                  <?php if (strpos($this->record['book_articles_featured_image'], "https://books.google.com/books/") !== false) { ?>
                     <img src="<?php echo $this->record['book_articles_featured_image']?>" class="img-responsive" width=150; height=200;>
                   <?php } else { ?>
                     <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['book_articles_featured_image']) ? 'books/'.$this->record['book_articles_featured_image'] : "no_picture.png" ?>" class="img-responsive" width=150; height=200;>

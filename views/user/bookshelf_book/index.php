@@ -138,7 +138,7 @@
                                     <!-- Title -->
                                     <label class="control-label col-md-3" for="title">Title</label>
                                     <div class="controls col-md-6 search_book_title">
-                                      <input type="text" id="" name="book[title]" placeholder="" class="form-control books_form_title" value="" required>
+                                      <input type="text"  name="book[title]" placeholder="" class="form-control books_form_title" value="" required>
                                     </div>
                                   </div>
                                   
@@ -154,7 +154,7 @@
                                     <!-- Category -->
                                     <label class="control-label col-md-3" for="categories">Category</label>
                                     <div class="controls col-md-6">
-                                      <select name="book[categories_id]" id="" class="form-control input-categories_id">
+                                      <select name="book[categories_id]"  class="form-control input-categories_id">
                                         <option value="0">Unkown category</option>
                                         <?php foreach ($this->categories as $record) { ?>
                                         <option value="<?php echo $record['id']?>">
@@ -162,8 +162,8 @@
                                         </option>
                                         <?php } ?>
                                       </select>
-                                      <input type="hidden" name="book[category_search_api]" id="" class="category_search_api">
-                                      <input type="hidden" name="book[book_categories_name]" id="" class="book_categories_name">
+                                      <input type="hidden" name="book[category_search_api]"  class="category_search_api">
+                                      <input type="hidden" name="book[book_categories_name]"  class="book_categories_name">
                                     </div>
                                   </div>
 
@@ -171,7 +171,7 @@
                                     <!--  Featured Image -->
                                     <label class="control-label col-md-3" for="featured_image"> Featured Image</label>
                                     <div class="controls col-md-6">
-                                      <input type="hidden" name="book[img_search_api]" id="" class="img_search_api">
+                                      <input type="hidden" name="book[img_search_api]"  class="img_search_api">
                                       <p class="img_search"><img src=""></p>
                                       <input type="file" id="featured_image" style="display: block; margin-bottom: 5px;" name="image" placeholder="" class="form-control">
                                     </div>
@@ -181,7 +181,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="ISBN">ISBN</label>
                                       <div class="controls col-md-6 search_book_isbn">
-                                        <input type="text" id="" name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
+                                        <input type="text"  name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
                                       </div>
                                   </div>
 
@@ -189,7 +189,7 @@
                                       <!-- Author -->
                                       <label class="control-label col-md-3" for="author">Author</label>
                                       <div class="controls col-md-6 search_book_author">
-                                        <input type="text" id="" name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
+                                        <input type="text"  name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
                                       </div>
                                   </div>
 
@@ -197,7 +197,7 @@
                                       <!-- Year -->
                                       <label class="control-label col-md-3" for="year">Year</label>
                                       <div class="controls col-md-6">
-                                        <input type="text" id="" name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
+                                        <input type="text"  name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
                                       </div>
                                   </div>
 
@@ -293,7 +293,7 @@
                                     <!-- Slug -->
                                     <label class="control-label col-md-3" for="slug">Slug</label>
                                     <div class="controls col-md-6">
-                                      <input  type="text" id="" name="book[slug]" placeholder="" class="form-control books_form_slug" value="" >
+                                      <input  type="text"  name="book[slug]" placeholder="" class="form-control books_form_slug" value="" >
                                     </div>
                                   </div>
 
@@ -301,7 +301,7 @@
                                     <!-- Category -->
                                     <label class="control-label col-md-3" for="categories">Category</label>
                                     <div class="controls col-md-6">
-                                      <select name="book[categories_id]" id="" class="form-control input-categories_id">
+                                      <select name="book[categories_id]"  class="form-control input-categories_id">
                                         <option value="0">Unkown category</option>
                                         <?php foreach ($this->categories as $record) { ?>
                                         <option value="<?php echo $record['id']?>">
@@ -309,8 +309,8 @@
                                         </option>
                                         <?php } ?>
                                       </select>
-                                      <input type="hidden" name="book[category_search_api]" id="" class="category_search_api">
-                                      <input type="hidden" name="book[book_categories_name]" id="" class="book_categories_name">
+                                      <input type="hidden" name="book[category_search_api]"  class="category_search_api">
+                                      <input type="hidden" name="book[book_categories_name]"  class="book_categories_name">
                                     </div>
                                   </div>
 
@@ -320,7 +320,7 @@
                                     <div class="controls col-md-6">
                                       <input type="hidden" name="book[img_search_api]" class="img_search_api">
                                       <p class="img_search"><img src=""></p>
-                                      <input type="file" id="featured_image" style="display: block; margin-bottom: 5px;" name="image" placeholder="" class="form-control">
+                                      <input type="file" id="featured_image1" style="display: block; margin-bottom: 5px;" name="image" placeholder="" class="form-control">
                                     </div>
                                   </div>
                                   
@@ -328,7 +328,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="ISBN">ISBN</label>
                                       <div class="controls col-md-6 search_book_isbn">
-                                        <input type="text" id="" name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
+                                        <input type="text"  name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
                                       </div>
                                   </div>
 
@@ -336,7 +336,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="author">Author</label>
                                       <div class="controls col-md-6 search_book_author">
-                                        <input type="text" id="" name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
+                                        <input type="text"  name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
                                       </div>
                                   </div>
 
@@ -344,7 +344,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="year">Year</label>
                                       <div class="controls col-md-6">
-                                        <input type="text" id="" name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
+                                        <input type="text"  name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
                                       </div>
                                   </div>
 
@@ -360,7 +360,7 @@
                                         <a class="btn btn_review btn-cancel-book ">Cancel</a>
                                         <input type="hidden" name="alt" placeholder="" class="form-control" value="edit-search-google" >
                                         <input type="hidden" name="action" placeholder="" class="form-control" value="recommanded" >
-                                        <input class="btn btn-review" type="submit" name="btn_submit" id="btn_submit" value="Save Recommanded Book">
+                                        <input class="btn btn-review" type="submit" name="btn_submit" id="btn_submit1" value="Save Recommanded Book">
                                       </div>
                                   </div>
                                   <hr>
@@ -434,7 +434,7 @@
                                     <!-- Slug -->
                                     <label class="control-label col-md-3" for="slug">Slug</label>
                                     <div class="controls col-md-6">
-                                      <input  type="text" id="" name="book[slug]" placeholder="" class="form-control books_form_slug" value="" >
+                                      <input  type="text"  name="book[slug]" placeholder="" class="form-control books_form_slug" value="" >
                                     </div>
                                   </div>
 
@@ -442,7 +442,7 @@
                                     <!-- Category -->
                                     <label class="control-label col-md-3" for="categories">Category</label>
                                     <div class="controls col-md-6">
-                                      <select name="book[categories_id]" id="" class="form-control input-categories_id">
+                                      <select name="book[categories_id]"  class="form-control input-categories_id">
                                         <option value="0">Unkown category</option>
                                         <?php foreach ($this->categories as $record) { ?>
                                         <option value="<?php echo $record['id']?>">
@@ -450,8 +450,8 @@
                                         </option>
                                         <?php } ?>
                                       </select>
-                                      <input type="hidden" name="book[category_search_api]" id="" class="category_search_api">
-                                      <input type="hidden" name="book[book_categories_name]" id="" class="book_categories_name">
+                                      <input type="hidden" name="book[category_search_api]"  class="category_search_api">
+                                      <input type="hidden" name="book[book_categories_name]"  class="book_categories_name">
                                     </div>
                                   </div>
 
@@ -461,7 +461,7 @@
                                     <div class="controls col-md-6">
                                       <input type="hidden" name="book[img_search_api]" class="img_search_api">
                                       <p class="img_search"><img src=""></p>
-                                      <input type="file" id="featured_image" style="display: block; margin-bottom: 5px;" name="image" placeholder="" class="form-control">
+                                      <input type="file" id="featured_image3" style="display: block; margin-bottom: 5px;" name="image" placeholder="" class="form-control">
                                     </div>
                                   </div>
                                   
@@ -469,7 +469,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="ISBN">ISBN</label>
                                       <div class="controls col-md-6 search_book_isbn">
-                                        <input type="text" id="" name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
+                                        <input type="text"  name="book[ISBN]" placeholder="" class="form-control books_form_isbn" value="" required>
                                       </div>
                                   </div>
 
@@ -477,7 +477,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="author">Author</label>
                                       <div class="controls col-md-6 search_book_author">
-                                        <input type="text" id="" name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
+                                        <input type="text"  name="book[author]" placeholder="" class="form-control books_form_author" value="" required>
                                       </div>
                                   </div>
 
@@ -485,7 +485,7 @@
                                       <!-- Title -->
                                       <label class="control-label col-md-3" for="year">Year</label>
                                       <div class="controls col-md-6">
-                                        <input type="text" id="" name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
+                                        <input type="text"  name="book[year]" placeholder="" class="form-control books_form_year" value="" required>
                                       </div>
                                   </div>
 
@@ -501,7 +501,7 @@
                                         <a class="btn btn_review btn-cancel-book ">Cancel</a>
                                         <input type="hidden" name="alt" placeholder="" class="form-control" value="edit-search-google" >
                                         <input type="hidden" name="action" placeholder="" class="form-control" value="current" >
-                                        <input class="btn btn-review" type="submit" name="btn_submit" id="btn_submit" value="Save Current Book">
+                                        <input class="btn btn-review" type="submit" name="btn_submit" id="btn_submit2" value="Save Current Book">
                                       </div>
                                   </div>
                                   <hr>
@@ -528,13 +528,13 @@
                                 <span class="f700 title-part title-part-<?php echo $record['rvID'] ?> <?php if($record['rvStatus'] == 1) echo ""; else echo "opacity4" ?>"><?php echo $record['title'] ?></span>
                                 <span>
                                   <a href="<?php echo RootURL."books/".$record['slug'] ?>">View</a> | 
-                                  <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'edit_reviewbook/'.$record['id']."/".$record['rvID'])); ?>">Edit</a> |
+                                  <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'edit_reviewbook/'.$record['id']."/".$record['rvID'])); ?>">Edit</a> |
                                   <a class="hide-text" data="<?php echo $record['rvID'] ?>" title="book_reviews" id="hide_<?php echo $record['rvID'] ?>"><?php if($record['rvStatus'] == 1) echo "Hide"; else echo "Unhide" ?></a> |<button style="float:none;font-weight: inherit; border: 0; background-color: transparent; font-size: 15px; color: #ee352d; " id="delItem<?php echo $record['rvID']; ?>" type="button" class="btn-delete-table delItem-record" alt="<?php echo $record['rvID']; ?>,deleteBookShelfRv">Delete</button>
                                 </span>
                               </li>
                               <?php } ?>
                             </ul>
-                            <div class="text-right space20"><a class="btn btn_review btn-save1 edit-btn" href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'view')); ?>">View Bookshelf & Book Review Page</a></div>
+                            <div class="text-right space20"><a class="btn btn_review btn-save1 edit-btn" href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'view')); ?>">View Bookshelf & Book Review Page</a></div>
                           </div>                          
                         </div>
                       </div>  
@@ -754,6 +754,7 @@
 $(document).ready(function(){
 
   $('.recomand-txt').click(function(){
+      console.log("11111111111111");
       $(this).parents('.recomend').find('.edit-book').toggle();
   });
 
@@ -787,10 +788,10 @@ $(document).ready(function(){
           $(this).parents('.recomend').removeClass('btn-change');
       }
   }); 
-});
 
-var data = "<?php echo json_encode($this->records); ?>";
-var RootREL = "<?php echo RootREL; ?>";
+var data = <?php echo json_encode($this->records); ?>;
+var RootREL = '<?php echo RootREL; ?>';
+
 
 // Favorite
 // searchAutomatic('favorite_title', data, 'title');
@@ -948,6 +949,7 @@ $('.bookshelf').on('click', '.hide-text', function (){
         }
     });  
   });
+});
 });
 
 </script>

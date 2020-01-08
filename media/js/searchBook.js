@@ -556,9 +556,10 @@ function showModalDataSystem(data, altAction)
 function bookSearchData(imgBook, titleBook, authorBook, isbnBook, yearBook, item)
 {
   var srcImg = '';
+  var RootREL = '<?php echo RootREL; ?>';
   if(imgBook) {
     var str = imgBook;
-    var n = str.indexOf("http://books.google.com/books/");
+    var n = str.indexOf("https://books.google.com/books/");
     if(n != -1) {
       srcImg = imgBook;
     } else {
@@ -716,7 +717,7 @@ function htmlShow(dataSearch, saveBook, addBook, NameAction, alt='')
   var srcImg = '';
   if(dataSearch['featured_image']) {
     var str = dataSearch['featured_image']
-    var n = str.indexOf("http://books.google.com/books/");
+    var n = str.indexOf("https://books.google.com/books/");
     if(n != -1) {
       srcImg = dataSearch['featured_image'];
     } else {

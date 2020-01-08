@@ -74,8 +74,8 @@
 
                                   <li> 
                                     <span class="f700 title-part">Favorite Book:<?php if(isset($this->book_favorites))foreach($this->book_favorites as $item){ echo '<br />';}?></span>
-                                    <span style="margin-left:-6px;" class="deatil-part"><?php if(isset($this->book_favorites))foreach($this->book_favorites as $item){ echo   "<a href='".vendor_app_util::url(array('ctl'=>'../books', 'act' => 'book_review/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';}?></span>
-                                    <a style="margin-left:-2px;" href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'index')); ?>" act='favorite_book' value='<?=$this->user['favorite_book']?>'><?php if($this->isLogged){ echo 'Edit';}?></a>
+                                    <span style="margin-left:-6px;" class="deatil-part"><?php if(isset($this->book_favorites))foreach($this->book_favorites as $item){ echo   "<a href='".vendor_app_util::url(array('ctl'=>'../books/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';}?></span>
+                                    <a style="margin-left:-2px;"  href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'index')); ?>" act='favorite_book' value='<?=$this->user['favorite_book']?>'><?php if($this->isLogged){ echo 'Edit';}?></a>
                                   </li>
 
                                   <li><span class="space10 f700 title-part">My Latest Blog:</span><span class="deatil-part edit-latest-blog"><?=(isset($this->latest_blog))?$this->latest_blog:'None'?></span><a href="<?=vendor_app_util::url(array('ctl'=>'blogs', 'act' => 'index')); ?>"  act='latest-blog' value='<?=(isset($this->user['latest_blog']))?$this->user['latest_blog']:'None'?>'><?php if($this->isLogged){ echo 'Edit';}?></a></li>
@@ -85,28 +85,28 @@
                             </div>
                             <div class="row edit-sec">
                               <div class="col-md-4 col-sm-4">
-                                <p>My Book Reviews: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
+                                <p>My Book Reviews: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
                                 <p class="f400">
                                   <?php if(isset($this->book_reviews))foreach($this->book_reviews as $item){
-                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books', 'act' => 'book_review/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
+                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
                                   }?>
                                   
                                 </p>
                               </div>
                               <div class="col-md-4 col-sm-4">
-                                <p>Recommended reads: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
+                                <p>Recommended reads: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
                                 <p class="f400">
                                   <?php if(isset($this->book_recommendeds))foreach($this->book_recommendeds as $item){
-                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books', 'act' => 'book_review/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
+                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
                                   }?>
                                   <!-- 10 Day’s in paradise <br>This is the best shark <br>Trip to El Dorado -->
                                 </p>
                               </div>
                               <div class="col-md-4 col-sm-4">
-                                <p>My Current Reads: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf_book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
+                                <p>My Current Reads: <a href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'index')); ?>"><?php if($this->isLogged){ echo 'Edit';}?></a></p>
                                 <p class="f400">
                                   <?php if(isset($this->book_currents))foreach($this->book_currents as $item){
-                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books', 'act' => 'book_review/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
+                                    echo "<a style='padding-left:0' href='".vendor_app_util::url(array('ctl'=>'../books/'.$item['slug']))."'>".(strlen($item['title'])>30?substr($item['title'],0,30).'...':$item['title']).'</a><br />';
                                   }?>
                                   <!-- 10 Day’s in paradise <br>This is the best shark <br>Trip to El Dorado -->
                                 </p>

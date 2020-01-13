@@ -307,7 +307,7 @@ function searchBook(parameter, value, altAction = null)
         type:"GET",
         url: urlSearch,
         success: function (data) {
-          console.log(data);
+          console.log("1111111111111", data);
             if(data['items'] !== undefined){
                 $('#data_found').hide();
                 $('.text-danger').hide();
@@ -555,13 +555,15 @@ function showModalDataSystem(data, altAction)
 
 function bookSearchData(imgBook, titleBook, authorBook, isbnBook, yearBook, item)
 {
+  // console.log("222222222", imgBook);
+  
   var srcImg = '';
-  var RootREL = '<?php echo RootREL; ?>';
   if(imgBook) {
     var str = imgBook;
-    var n = str.indexOf("https://books.google.com/books/");
+    var n = str.indexOf("http://books.google.com/books/");    
     if(n != -1) {
-      srcImg = imgBook;
+      let img_url = String(imgBook).replace("http", "https");
+      srcImg = img_url;
     } else {
       srcImg = `${RootREL}media/upload/books/`+ imgBook;
     }
@@ -613,8 +615,8 @@ function SetInforToForm(dataResult, idFormParent)
 
     if(dataResult['imageLinks']) {
         $(idFormParent+' .img_search').show();
-        $(idFormParent+' .img_search > img').attr("src",dataResult['imageLinks']['thumbnail']);
-        $(idFormParent+' .img_search_api').val(dataResult['imageLinks']['thumbnail']);
+        $(idFormParent+' .img_search > img').attr("src", dataResult['imageLinks']['thumbnail'].replace("http", "https") );
+        $(idFormParent+' .img_search_api').val(dataResult['imageLinks']['thumbnail'].replace("http", "https"));
     }
 
     if(dataResult['industryIdentifiers']) {
@@ -675,7 +677,7 @@ function convertDataDefault(dataResult)
 
     if(dataResult['imageLinks']) {
         var featured_image = {
-            'featured_image': dataResult['imageLinks']['thumbnail'] ? dataResult['imageLinks']['thumbnail'] : 'null'
+            'featured_image': dataResult['imageLinks']['thumbnail'] ? dataResult['imageLinks']['thumbnail'].replace("http", "https") : 'null'
         }
     }
 
@@ -717,9 +719,10 @@ function htmlShow(dataSearch, saveBook, addBook, NameAction, alt='')
   var srcImg = '';
   if(dataSearch['featured_image']) {
     var str = dataSearch['featured_image']
-    var n = str.indexOf("https://books.google.com/books/");
+    var n = str.indexOf("http://books.google.com/books/");
     if(n != -1) {
-      srcImg = dataSearch['featured_image'];
+      let img_url = String(str).replace("http", "https");
+      srcImg = img_url;
     } else {
       srcImg = `${RootREL}media/upload/books/`+ dataSearch['featured_image'];
     }

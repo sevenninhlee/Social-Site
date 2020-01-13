@@ -444,6 +444,7 @@ function showModalDataSystem(data, altAction)
       }
       $("#myModalSearch #body_1").html(html);
   });
+  
   $('#myModalSearch').modal('show');
   $('#myModalSearch #body_1').undelegate('#choose_book', 'click');
   $('#myModalSearch #body_1').on('click', '#choose_book', function(event) {
@@ -554,16 +555,15 @@ function showModalDataSystem(data, altAction)
 }
 
 function bookSearchData(imgBook, titleBook, authorBook, isbnBook, yearBook, item)
-{
-  // console.log("222222222", imgBook);
-  
+{ 
   var srcImg = '';
   if(imgBook) {
     var str = imgBook;
     var n = str.indexOf("http://books.google.com/books/");    
-    if(n != -1) {
+    var n1 = str.indexOf("https://books.google.com/books/");    
+    if(n != -1 || n1 != -1) {
       let img_url = String(imgBook).replace("http", "https");
-      srcImg = img_url;
+      srcImg = n != -1 ? img_url : imgBook; 
     } else {
       srcImg = `${RootREL}media/upload/books/`+ imgBook;
     }

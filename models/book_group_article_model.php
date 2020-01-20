@@ -47,7 +47,7 @@ class book_group_article_model extends vendor_pagination_model
 	public function getJoinRecords($id)
 	{
 		$query = " SELECT
-                	bg.*, u.firstname as user_firstname, u.lastname as user_lastname
+                	bg.*, u.firstname as user_firstname, u.lastname as user_lastname, u.username as user_username, u.show_name as user_show_name
 	            FROM
 	                " . $this->table . " bg
 	                INNER JOIN users u

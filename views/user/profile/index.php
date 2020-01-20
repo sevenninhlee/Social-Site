@@ -38,13 +38,33 @@
                                  
                                   <li><span class="f700 title-part">Username:</span><span class="deatil-part edit-username"><?=$this->user['username']?></span><a href="javascript:void(0)" class='Edit' act='username' value='<?=$this->user['username']?>'><?='Edit'?></a></li>
 
+                                  <li>
+                                    <div >
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                          <label class="f700 title-part">Show Name:</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <div class="radio radio-info radio-inline radio-show-name">
+                                              <input type="radio" id="showName1" value="0" name="show_name" <?= ($this->user['show_name'] == 0) ? 'checked' : '' ?> >
+                                              <label for="showName1"> Firsname, Lastname </label>
+                                          </div>
+                                          <div class="radio radio-inline radio-show-name">
+                                              <input type="radio" id="showName2" value="1" name="show_name" <?= ($this->user['show_name'] == 1) ? 'checked' : '' ?>>
+                                              <label for="showName2"> Username </label>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </li>
+
                                   <li><span class="f700 title-part">Gender:</span><span class="deatil-part edit-gender"><?=$app['gender'][$this->user['gender']]?></span><a href="javascript:void(0)" class='Edit' act='gender' value='<?=$this->user['gender']?>'><?='Edit'?></a></li>
 
                                   <li><span class="f700 title-part">Country:</span><span class="deatil-part edit-country"><?=$this->user['country']?></span><a href="javascript:void(0)" class='Edit' act='country' value='<?=$this->user['country']?>'><?='Edit'?></a></li>
 
                                 <?php }else{ ?>
                                   <li>
-                                    <span class="f700 title-part"><?=$this->user['firstname'].' '.$this->user['lastname']?></span>
+                                    <span class="f700 title-part"><?php  if ($this->user['show_name'] == 0){ echo $this->user['firstname'].' '.$this->user['lastname']; } else { echo $this->user['username']; } ?></span>
                                     <span class="deatil-part"></span><?php friends_controller::helpFriend($this->checkfriend); ?>
                                   </li>
                                   <li>
@@ -243,6 +263,40 @@
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script type="text/javascript">
   var rootUrl   = "<?=RootURL;?>";
+
+  
+  // $(".radio-show-name").on("click", function () {
+  //   let show_name = $('input:radio[name=show_name]:checked').val();
+  //   console.log("show_name", show_name);
+  // });
+
+  changeShowName = (value) => {
+    $.ajax({
+          url: rootUrl+"user/profile/changeShowName",
+          data: {
+              status: value
+          },
+          type: "POST",
+          success: function (data) {
+             
+          },
+          error: function (err) {
+              alert('Error');
+          }
+      })
+  }
+
+  $("#showName1").on("click", function () {
+      let show_name = $('input:radio[name=show_name]:checked').val();
+      changeShowName(show_name);
+  });
+
+  $("#showName2").on("click", function () {
+      let show_name = $('input:radio[name=show_name]:checked').val();
+      changeShowName(show_name);
+  });
+
+
 </script>   
 <script src="<?php echo RootREL; ?>media/js/profile.js"></script>
 <script src="<?php echo RootREL; ?>media/js/friend.js"></script>

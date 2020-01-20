@@ -54,7 +54,7 @@ class vendor_frap_model extends vendor_fra_model {
 					break;
 			}
 			$um = new user_model();
-			$row['author'] = $um->getRecord($row['user_id'])['firstname']." ".$um->getRecord($row['user_id'])['lastname'];
+			$row['author'] =  $um->getRecord($row['user_id'])['show_name'] == 0 ? $um->getRecord($row['user_id'])['firstname']." ".$um->getRecord($row['user_id'])['lastname'] : $um->getRecord($row['user_id'])['username'];
 			if($cm!=null)
 				$row['category_name'] = $cm->getRecord($row['categories_id'])['name'];
 			array_push($listpost, $row);

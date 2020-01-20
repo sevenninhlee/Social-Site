@@ -54,7 +54,7 @@
                           echo '<span>'.rtrim($cat_str," | ").'</span>';
                         }
                       ?>
-                    | <span>By:</span> <a><?php echo $record['firstname'] ?></a></p>
+                    | <span>By:</span> <a><?php if ($record['show_name'] == 0) { echo $record['firstname'].' '.$record['lastname']; } else { echo $record['username']; }  ?></a></p>
                     <h6 class="space30 f700 fsize16">Description:</h6>
                     <span class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></span>
 

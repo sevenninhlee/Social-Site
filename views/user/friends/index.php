@@ -33,13 +33,13 @@
                           <!-- admin view other -->
                           <?php elseif($this->isUserLogged && isset($_GET['user']) ? $_GET['user'] : $_SESSION['user']['id'] != $_SESSION['user']['id']):?>
                             <ul class="list-inline">
-                              <li><h5><?=$this->user['firstname'].' '.$this->user['lastname']?>(s) friends (<?=count($this->records['data'])?>)</h5></li>
+                              <li><h5><?php if ($this->user['show_name'] == 0) { echo $this->user['firstname'].' '.$this->user['lastname']; } else { echo $this->user['username']; } ?>(s) friends (<?=count($this->records['data'])?>)</h5></li>
                               <li class="pull-right"><?php friends_controller::helpFriend($this->checkfriend); ?></li>
                             </ul>
                           <!-- no-login -->
                           <?php else:?>
                             <ul class="list-inline">
-                              <li><h5><?=$this->user['firstname'].' '.$this->user['lastname']?>(s) friends (<?=count($this->records['data'])?>)</h5></li>
+                              <li><h5><?php if ($this->user['show_name'] == 0) { echo $this->user['firstname'].' '.$this->user['lastname']; } else { echo $this->user['username']; } ?>(s) friends (<?=count($this->records['data'])?>)</h5></li>
                               <li class="pull-right"><a class="f700 create-btn">Search more</a></li>
                             </ul>
                           <?php endif;?>

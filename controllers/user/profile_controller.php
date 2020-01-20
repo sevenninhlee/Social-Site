@@ -7,7 +7,7 @@ class profile_controller extends aside_bar_data_controller
 		$this->isLogged = $this->isUserLogged;
 		$status_name = 'owner_status';
 		$um = new user_model();
-		$this->user = $um->getRecord($user_id);
+		$this->user = $um->getRecord($user_id);		
 		$review_model = new review_rating_model();
 		$this->book_reviews 	 = $review_model->getReviews('book_article_model',$user_id, 'book_articles', $status_name);
 		$action_model = new action_model();
@@ -141,6 +141,30 @@ class profile_controller extends aside_bar_data_controller
 			echo json_encode($valid);
 		}
 	}
+
+	public function changeShowName() {
+		$um = new user_model();
+		$show_name = $_POST['status'];
+		$id = $_SESSION['user']['id'];
+		$userData['show_name'] = $show_name;
+		// echo "Start <br/>"; echo '<pre>'; print_r($id);echo '</pre>';exit("End Data");
+
+		if($um->editRecord($id,$userData)) {
+			$valid = [
+				'status' => true,
+				'data' => 'Edit profile successfully'
+			];
+			http_response_code(200);
+			echo json_encode($valid);
+		} else {
+			$valid = [
+				'status' => false,
+				'errors' => ['data' => 'Error while edit profile !']
+			];
+			http_response_code(400);
+			echo json_encode($valid);
+		}
+	} 
 		
 	public function invite(){
 		$user_id = $_SESSION['user']['id'];

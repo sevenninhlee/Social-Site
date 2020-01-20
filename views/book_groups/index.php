@@ -63,9 +63,11 @@
                     <?php  } ?>
 
                     <!-- <h3 class="f700"><a href="<?php echo RootURL."book-groups/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> -->
-                    <p>By: <span class="f400"><?php echo $record['users_firstname'].' '.$record['users_lastname'];?></span></p>
-                    <p>Category: <span class="f400"><?php echo $record['book_categories_name'] ?></span></p>
-                        <!-- if($record['ListCate'] == null){
+                    <p>By: <span class="f400"><?php if ($record['users_show_name'] == 0) { echo $record['users_firstname'].' '.$record['users_lastname']; } else { echo $record['users_username']; }  ?></span></p>
+                    <p>Category: <span class="f400">
+                    
+                    <?php 
+                        if($record['ListCate'] == null){
                           echo '<span>Unkown category</span>';
                         }else {
                           $cat_str = "";
@@ -74,7 +76,9 @@
                           }
                         $cat_str = rtrim($cat_str," | ");
                         if(strlen($cat_str) > 25) echo '<span>'.substr($cat_str, 0, 25).'...</span>'; else  echo '<span>'.$cat_str.'</span>';
-                        } -->
+                        }
+                      ?> 
+                      </p>
                     <p>Users: <span class="f400"><?php echo $record['userNum'] ?></span></p>
                   </div>
                   <div class="grey_box">

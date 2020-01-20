@@ -16,7 +16,7 @@ class friends_controller extends aside_bar_data_controller
 			$userIDFriend = ($value['user_id'] == $userID)?$value['user_id_friend']:$value['user_id'];
 			
 			$user = $user_model->getRecord($userIDFriend);
-			$this->records['data'][$key]['username'] = $user['firstname'].' '.$user['lastname'];
+			$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
 			$this->records['data'][$key]['user_id_friend'] = $userIDFriend;
 			$this->records['data'][$key]['status_user_admin'] = ($value['user_id'] == $userID)?$value['status_user']:$value['status_user_friend'];
 			$this->records['data'][$key]['user_avatar'] = $user['avata'];

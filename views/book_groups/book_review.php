@@ -68,7 +68,7 @@
                 </div>
                 <div class="media-right" style="width:100%;"> 
                 <h5 style="display: inline-block;width:100%;">
-                    <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 20px;font-size: 20px; float: left;"><?= $review['users_firstname'] ?></a>
+                    <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 20px;font-size: 20px; float: left;"><?php if ($review['users_show_name'] == 0) { echo $review['users_firstname'];} else { echo $review['users_username']; } ?></a>
                     <p style="float: left ;line-height: 1.8; opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </p>
                 </h5>
                 
@@ -94,7 +94,7 @@
                       </div>
                       <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
-                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?= $rp['users_firstname'] ?></a> 
+                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?php if ($rp['users_show_name'] == 0) { echo $rp['users_firstname'];} else { echo $rp['users_username']; } ?></a> 
                         <p style="float: left;line-height: 1.8;opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </p> 
                       </h5>
                       

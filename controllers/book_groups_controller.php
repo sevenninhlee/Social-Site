@@ -4,25 +4,29 @@ class book_groups_controller extends right_bar_data_controller {
 
         $bgm = new book_group_article_model();
         $wheres = ["admin_status" => 1, "owner_status" => 1];
-        if(isset($_GET['cat'])) {
-            $bcm = new book_category_model();
-            $categoryData = $bcm->getRecordWhere(['slug' => $_GET['cat']]);
-            if($categoryData) $category_id = $categoryData['id'];
-            $wheres = array_merge($wheres, ['categories_id' => $category_id]);
-        }
+        // if(isset($_GET['cat'])) {
+        //     $bcm = new book_category_model();
+        //     $categoryData = $bcm->getRecordWhere(['slug' => $_GET['cat']]);
+        //     if($categoryData) $category_id = $categoryData['id'];
+        //     $wheres = array_merge($wheres, ['categories_id' => $category_id]);
+        // }
         $this->records = $bgm->read_paging($bgm, 'created', $wheres);
         
         $userbg = new book_group_article_user_model();
-        
+        $bcm = new book_category_model();
         if(!empty($this->records['data'])){
             foreach($this->records['data'] as $key => $record){
                 $this->records['data'][$key]['userNum'] = $userbg->getCountRecords(['conditions'=>'book_group_article_id='.$record['id']]) + 1;
                 if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])){
                     $this->records['data'][$key]['isDisapprove'] = $userbg->checkUserIsDisapprove($record['id']);
+                    $this->records['data'][$key]['ListCate'] = $bcm->getCatOfBook($record['categories_arr']);
+                    
                 }
             }
         }
-        // echo "Start <br/>"; echo '<pre>'; print_r($this->records);echo '</pre>';exit("End Data");
+
+        // echo "Start <br/>"; echo '<pre>'; print_r($this->currentBooks);echo '</pre>';exit("End Data");
+
 
         $conditions = 'admin_status = 1 AND owner_status = 1';
         $this->newBookGroups = $bgm->all('book_group_articles.*',['conditions'=>$conditions, 'joins'=>['book_category'], 'order'=> ' created DESC LIMIT 0,5']);

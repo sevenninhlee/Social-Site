@@ -132,16 +132,6 @@
 
 
 							<div class="form-group row">
-								<!-- Featured my blog -->
-								<label class="control-label col-md-3" for="community_blog">Community blog</label>
-								<div class="controls col-md-7">
-									<input type="radio" name="blog[community_blog]" value="1" checked>Yes
-									<input type="radio" name="blog[community_blog]" value="0" <?php if (isset($this->record['community_blog']) && $this->record['community_blog'] == 0) echo 'checked'; ?>>No<br>
-								</div>
-							</div>
-
-
-							<div class="form-group row">
 								<!-- new Description -->
 								<label class="control-label col-md-3" for="short_description">Short Description</label>
 								<div class="controls col-md-7">

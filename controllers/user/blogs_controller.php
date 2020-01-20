@@ -18,7 +18,7 @@ class blogs_controller extends aside_bar_data_controller
 		foreach($this->records['data'] as $key => $record) {
 			$um = new user_model();
 			$user = $um->getRecord($record['user_id']);
-			$this->records['data'][$key]['username'] = $user['firstname'].' '.$user['lastname'];
+			$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
 			$this->records['data'][$key]['ListCate'] = $blogCategory->getCatOfBolog($record['categories_arr']);
 		}
 		$this->display();

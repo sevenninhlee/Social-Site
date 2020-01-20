@@ -29,8 +29,8 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-sm-7 col-xs-7">
-            <h2><?php echo $this->record['title'] ?></h2>
-            <h4 class="organiz f700">Organizer: <span class="f400"><?php echo $this->record['user_firstname'].' '.$this->record['user_lastname'] ?></span></h4>
+            <h2><?php echo $this->record['title'] ?></h2><?php echo $this->record['show_name'] ?>
+            <h4 class="organiz f700">Organizer: <span class="f400"><?php if ( $this->record['user_show_name'] == 0) { echo $this->record['user_firstname'].' '.$this->record['user_lastname'];} else { echo $this->record['user_username'];}  ?></span></h4>
           </div>
           <?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])){?>
             <?php
@@ -105,7 +105,7 @@
                       style="cursor: pointer;"
                       checkMember = "<?= $this->checkUser ?>"
                       data = "<?= $currentBook['book_group_id'] ?>, <?= $currentBook['user_id_not_read'] ?>"><h5 class="f700 m0 color555554"><?php echo $currentBook['title'] ?></h5></a>
-                    <p class="f700 by-txt color555554">By: <?php echo $currentBook['firstname'].' '.$currentBook['lastname'] ?></p>
+                    <p class="f700 by-txt color555554">By: <?php if ( $currentBook['show_name'] == 0) { echo $currentBook['firstname'].' '.$currentBook['lastname'];} else { echo $currentBook['username'];} ?></p>
                     <p class="f700 by-txt color555554">ISBN: <?php echo $currentBook['ISBN'] ?></p>
                     <div class="txt_des">
                     <span class="f700 by-txt color555554">Description: </span>

@@ -12,7 +12,7 @@ class book_group_article_book_model extends vendor_frap_model
 
 	public function getBooks($id, $wheres = "") {
 		$query = " SELECT
-                	b.*, u.firstname, u.lastname,bb.*, bb.id as book_group_id
+                	b.*, u.firstname, u.lastname, u.show_name, u.username, bb.*, bb.id as book_group_id
 	            FROM
 	                " . $this->table . " bb
 	                INNER JOIN book_articles b

@@ -19,7 +19,12 @@ class right_bar_data_controller extends vendor_main_controller
 		 	case 'blog':
 				$category_model = new blog_category_model();
 				$this->dataCategories = $category_model->all('*',['conditions'=>'status=1', 'joins'=>false, 'order'=> ' name ASC ']);
-		 		break;
+				 break;
+
+			case 'community_blog':
+				$category_model = new blog_category_model();
+				$this->dataCategories = $category_model->all('*',['conditions'=>'status=1', 'joins'=>false, 'order'=> ' name ASC ']);
+				break;
 
 		 	case 'film':
 				$category_model = new film_category_model();

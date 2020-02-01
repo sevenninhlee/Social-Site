@@ -27,7 +27,7 @@ class home_controller extends vendor_main_controller {
 		$bookmd = new book_article_model();
 		$this->book = $bookmd->all('*',['conditions'=>$conditions, 'joins'=>false, 'order'=> ' created DESC ']);
 		$blogmd = new blog_article_model();
-		$this->community_blog = $blogmd->all('*',['conditions'=>'admin_status = 0 AND owner_status = 1', 'joins'=>['user'], 'order'=> ' created DESC LIMIT 0,5']);
+		$this->community_blog = $blogmd->all('*',['conditions'=>'admin_status = 0 AND owner_status = 1 AND featured_my_blog = 1', 'joins'=>['user'], 'order'=> ' created DESC LIMIT 0,5']);
 		// echo "Start <br/>"; echo '<pre>'; print_r($this->community_blog);echo '</pre>';exit("End Data");
 		
 		$querymd = new queries_article_model();

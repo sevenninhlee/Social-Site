@@ -41,7 +41,7 @@
                                   <li>
                                     <div >
                                       <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-3" style="padding: 3px 15px 0;">
                                           <label class="f700 title-part">Show Name:</label>
                                         </div>
                                         <div class="col-sm-6">
@@ -77,7 +77,7 @@
                                   <li class="Add_box pad0">
                                   <?php if($this->isLogged){ ?>
                                     <div class="row">
-                                      <div class="col-sm-3">
+                                      <div class="col-sm-3" style="padding: 6px 15px 0;">
                                         <label>Featured image:</label>
                                       </div>
                                       <div class="col-sm-7">
@@ -98,7 +98,7 @@
                                     <a style="margin-left:-2px;"  href="<?=vendor_app_util::url(array('ctl'=>'bookshelf-book', 'act' => 'index')); ?>" act='favorite_book' value='<?=$this->user['favorite_book']?>'><?php if($this->isLogged){ echo 'Edit';}?></a>
                                   </li>
 
-                                  <li><span class="space10 f700 title-part">My Latest Blog:</span><span class="deatil-part edit-latest-blog"><?=(isset($this->latest_blog))?$this->latest_blog:'None'?></span><a href="<?=vendor_app_util::url(array('ctl'=>'blogs', 'act' => 'index')); ?>"  act='latest-blog' value='<?=(isset($this->user['latest_blog']))?$this->user['latest_blog']:'None'?>'><?php if($this->isLogged){ echo 'Edit';}?></a></li>
+                                  <li><span class=" f700 title-part">My Latest Blog:</span><span class="deatil-part edit-latest-blog"><?=(isset($this->latest_blog))?$this->latest_blog:'None'?></span><a href="<?=vendor_app_util::url(array('ctl'=>'blogs', 'act' => 'index')); ?>"  act='latest-blog' value='<?=(isset($this->user['latest_blog']))?$this->user['latest_blog']:'None'?>'><?php if($this->isLogged){ echo 'Edit';}?></a></li>
 
                                 </ul>
                               </div>
@@ -133,24 +133,24 @@
                               </div>
                             </div>
 
-                            <h5 class="space30">Bulletin <a href="<?=vendor_app_util::url(array('ctl'=>'bulletins', 'act' => 'index')); ?>" class='Edit' act='bulletin' value='<?=$this->user['bulletin']?>'><?php if($this->isLogged){ echo 'Edit';}?></a></h5>    
+                            <h5 >Bulletin <a href="<?=vendor_app_util::url(array('ctl'=>'bulletins', 'act' => 'index')); ?>" class='Edit' act='bulletin' value='<?=$this->user['bulletin']?>'><?php if($this->isLogged){ echo 'Edit';}?></a></h5>    
                             <p class="f400  edit-bulletin"><?=isset($this->bulletin)?$this->bulletin:'None'?></p>
 
                             <?php if($this->isLogged){?>
                             <h5 class="space30">Notify me when:</h5>
                             <form class="radio-form" action="<?php echo vendor_app_util::url(["area" => "user", "ctl"=>"profile", "act"=>"index"]) ?>" method="post" enctype="multipart/form-data">                
                               <div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-8" style="padding: 0 25px;">
                                   <?php foreach ($app['notify_actions'] as $key => $notify) { 
                                     if(!empty($this->notiActions)) {
                                       foreach ($this->notiActions as $value) {
                                         if((int)$key == (int)$value['action']) { ?>
                                           <div class="form-group">
                                             <div class="row">
-                                              <div class="col-sm-6">
+                                              <div class="col-sm-7">
                                                 <label><?= $notify['value'] ?></label>
                                               </div>
-                                              <div class="col-sm-6">
+                                              <div class="col-sm-5">
                                                 <div class="radio radio-info radio-inline">
                                                     <input type="radio" id="inlineRadio<?= $key ?>" value="1" name="action[<?= $key ?>]" <?= ($value['status'] == 1) ? 'checked' : '' ?> >
                                                     <label for="inlineRadio<?= $key ?>"> Yes </label>
@@ -168,10 +168,10 @@
                                     } else { ?>
                                       <div class="form-group">
                                         <div class="row">
-                                          <div class="col-sm-6">
+                                          <div class="col-sm-7">
                                             <label><?= $notify['value'] ?></label>
                                           </div>
-                                          <div class="col-sm-6">
+                                          <div class="col-sm-5">
                                             <div class="radio radio-info radio-inline">
                                                 <input type="radio" id="inlineRadio<?= $key ?>" value="1" name="action[<?= $key ?>]" <?= ($notify['status'] == 1) ? 'checked' : '' ?>>
                                                 <label for="inlineRadio<?= $key ?>"> Yes </label>
@@ -185,7 +185,7 @@
                                       </div>
                                   <?php }} ?>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                   <div class="form-group text-right space100">
                                     <button type="button" class="btn btn_review" id="invite" data-toggle="modal" data-target="#myModal">Invite Friends</button>
                                     <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit" type="submit">Save</button>

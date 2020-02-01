@@ -5,7 +5,7 @@
         <div class="logo">
           <h1 class="text-center logo" style="font-family:Great Vibes, cursive;"><a href="<?php echo RootURL . 'home' ?>">Enlight21</a></h1>
         </div>
-        <ul class="header-menu-right menu-hide-mobile">
+        <ul class="header-menu-right menu-hide-mobile dropdown-notifi">
           <?php if (isset($_SESSION['user'])) { ?>
             <li><a href="<?php echo RootURL . "user/profile/index?user=" . $_SESSION['user']['id']; ?>"><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname']; } else { echo $_SESSION['user']['username']; }  ?></a></li>
             <li><a href="<?php echo RootURL . "login/logout" ?>">Log out</a></li>
@@ -14,7 +14,7 @@
                 <span class="label label-pill label-danger count" style="border-radius:10px;position: absolute; top: 4px; right: -3px;"></span>
                 <span class="fa fa-bell" style="font-size:18px;"></span>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-notifi" style="right: 0; left: auto">
                 <li style="padding: 0 5px;"><a href="#">Data not found</a></li>
               </ul>
             </li>
@@ -64,7 +64,7 @@
             <li><a href="<?php echo RootURL . 'opinions-debates' ?>">Opinions</a></li>
             <li><a href="<?php echo RootURL . 'queries' ?>">Queries</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right dropdown-notifi">
             <?php if (isset($_SESSION['user'])) { ?>
               <li><a href="<?php echo RootURL . "user/profile/index?user=" . $_SESSION['user']['id']; ?>"><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname']; } else { echo $_SESSION['user']['username']; } ?></a></li>
               <li><a href="<?php echo RootURL . "login/logout" ?>">Log out</a></li>
@@ -73,8 +73,8 @@
                   <span class="label label-pill label-danger count" style="border-radius:10px;position: absolute; top: 4px; right: -3px;"></span>
                   <span class="fa fa-bell" style="font-size:18px;"></span>
                 </a>
-                <ul class="dropdown-menu">
-                  <li style="padding: 0 5px;"><a href="#">Data not found</a></li>
+                <ul class="dropdown-menu dropdown-notifi" style="right: 0; left: auto;">
+                  <li style="padding: 0 5px;"><a href="#">Data not found1</a></li>
                 </ul>
               </li>
             <?php } else { ?>

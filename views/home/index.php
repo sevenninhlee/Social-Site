@@ -96,7 +96,7 @@
         <?php } ?>
       </div>
 
-      <h5 class="block-title"><a href="https://enlight21.com/blogs">Community Blogs</a></h5>
+      <h5 class="block-title"><a href="<?php echo RootURL . "community-blogs" ?>">Community Blogs</a></h5>
       <div class="block-wrapper">
         <?php foreach ($this->community_blog as $record) { ?>
           <?php if($record['featured_image']){ ?>

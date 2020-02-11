@@ -1276,7 +1276,7 @@ h4.organiz{
     border: 0;
     border-top: 2px solid #eee;
 }
-.white_box p.review-txt{
+.white_box p.review-txt, .white_box div.review-txt{
 	font-size: 15px;
 }
 .Add_box h5{

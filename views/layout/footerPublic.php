@@ -104,6 +104,7 @@
             $('.read-more-show').on('click', function(e) {
               $(this).next('.read-more-content').removeClass('hide_content');
               $(this).addClass('hide_content');
+              $('.read-more-show-dot').addClass('hide_content')
               e.preventDefault();
             });
 
@@ -112,6 +113,7 @@
               p.addClass('hide_content');
               p.prev('.read-more-show').removeClass('hide_content'); 
               e.preventDefault();
+              $('.read-more-show-dot').removeClass('hide_content')
             });
     </script>
 

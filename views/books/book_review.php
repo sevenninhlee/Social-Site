@@ -80,17 +80,17 @@
                 <div class="media-right" style="width:100%;"> 
                   <h5 style="display: inline-block;width:100%;">
                       <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;"><?= $review['users_firstname'] ?></a>
-                     <div style="float: left ;margin-right: 10px;">rated it <div class="rating"  id="rate3" value="<?= $review['value'] ?>" enabled="true"></div></div>
-                      <p style="float: left ;line-height: 1.8; opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </p>
+                     <div style="float: left ;margin-right: 10px;">rated it <div class="rating"  id="rate3" value="<?= $review['value'] ?>" enabled="true">
+                     </div></div><span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
                   </h5>
-                  <p class="review-txt">
+                  <div class="review-txt">
                   <?php if(strlen($review['review']) > 300) { ?>
-                    <?php echo substr($review['review'], 0, 300) ?>
-                    <div class="read-more-show ">Read more</i></div>
+                    <?php echo substr($review['review'], 0, 300) ?><span class="read-more-show-dot">...</span>
+                    <div class="read-more-show">Read more</i></div>
                     <div class="read-more-content"> <?php echo substr($review['review'], 300, -1) ?>
                     <div class="read-more-hide ">Less <i class="fa fa-angle-up"></i></div> </div>
                   <?php } else echo $review['review'] ; ?>
-                  </p>
+                  </div>
                   <?php html_helper::like($review['id'],'review_rating_model',$review['checkUserLike'], $review['total_like'])?>
                       <li class="pull-right" ><p><a class="reply-btn" onclick="showRelyComment(<?=$review['id'] ?>)"><span class="fa fa-comment" style="font-size:16px;margin-right: 5px;">Add Reply</span></a></p></li>
                       <li class="pull-right forreply_hidden <?= $review['id'] ?>" id="" data_id="<?= $review['id'] ?>" data="0"><p><a class="reply-btn disp-btn-<?= $review['id'] ?>"><span class="fa fa-refresh" style="font-size:16px;margin-right: 5px;">Hidden Reply</span></a></p></li>
@@ -106,16 +106,16 @@
                       <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
                         <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?= $rp['users_firstname'] ?></a> 
-                        <p style="float: left;line-height: 1.8;opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </p> 
+                        <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </span> 
                       </h5>
-                        <p class="review-txt">
+                        <div class="review-txt">
                         <?php if(strlen($rp['review']) > 200) { ?>
-                          <?php echo substr($rp['review'], 0, 200) ?>
-                          <div class="read-more-show ">Read more</i></div>
+                          <?php echo substr($rp['review'], 0, 200) ?><span class="read-more-show-dot">...</span>
+                          <div class="read-more-show">Read more</i></div>
                           <div class="read-more-content"> <?php echo substr($rp['review'], 200, -1) ?>
                           <div class="read-more-hide ">Less <i class="fa fa-angle-up"></i></div> </div>
                         <?php } else echo $rp['review'] ; ?>
-                        </p>
+                        </div>
                       </div>
                     </div>
                  <?php } ?>

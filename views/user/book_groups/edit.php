@@ -551,7 +551,7 @@
                           </div>
                           <div class="form-group ">
                               <button class="btn btn_review btn-sub1 delete-btn space20 delGroup" type="button" id="delItem<?php echo $this->record['id']; ?>" alt="<?php echo $this->record['id']; ?>,deleteGroup">Delete Book Group</button>
-                            <a href="<?php echo RootURL."book-groups/".$this->record['slug']?>" class="btn btn_review btn-sub1 pull-right space20" type="submit">View Book Group Page</a>
+                              <a href="<?php echo RootURL."book-groups/".$this->record['slug']?>" class="btn btn_review btn-sub1 pull-right space20" type="submit">View Book Group Page</a>
                           </div>                        
                         </div>
                       </div>  
@@ -651,8 +651,9 @@ $(document).ready(function(){
   
 });
 
-var data = "<?php echo json_encode($this->records); ?>";
-var book_group_id = "<?php echo $this->record['id']; ?>";
+var data = <?php echo json_encode($this->records); ?>;
+var book_group_id = <?php echo $this->record['id']; ?>;
+
 var RootREL = "<?php echo RootREL; ?>";
 
 // Current

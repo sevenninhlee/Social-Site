@@ -18,6 +18,7 @@
 
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script type="text/javascript" src="<?php echo RootREL; ?>media/libs/ckeditor_v4_full/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo RootREL; ?>media/js/slugify.js"></script>
 <script>
 
 	CKEDITOR.replace( 'description', {
@@ -31,6 +32,10 @@
   
   $("form").bind("change keyup", function(event){
     document.getElementById("btn_submit").disabled = false;
+  });
+  
+  $("#books_form_title").keyup(function(){
+      $("#books_form_slug").val(slugify($(this).val()));
   });
 
 </script>

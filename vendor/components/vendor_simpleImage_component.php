@@ -33,7 +33,7 @@ class vendor_simpleImage_component {
 		        break;
 		}
 		$this->image = $imgfunc_create($filename);
-		// $this->image = $imgfunc_create;
+		// $this->image = $imgfunc_create;// ??
 	}
 
 	function resizeToHeight($h) {

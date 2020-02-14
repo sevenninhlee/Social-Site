@@ -19,6 +19,7 @@
 
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <!-- <script src="/2018/project/php/village-ties/source-code/media/js/encode-character.js"></script> -->
+<script type="text/javascript" src="<?php echo RootREL; ?>media/js/slugify.js"></script>
 <script src="<?php echo RootREL; ?>media/js/searchBook.js"></script>
 <script type="text/javascript" src="<?php echo RootREL; ?>media/libs/ckeditor_v4_full/ckeditor.js"></script>
 <script>
@@ -44,6 +45,11 @@
   var RootREL = "<?php echo RootREL; ?>";
   getDataSearchAutomatic(data, 'getFavTitleAuthor', 'favorite_title_author');
   getDataSearchAutomatic(data, 'getFavIsbn10', 'favorite_isbn');
+
+  $("#books_form_title").keyup(function(){
+      $("#books_form_slug").val(slugify($(this).val()));
+  });
+
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>

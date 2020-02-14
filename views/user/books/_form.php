@@ -137,11 +137,11 @@
 								</div>
 							</div>
 
-							<div class="form-group row hide">
+							<div class="form-group row">
 								<!-- Slug -->
 								<label class="control-label col-md-3" for="slug">Slug</label>
 								<div class="controls col-md-8">
-									<input type="text" id="books_form_slug" name="book[slug]" placeholder="" class="form-control" value="<?php if (isset($this->record['slug'])) echo $this->record['slug']; ?>">
+									<input type="text" id="books_form_slug" name="book[slug]" placeholder="" class="form-control books_form_slug" value="<?php if (isset($this->record['slug'])) echo $this->record['slug']; ?>">
 									<?php if (isset($this->errors['slug'])) { ?>
 										<p class="text-danger"><?= $this->errors['slug']; ?></p>
 									<?php } ?>

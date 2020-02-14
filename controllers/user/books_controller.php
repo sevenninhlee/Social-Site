@@ -33,7 +33,7 @@ class books_controller extends aside_bar_data_controller
 			$bm = new book_article_model();
 			$bookData = $_POST['book'];
 			$bookData['user_id'] = $_SESSION['user']['id'];
-			$bookData['slug'] = vendor_app_util::gen_slug($bookData['title']);
+			// $bookData['slug'] = vendor_app_util::gen_slug($bookData['title']);
 
 			if(isset($_POST['categories_arr'])){
 				$bookData['categories_arr'] = ",".implode(",",$_POST['categories_arr']).",";

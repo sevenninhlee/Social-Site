@@ -500,7 +500,6 @@ function showModalDataSystem(data, altAction)
       $('#form-addbook').show();
 
       var itemBook = $(this).attr('alt');
-      console.log(data[itemBook]);
       if( data[itemBook]) {
           var dataResult = data[itemBook];
       }
@@ -509,6 +508,7 @@ function showModalDataSystem(data, altAction)
         let idFormParent = '#form-addbook';
         if(dataResult['title']) {
           $(idFormParent+' .books_form_title').val(dataResult['title']);
+          $(idFormParent+' .books_form_slug').val(slugify(dataResult['title']));
         }
     
         if(dataResult['book_categories_name']) {
@@ -594,6 +594,7 @@ function SetInforToForm(dataResult, idFormParent)
 {
     if(dataResult['title']) {
         $(idFormParent+' .books_form_title').val(dataResult['title']);
+        $(idFormParent+' .books_form_slug').val(slugify(dataResult['title']));
     }
 
     if(dataResult['categories']) {

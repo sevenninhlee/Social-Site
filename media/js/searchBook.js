@@ -307,7 +307,7 @@ function searchBook(parameter, value, altAction = null)
         type:"GET",
         url: urlSearch,
         success: function (data) {
-          console.log("1111111111111", data);
+          console.log("searchBook succ", data);
             if(data['items'] !== undefined){
                 $('#data_found').hide();
                 $('.text-danger').hide();

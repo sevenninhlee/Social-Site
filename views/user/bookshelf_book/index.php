@@ -689,6 +689,7 @@
 
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <!-- <script src="<?php echo RootREL; ?>media/js/encode-character.js"></script> -->
+<script type="text/javascript" src="<?php echo RootREL; ?>media/js/slugify.js"></script>
 <script src="<?php echo RootREL; ?>media/js/searchBook.js"></script>
 
 
@@ -754,7 +755,7 @@
 $(document).ready(function(){
 
   $('.recomand-txt').click(function(){
-      console.log("11111111111111");
+      console.log("index user bookself");
       $(this).parents('.recomend').find('.edit-book').toggle();
   });
 

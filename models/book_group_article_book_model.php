@@ -21,7 +21,7 @@ class book_group_article_book_model extends vendor_frap_model
 						ON bb.book_group_article_id = bg.id
 					INNER JOIN users u
 					    ON u.id = bg.user_id
-					WHERE bb.book_group_article_id = {$id} AND bb.admin_status = 1".$wheres;
+					WHERE b.in_book_group=1 AND bb.book_group_article_id = {$id} AND bb.admin_status = 1".$wheres;
 		// echo "Start <br/>"; echo '<pre>'; print_r($query);echo '</pre>';exit("End Data");
 		$result = $this->con->query($query);
 		$rows = array();

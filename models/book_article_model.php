@@ -40,6 +40,13 @@ class book_article_model extends vendor_pagination_model
 		return $id;
 	}
 
+	public function getBookInBookGroupLastInsertId($table){
+		$sql = "SELECT LAST_INSERT_ID() as id FROM $table WHERE in_book_group=1";
+		$result = $this->con->query($sql);
+		$id = mysqli_fetch_assoc($result);
+		return $id;
+	}
+
 	public function getBookUserID($userID)
 	{
 		$query = "SELECT id,title FROM $this->table WHERE user_id = {$userID}";
@@ -56,6 +63,7 @@ class book_article_model extends vendor_pagination_model
 
 	public function readPaging($from_record_num, $records_per_page, $filed_oder_by, $conditions)
 	{
+		$conditions = $conditions == ''?'in_book_group = 0':$conditions.' AND in_book_group = 0';
 	    $rows =$this->all('book_articles.*, users.*, book_categories.*, book_articles.id as id, book_articles.slug as slug',['conditions'=>$conditions, 'joins'=>['user', 'book_category'], 'order'=> $filed_oder_by.' DESC LIMIT '.$from_record_num.','.$records_per_page]);
 		return $rows;
 	}

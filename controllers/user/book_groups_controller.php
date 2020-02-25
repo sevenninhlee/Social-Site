@@ -109,7 +109,7 @@ class book_groups_controller extends aside_bar_data_controller
 		if(isset($this->record)) {
 			$bm = new book_article_model();
 			$rtm = new review_rating_model();
-			$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>'', 'joins'=>['book_category']]);
+			$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>' in_book_group = 1 ', 'joins'=>['book_category']]);
 
 			$status_name = 'owner_status';
 			$bgbm = new book_group_article_book_model();
@@ -127,6 +127,7 @@ class book_groups_controller extends aside_bar_data_controller
 			if( $_POST['alt'] === 'edit-search-google') {
 				$bookData = $bm->getRecordWhere([
 					'ISBN' => $dataSearch['ISBN'],
+					'in_book_group' => '1'
 				]);
 				if(empty($bookData)) {
 					$bcm = new book_category_model();
@@ -163,6 +164,7 @@ class book_groups_controller extends aside_bar_data_controller
 					unset($dataSearch['category_search_api']);
 					unset($dataSearch['img_search_api']);
 					unset($dataSearch['book_categories_name']);
+					$dataSearch['in_book_group'] = 1;
 					$dataSearch['id'] = $bm->addRecord($dataSearch);
 				} else {
 					$dataSearch['id'] = $bookData['id'];
@@ -264,7 +266,7 @@ class book_groups_controller extends aside_bar_data_controller
 			$valid = $bm->validator($bookData);
 			if($valid['status']==1) {
 				if($bm->addRecord($bookData)){
-					$current_id = $bm->getLastInsertId('book_articles');
+					$current_id = $bm->getBookInBookGroupLastInsertId('book_articles');
 					$bgrbData = [
 						'book_group_article_id' => $id,
 						'book_id' => $current_id['id'],
@@ -376,6 +378,7 @@ class book_groups_controller extends aside_bar_data_controller
 		if( $_POST['alt'] === 'edit-search-google') {
 			$bookData = $bm->getRecordWhere([
 				'ISBN' => $dataSearch['ISBN'],
+				'in_book_group' => '1'
 			]);
 			if(empty($bookData)) {
 				$bcm = new book_category_model();

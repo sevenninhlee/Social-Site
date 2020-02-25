@@ -1,0 +1,1 @@
+ALTER TABLE `book_articles` ADD `in_book_group` INT NOT NULL DEFAULT '0' AFTER `owner_group_status`;

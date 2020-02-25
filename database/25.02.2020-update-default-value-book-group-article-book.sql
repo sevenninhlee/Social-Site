@@ -1,0 +1,1 @@
+ALTER TABLE `book_group_article_books` CHANGE `user_id_not_read` `user_id_not_read` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;

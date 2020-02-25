@@ -11,7 +11,7 @@ class books_controller extends aside_bar_data_controller
 	public function index()
 	{
 		$userID = isset($_GET['user']) ? $_GET['user'] : $_SESSION['user']['id'];
-		$conditionsTmp = "user_id = {$userID} AND  admin_status = 1  AND  owner_group_status = 0";
+		$conditionsTmp = "user_id = {$userID} AND  admin_status = 1  AND  owner_group_status = 0 AND in_book_group = 0";
 		$book_article = new book_article_model();
 		$bCategory = new book_category_model();
 		$this->records = $book_article->allp('*',['conditions'=>$conditionsTmp, 'joins'=>['book_category'], 'order'=>'created DESC']);
@@ -28,7 +28,7 @@ class books_controller extends aside_bar_data_controller
 		$bcm = new book_category_model();
 		$bm = new book_article_model();
 		$this->categories = $bcm->all('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
-		$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>'', 'joins'=>['book_category']]);
+		$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>' in_book_group = 0 ', 'joins'=>['book_category']]);
 		if(isset($_POST['btn_submit'])) {
 			$bm = new book_article_model();
 			$bookData = $_POST['book'];
@@ -77,7 +77,7 @@ class books_controller extends aside_bar_data_controller
 		$this->record = $bm->getRecord($id);
 		$conditions = '';
 		$book = new book_category_model();
-		$book_article = $bm->allp('*',['conditions'=>'id='.$id, 'joins'=>false, 'order'=>'id ASC']);
+		$book_article = $bm->allp('*',[' in_book_group = 0 AND conditions'=>'id='.$id, 'joins'=>false, 'order'=>'id ASC']);
 
 		$this->categories = $book->all('*',['conditions'=>$conditions, 'joins'=>false, 'order'=>'id ASC']);
 		$this->category = $book->getCatOfBook($book_article['data'][0]['categories_arr']);

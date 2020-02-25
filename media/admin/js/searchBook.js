@@ -603,7 +603,9 @@ function htmlShow(dataSearch, saveBook, addBook, NameAction, alt='')
     var n = str.indexOf("http://books.google.com/books/");
     if(n != -1) {
       srcImg = dataSearch['featured_image'];
-    } else {
+    } else if(str.split(':')[0] === 'http' || str.split(':')[0] === 'https'){
+      srcImg = str;
+    }else {
       srcImg = `${RootREL}media/upload/books/`+ dataSearch['featured_image'];
     }
   }else {

@@ -724,7 +724,9 @@ function htmlShow(dataSearch, saveBook, addBook, NameAction, alt='')
     if(n != -1) {
       let img_url = String(str).replace("http", "https");
       srcImg = img_url;
-    } else {
+    } else if(str.split(':')[0] === 'http' || str.split(':')[0] === 'https'){
+      srcImg = str;
+    }else {
       srcImg = `${RootREL}media/upload/books/`+ dataSearch['featured_image'];
     }
   }else {

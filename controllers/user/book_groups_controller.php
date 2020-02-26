@@ -70,7 +70,8 @@ class book_groups_controller extends aside_bar_data_controller
 				$status = ['status' =>  $value];
 				$bgr_users->editRecord($key, $status);
 			}
-			header("Location: ".vendor_app_util::url(["area" => "user","ctl"=>"book_groups", "act"=>"edit/".$id]));
+			// header("Location: ".vendor_app_util::url(["area" => "user","ctl"=>"book_groups", "act"=>"edit/".$id]));
+			header("Location: ".RootURL."user/book-groups/edit/".$id);
 		}
 		
 		$book_group = new book_category_model();
@@ -94,7 +95,9 @@ class book_groups_controller extends aside_bar_data_controller
 			$valid = $bgm->validator($blogData, $id);
 			if($valid['status']) {
 				if($bgm->editRecord($id, $blogData)) {
-					header("Location: ".vendor_app_util::url(["ctl"=>"book_groups"]));
+					// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups"]));
+					header("Location: ".RootURL."user/book-groups");
+
 				} else {
 					$this->errors = ['database'=>'An error occurred when editing data!'. $bgm->errors['message']];
 					$this->record = $blogData;
@@ -189,7 +192,8 @@ class book_groups_controller extends aside_bar_data_controller
 					} else {
 						if($actm->addRecord($dataRecord)){
 							if($_POST['alt'] === 'edit-search-google'){
-								header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
+								// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
+								header("Location: ".RootURL."user/book-groups/edit/".$_POST['book_group_id']);
 							}
 						} else {
 							$this->errors = ['message'=>'An error occurred when Edit data!'];
@@ -206,7 +210,8 @@ class book_groups_controller extends aside_bar_data_controller
 					} else {
 						if($actm->addRecord($dataRecord)){
 							if($_POST['alt'] === 'edit-search-google'){
-								header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
+								// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
+								header("Location: ".RootURL."user/book-groups/edit/".$_POST['book_group_id']);
 							}
 						} else {
 							$this->errors = [

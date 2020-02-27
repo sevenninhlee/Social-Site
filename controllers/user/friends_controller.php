@@ -56,6 +56,30 @@ class friends_controller extends aside_bar_data_controller
 			];
 			$notify->addRecord($dataNotifie);
 
+				$user_model = new user_model();
+				$userReceiver = $user_model->getRecord($_POST['user_id_friend']);
+				if($userReceiver) $emailReceiver = $userReceiver['email'];
+				else $emailReceiver = $_SESSION['user']['email'];
+
+				//##### SEND MAIL #############################################################
+				//##### $mainReceiver: Nguoi nhan email chinh
+				//#####	$mainReceiverText: Ten nguoi nhan email chinh
+				//#####	$cc: Nguoi duoc CC, thay nhung nguoi khac
+				//#####	$subject: Ten chu de cua email
+				//#####	$content: Noi dung
+				//#############################################################################
+				$mainReceiver = $emailReceiver;
+				$subject="Request friend";
+				$mainReceiverText = 'Enlight21';
+				$cc = '';
+				$href = RootURL."user/profile/index?user=".$_SESSION['user']['id'];
+				$content = "
+				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
+				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
+				";
+				vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+				//########## SEND MAIL ########################################################
+
 			http_response_code(200);
 			echo json_encode($data);
 		}else {

@@ -182,7 +182,7 @@ class profile_controller extends aside_bar_data_controller
 			if (!$checkUser || $email == $_SESSION['user']['email']) {
 
 				$mTo = $email;
-				$title = 'HTML email';
+				$title = 'Enlight21 Notification';
 				$href = RootURL."register";
 						
 				$content = "
@@ -232,18 +232,26 @@ class profile_controller extends aside_bar_data_controller
 					echo json_encode($data); exit();
 				}
 
-				$mTo = $email;
-				$title = 'HTML email';
+				//##### SEND MAIL #############################################################
+				//##### $mainReceiver: Nguoi nhan email chinh
+				//#####	$mainReceiverText: Ten nguoi nhan email chinh
+				//#####	$cc: Nguoi duoc CC, thay nhung nguoi khac
+				//#####	$subject: Ten chu de cua email
+				//#####	$content: Noi dung
+				//#############################################################################
+				$mainReceiver = $email;
+				$subject="Request friend";
+				$mainReceiverText = 'Enlight21';
+				$cc = '';
 				$href = RootURL."user/friends/index?user=".$checkUser['id'];
-						
 				$content = "
 				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
 				";
-				$nTo = 'Village ties';
-				
-				vendor_app_util::sendMail($title, $content, $nTo, $mTo);
+				vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+				//########## SEND MAIL ########################################################
 
+				
 				$friendData['user_id'] = $user_id;
 				$friendData['user_id_friend'] = $checkUser['id'];
 				$friendData['approved'] = 0;

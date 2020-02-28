@@ -42,6 +42,33 @@ class blogs_controller extends aside_bar_data_controller
 			$valid = $bm->validator($blogData);
 			if($valid['status']) {
 				if($bm->addRecord($blogData)){
+
+					if($blogData['featured_my_blog'] == '1'){
+						//##### SEND MAIL #############################################################
+						//##### $mTo: Nguoi nhan email chinh
+						//#####	$nTo: Ten nguoi nhan email chinh
+						//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+						//#####	$title: Ten chu de cua email
+						//#####	$content: Noi dung
+						//#####
+						//#####
+						//#############################################################################
+						$user_model = new user_model();
+						$users_friend = $user_model->getListFriend();
+						$cc = "";
+						$mainReceiver = "";
+						foreach ($users_friend['data'] as $key => $value) {
+							if($key != 0 ) $mainReceiver .= ','.$value['email'];
+							else $mainReceiver .= $value['email'];
+						}
+						$href = RootURL."blogs/".$blogData['slug'];
+						$subject="Englight21: New post from your friend - ".ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']);
+						$mainReceiverText = 'Englight21';
+						$content = "<h3>Your friend has just posted a new post, check detail at: ".$href."</h3>";
+						vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+						//########## SEND MAIL ########################################################
+					}
+
 					$notify = new notify_content_model();
 					$dataNoti = [
 						'user_id' => $_SESSION['user']['id'],

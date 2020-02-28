@@ -270,6 +270,49 @@ class blogs_controller extends vendor_backend_controller {
 		$data = [
 			'admin_status' => $_POST['status']
 		];
+		if( $_POST['status'] == '1'){
+			//##### SEND MAIL #############################################################
+			//##### $mTo: Nguoi nhan email chinh
+			//#####	$nTo: Ten nguoi nhan email chinh
+			//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+			//#####	$title: Ten chu de cua email
+			//#####	$content: Noi dung
+			//#####
+			//#####
+			//#############################################################################
+			$blog = $article->getRecord($id);
+			$user_model = new user_model();
+			$userOwnerBlog = $user_model->getRecord($blog['user_id']);
+			$cc = "";
+			$mainReceiver = $userOwnerBlog['email'];
+			$subject="Englight21: Your post has been approved - ". $blog['title'];
+			$mainReceiverText = 'Englight21';
+			$href = RootURL."blogs/".$blogData['slug'];
+			$content = "<h3>Your post has just been approved, check detail at: ".$href."</h3>";
+			vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+			//########## SEND MAIL ########################################################
+		}else{
+			//##### SEND MAIL #############################################################
+			//##### $mTo: Nguoi nhan email chinh
+			//#####	$nTo: Ten nguoi nhan email chinh
+			//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+			//#####	$title: Ten chu de cua email
+			//#####	$content: Noi dung
+			//#####
+			//#####
+			//#############################################################################
+			$blog = $article->getRecord($id);
+			$user_model = new user_model();
+			$userOwnerBlog = $user_model->getRecord($blog['user_id']);
+			$cc = "";
+			$mainReceiver = $userOwnerBlog['email'];
+			$subject="Englight21: Your post has been rejected - ". $blog['title'];
+			$mainReceiverText = 'Englight21';
+			$href = RootURL."blogs/".$blogData['slug'];
+			$content = "<h3>Your post has just been rejected, check detail at: ".$href."</h3>";
+			vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+			//########## SEND MAIL ########################################################
+		}
 		$this->changeStatus($id, $data, $article, $notify = true);
 	}
 

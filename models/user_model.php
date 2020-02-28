@@ -131,5 +131,36 @@ class user_model extends vendor_frap_model
 		} else $record=false;
 		return $record;
 	}
+
+	public function getListFriend($id_user=null){
+		$userID = isset($id_user) ? $id_user : $_SESSION['user']['id'];
+		$conditionsTmp = "(user_id = {$userID} OR  user_id_friend = {$userID}) AND approved = 1";
+		$friend = new friend_model();
+		$users = $friend->allp('*',['conditions'=>$conditionsTmp, 'order'=>'updated DESC']);
+		$this->user = $this->getRecord($userID);
+		foreach ($users['data'] as $key => $value) {
+			$userIDFriend = ($value['user_id'] == $userID)?$value['user_id_friend']:$value['user_id'];
+			$user = $this->getRecord($userIDFriend);
+
+			$users['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
+			$users['data'][$key]['user_id_friend'] = $userIDFriend;
+			$users['data'][$key]['status_user_admin'] = ($value['user_id'] == $userID)?$value['status_user']:$value['status_user_friend'];
+			$users['data'][$key]['user_avatar'] = $user['avata'];
+			$users['data'][$key]['email'] = $user['email'];
+		}
+
+		return $users;
+	}
+
+	public function getListUserJoinedBookGroup($bookGroupId){
+		$conditionsTmp = "(book_group_article_id = {$bookGroupId}) AND owner_status=1 AND admin_status=1";
+		$book_group_article_user_model = new book_group_article_user_model();
+		$users = $book_group_article_user_model->allp('*',['conditions'=>$conditionsTmp, 'order'=>'updated DESC']);
+		foreach ($users['data'] as $key => $value) {
+			$user = $this->getRecord($value['user_id']);
+			$users['data'][$key]['email'] = $user['email'];
+		}
+		return $users;
+	}
 }
 ?>

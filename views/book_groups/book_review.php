@@ -151,6 +151,7 @@
                 <div class="form-group text-right">
                   
                     <button
+                      groupBookId="<?=$app['prs'][1]?>"
                       class="btn btn_review btn_add_comment"
                       type="button" 
                       checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>"

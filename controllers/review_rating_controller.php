@@ -39,7 +39,7 @@ class review_rating_controller extends vendor_main_controller
         $data['table_model'] = $_POST['table_model'];
         $data['value'] = 0;
         $data['review'] = $_POST['review'];
-        
+
         if ($data['table_model'] == "queries_article_model") {
             $this->usersRating = $rm->getUserRating($data['user_id'], $data['object_article_id'], $data['table_model']);
             // echo "Start <br/>"; echo '<pre>'; print_r($this->usersRating);echo '</pre>';exit("End Data");
@@ -58,6 +58,7 @@ class review_rating_controller extends vendor_main_controller
 
         if ($_POST['review'] != "") {
             if( $id = $rm->addRecord($data)){
+                $data['groupBookId'] = $_POST['groupBookId'];
                 $notify = new notify_content_model();
                 $postm = new $data['table_model']();
                 $postData = $postm->getRecord($data['object_article_id']);
@@ -72,10 +73,68 @@ class review_rating_controller extends vendor_main_controller
                 }
 
                 $commentData = $rm->getRecord($id);
+                if($data['table_model'] == 'blog_article_model'){
+                    //##### SEND MAIL #############################################################
+                    //##### $mTo: Nguoi nhan email chinh
+                    //#####	$nTo: Ten nguoi nhan email chinh
+                    //#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+                    //#####	$title: Ten chu de cua email
+                    //#####	$content: Noi dung
+                    //#####
+                    //#####
+                    //#############################################################################
+                    $article =  new $data['table_model']();
+                    $blog = $article->getRecord($data['object_article_id']);
+                    $user_model = new user_model();
+                    $userOwnerBlog = $user_model->getRecord($blog['user_id']);
+                    $cc = "";
+                    $mainReceiver = $userOwnerBlog['email'];
+                    $subject="Englight21: Your post has a new comment - ". $blog['title'];
+                    $mainReceiverText = 'Englight21';
+                    $href = RootURL."blogs/".$blog['slug'];
+                    $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
+                    vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+                    //########## SEND MAIL ########################################################
+                }else if($data['table_model'] == 'book_article_model'){
+                    
+                    //##### SEND MAIL #############################################################
+                    //##### $mTo: Nguoi nhan email chinh
+                    //#####	$nTo: Ten nguoi nhan email chinh
+                    //#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+                    //#####	$title: Ten chu de cua email
+                    //#####	$content: Noi dung
+                    //#####
+                    //#####
+                    //#############################################################################
+                    $article =  new $data['table_model']();
+
+                    $blog = $article->getRecord($data['object_article_id']);
+                    $book_group_article_books_model = new book_group_article_book_model();
+                    $bookGroupId = $book_group_article_books_model->getRecord($data['groupBookId'])['book_group_article_id'];
+                    $user_model = new user_model();
+
+                    $listUserJoined = $user_model->getListUserJoinedBookGroup($bookGroupId);
+                    $mainReceiver = "";
+
+                    foreach ($listUserJoined['data'] as $key => $value) {
+                        if($key != 0 ) $mainReceiver .= ','.$value['email'];
+                        else $mainReceiver .= $value['email'];
+                    }
+                    $cc = "";
+                    $subject="Englight21: A book in a group you're disscussing has a new comment - ". $blog['title'];
+                    $mainReceiverText = 'Englight21';
+                    $href = RootURL."book-groups/book-review/".$data['groupBookId'];
+                    $content = "<h3>A book in a group you're disscussing has just a new comment, check detail at: ".$href."</h3>";
+                    vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+                    //########## SEND MAIL ########################################################
+                }
+               
+
                 $data = [
                     'status' => 1,
                     'data' => $commentData
                 ];
+
                 http_response_code(200);
                 echo json_encode($data);
             }else {

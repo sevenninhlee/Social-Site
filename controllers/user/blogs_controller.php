@@ -58,8 +58,11 @@ class blogs_controller extends aside_bar_data_controller
 						$cc = "";
 						$mainReceiver = "";
 						foreach ($users_friend['data'] as $key => $value) {
-							if($key != 0 ) $mainReceiver .= ','.$value['email'];
-							else $mainReceiver .= $value['email'];
+							if($value['is_disabled_all'] == '0' && $value['is_notify_friend_post'] == '1'){
+								$mainReceiver .= $value['email'].',';
+							}
+							// if($key != 0 ) $mainReceiver .= ','.$value['email'];
+							// else $mainReceiver .= $value['email'];
 						}
 						$href = RootURL."blogs/".$blogData['slug'];
 						$subject="Englight21: New post from your friend - ".ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']);

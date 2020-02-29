@@ -132,6 +132,28 @@ class user_model extends vendor_frap_model
 		return $record;
 	}
 
+	public function getRecordWithSetting($user_id){
+		$user = $this->getRecord($user_id);
+		// $user = $this->getRecord($user_id, "*", ['conditions'=>"", 'joins'=>['notify_action']]);
+		$notify_action_model = new notify_action_model();
+		$notiActions = $notify_action_model->all('*',['conditions'=>'user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
+
+		foreach ($notiActions as $key => $value) {
+			$user['is_notify_friend_post'] 		= 1;
+			$user['is_notify_friend_request'] 	= 1;
+			$user['is_notify_post_approved'] 	= 1;
+			$user['is_notify_get_new_comment'] 	= 1;
+			$user['is_disabled_all'] 			= 0;
+
+			if($value['action'] == 1) $user['is_notify_friend_post'] 		= $value['status'];
+			if($value['action'] == 2) $user['is_notify_friend_request'] 	= $value['status'];
+			if($value['action'] == 3) $user['is_notify_post_approved'] 		= $value['status'];
+			if($value['action'] == 4) $user['is_notify_get_new_comment'] 	= $value['status'];
+			if($value['action'] == 5) $user['is_disabled_all'] 				= $value['status'];
+		}
+		return $user;
+	}
+
 	public function getListFriend($id_user=null){
 		$userID = isset($id_user) ? $id_user : $_SESSION['user']['id'];
 		$conditionsTmp = "(user_id = {$userID} OR  user_id_friend = {$userID}) AND approved = 1";
@@ -140,13 +162,19 @@ class user_model extends vendor_frap_model
 		$this->user = $this->getRecord($userID);
 		foreach ($users['data'] as $key => $value) {
 			$userIDFriend = ($value['user_id'] == $userID)?$value['user_id_friend']:$value['user_id'];
-			$user = $this->getRecord($userIDFriend);
+			$user = $this->getRecordWithSetting($userIDFriend);
 
 			$users['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
 			$users['data'][$key]['user_id_friend'] = $userIDFriend;
 			$users['data'][$key]['status_user_admin'] = ($value['user_id'] == $userID)?$value['status_user']:$value['status_user_friend'];
 			$users['data'][$key]['user_avatar'] = $user['avata'];
 			$users['data'][$key]['email'] = $user['email'];
+
+			$users['data'][$key]['is_notify_friend_post'] 		= $user['is_notify_friend_post'];
+			$users['data'][$key]['is_notify_friend_request'] 	= $user['is_notify_friend_request'];
+			$users['data'][$key]['is_notify_post_approved'] 	= $user['is_notify_post_approved'];
+			$users['data'][$key]['is_notify_get_new_comment'] 	= $user['is_notify_get_new_comment'];
+			$users['data'][$key]['is_disabled_all'] 			= $user['is_disabled_all'];
 		}
 
 		return $users;
@@ -157,8 +185,14 @@ class user_model extends vendor_frap_model
 		$book_group_article_user_model = new book_group_article_user_model();
 		$users = $book_group_article_user_model->allp('*',['conditions'=>$conditionsTmp, 'order'=>'updated DESC']);
 		foreach ($users['data'] as $key => $value) {
-			$user = $this->getRecord($value['user_id']);
+			$user = $this->getRecordWithSetting($value['user_id']);
 			$users['data'][$key]['email'] = $user['email'];
+
+			$users['data'][$key]['is_notify_friend_post'] 		= $user['is_notify_friend_post'];
+			$users['data'][$key]['is_notify_friend_request'] 	= $user['is_notify_friend_request'];
+			$users['data'][$key]['is_notify_post_approved'] 	= $user['is_notify_post_approved'];
+			$users['data'][$key]['is_notify_get_new_comment'] 	= $user['is_notify_get_new_comment'];
+			$users['data'][$key]['is_disabled_all'] 			= $user['is_disabled_all'];
 		}
 		return $users;
 	}

@@ -86,13 +86,14 @@ class review_rating_controller extends vendor_main_controller
                     $article =  new $data['table_model']();
                     $blog = $article->getRecord($data['object_article_id']);
                     $user_model = new user_model();
-                    $userOwnerBlog = $user_model->getRecord($blog['user_id']);
+                    $userOwnerBlog = $user_model->getRecordWithSetting($blog['user_id']);
                     $cc = "";
                     $mainReceiver = $userOwnerBlog['email'];
                     $subject="Englight21: Your post has a new comment - ". $blog['title'];
                     $mainReceiverText = 'Englight21';
                     $href = RootURL."blogs/".$blog['slug'];
                     $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
+                    if($userOwnerBlog['is_disabled_all'] == '0' && $userOwnerBlog['is_notify_get_new_comment'] == '1')
                     vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
                     //########## SEND MAIL ########################################################
                 }else if($data['table_model'] == 'book_article_model'){
@@ -117,8 +118,11 @@ class review_rating_controller extends vendor_main_controller
                     $mainReceiver = "";
 
                     foreach ($listUserJoined['data'] as $key => $value) {
-                        if($key != 0 ) $mainReceiver .= ','.$value['email'];
-                        else $mainReceiver .= $value['email'];
+                        if($value['is_disabled_all'] == '0' && $value['is_notify_get_new_comment'] == '1'){
+                            $mainReceiver .= $value['email'].',';
+                        }
+                        // if($key != 0 ) $mainReceiver .= ','.$value['email'];
+                        // else $mainReceiver .= $value['email'];
                     }
                     $cc = "";
                     $subject="Englight21: A book in a group you're disscussing has a new comment - ". $blog['title'];

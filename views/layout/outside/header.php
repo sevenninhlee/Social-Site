@@ -32,7 +32,7 @@
             <li><a href="<?php echo RootURL . 'home' ?>">Home</a></li>
             <li><a href="<?php echo RootURL . 'news' ?>">News</a></li>
             <li><a href="<?php echo RootURL . 'films' ?>">Films </a></li>
-            <li><a href="<?php echo RootURL . 'books' ?>">Book</a></li>
+            <li><a href="<?php echo RootURL . 'books' ?>">Reviews</a></li>
             <li><a href="<?php echo RootURL . 'book-groups' ?>">Groups</a></li>
             <li><a href="<?php echo RootURL . 'blogs' ?>">Blogs</a></li>
             <li><a href="<?php echo RootURL . 'opinions-debates' ?>">Opinions</a></li>

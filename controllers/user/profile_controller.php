@@ -182,12 +182,12 @@ class profile_controller extends aside_bar_data_controller
 			if (!$checkUser || $email == $_SESSION['user']['email']) {
 
 				$mTo = $email;
-				$title = 'Enlight21 Notification';
+				$title = 'Invite to join Enlight21';
 				$href = RootURL."register";
 						
 				$content = "
-				<h3>You just received a invitation from ".$_SESSION['user']['firstname'].".</h3>
-				<p>Please <a target='_blank' href='".$href."'>click here </a> to register and  make friends.</p>
+				<h3>This is an invitation to join Enlight21 from ".$_SESSION['user']['firstname'].".</h3>
+				<p>Please <a target='_blank' href='".$href."'>click here </a> to register.</p>
 				";
 				$nTo = 'Village ties';
 				
@@ -252,7 +252,7 @@ class profile_controller extends aside_bar_data_controller
 				vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 				//########## SEND MAIL ########################################################
 
-				
+
 				$friendData['user_id'] = $user_id;
 				$friendData['user_id_friend'] = $checkUser['id'];
 				$friendData['approved'] = 0;

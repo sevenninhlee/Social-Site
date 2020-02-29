@@ -1,4 +1,3 @@
-
 <?php 
   include_once 'views/layout/outside/'.$this->layout.'headerOutside.php';
 ?>
@@ -187,7 +186,7 @@
       </div>
       <div class="col-md-3">
         <?php include_once 'views/layout/'.$this->layout.'find_us_blog_category.php'; ?>
-        <a href="javascript:void(0)" class="btn btn_compose" type="button" isCheckUser= "<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo 'yes'; else echo 'no' ?>" >Create A Book</a>
+        <a href="javascript:void(0)" class="btn btn_compose" type="button" isCheckUser= "<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo 'yes'; else echo 'no' ?>" >Post A Review</a>
         <div class="space30"></div>
         
       </div>

@@ -29,9 +29,11 @@
                       <div class="tab-pane fade in active" id="blogs">
                         <div class="page1">
                           <div class="white_box">
-
+                            <ul class="list-inline">
+                                <li></li>
+                                <li class="pull-right">
                             <?php if($this->isUserLogged):?>
-                            <a href="<?=vendor_app_util::url(array('ctl'=>'queries', 'act' => 'add')); ?>" class="f700 pull-right">Create a new Queries view</a></p>
+                            <a href="<?=vendor_app_util::url(array('ctl'=>'queries', 'act' => 'add')); ?>" class="f700 pull-right">Create a new queries</a></p></li>
                             <?php else:?>
                             <?php friends_controller::helpFriend($this->checkfriend); ?></p>
                             <?php endif;?>
@@ -49,7 +51,7 @@
                                 <?php } else {  ?>
                                   <div class="col-sm-12">
                                 <?php } ?>
-                                  <h3 ><span class="f700">Question:</span><a href="<?php echo RootURL."queries/".$record['slug'] ?>"><span class="f400"><?php echo $record['title'] ?> </a> </span></h3>
+                                  <h3 ><span class="f700"></span><a href="<?php echo RootURL."queries/".$record['slug'] ?>"><span class="f400"><?php echo $record['title'] ?> </a> </span></h3>
                                   <p class="cate_txt space5">
                                   <span>Category:</span>
                                   <?php 
@@ -63,7 +65,7 @@
                                         echo "<a>".rtrim($cat_str," | ")."</a>";
                                       }
                                   ?>
-                                  | <span>Asked By:</span><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname']; } else { echo $_SESSION['user']['username']; } ?></p>
+                                  | <span>Asked By: </span><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname']; } else { echo $_SESSION['user']['username']; } ?></p>
                                   <div class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></div>
 
                                   <div class="grey_box gray1">

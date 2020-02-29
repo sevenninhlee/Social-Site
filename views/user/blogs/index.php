@@ -49,6 +49,7 @@
                                   <div class="col-sm-12">
                                 <?php } ?>
 
+                                  <h3><a href="<?php echo RootURL."blogs/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                   <p class="cate_txt"> 
                                     <span>Category:</span>
                                     <?php 
@@ -62,10 +63,9 @@
                                         echo "<a>".rtrim($cat_str," | ")."</a>";
                                       }
                                     ?>
-                                  | <span>Author:</span><a href="<?php echo (vendor_app_util::url(["ctl"=>"profile", "act"=>"index?user=".$record['user_id']])) ?>"><?= $record['username'] ?></a>
+                                  | <span>Author: </span><a href="<?php echo (vendor_app_util::url(["ctl"=>"profile", "act"=>"index?user=".$record['user_id']])) ?>"><?= $record['username'] ?></a>
                                  
                                 </p>
-                                  <h3><a href="<?php echo RootURL."blogs/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                                   <div class="txt_des"><?php if(strlen($record['short_description']) > 300)  echo substr($record['short_description'], 0, 300).'...'; else echo $record['short_description'] ; ?></div>
                                   <div class="grey_box gray1">
                                     <?php if($this->isUserLogged):?>

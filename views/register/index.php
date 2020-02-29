@@ -36,11 +36,12 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-sm-3">
-                  <label>Username</label>
+                  <label>Username<span>*</span></label>
                 </div>
                 <div class="col-sm-9">
                   <input type="text" name="user[username]" class="form-control" required>
                   <p class='text-danger error-username'></p>
+                  <p style="font-size:14px;">(you can use your first name and first letter of your last name)</p>
                 </div>
               </div>
             </div>

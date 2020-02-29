@@ -40,6 +40,7 @@
                     <?php } else { ?>
                       <div class="col-sm-12">
                       <?php } ?>
+                        <h3><a href="<?php echo RootURL."must-reads/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
                       <p class="cate_txt"> <span>Category:</span>
                         <?php
                             if ($record['ListCate'] == null) {
@@ -52,13 +53,13 @@
                               echo '<a>' . rtrim($cat_str, " | ") . '</a>';
                             }
                             ?>
-                        <h3><a href="<?php echo RootURL."must-reads/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3>
+
 
                         <div class="txt_des"><?php if (strlen($record['description']) > 300)  echo substr($record['description'], 0, 300) . '...';
                                                   else echo $record['description']; ?></div>
 
                         <div class="grey_box">
-                          <a href="<?php echo RootURL."must-reads/".$record['slug'] ?>" > <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
+                          <a href="<?php echo RootURL."must-reads/".$record['slug'] ?>"> <span><i class="fa fa-file-text-o" aria-hidden="true"></i></span> Read More</a>
                         </div>
                       </div>
                     </div>

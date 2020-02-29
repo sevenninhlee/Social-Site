@@ -73,7 +73,7 @@ class login_controller extends vendor_main_controller {
 				$checkemail -> addtocken($tocken,$email);
 
 				$mTo = $email;
-				$title = 'HTML email';
+				$title = 'Forgot your password for Enlight 21';
 				
 				$href = RootABS.
 				  		vendor_app_util::url([

@@ -42,7 +42,7 @@
                         <div class="page1">
                           <div class="white_box">
                             <?php if($this->isUserLogged):?>
-                            <a href="<?=vendor_app_util::url(array('ctl'=>'opinions_debates', 'act' => 'add')); ?>" class="f700 pull-right">Create a new opinions view</a></p>
+                            <a href="<?=vendor_app_util::url(array('ctl'=>'opinions_debates', 'act' => 'add')); ?>" class="f700 pull-right">Create a new opinion</a></p>
                             <?php else:?>
                             <?php friends_controller::helpFriend($this->checkfriend); ?></p>
                             <?php endif;?>

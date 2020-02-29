@@ -59,7 +59,7 @@
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'home'))?>">Home</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'news'))?>">News</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'films'))?>">Films </a></li>
-              <li><a href="<?=vendor_app_util::url(array('ctl'=>'books'))?>">Book</a></li>
+              <li><a href="<?=vendor_app_util::url(array('ctl'=>'books'))?>">Reviews</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'book-groups'))?>">Groups</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'blogs'))?>">Blogs</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'opinions-debates'))?>">Opinions</a></li>

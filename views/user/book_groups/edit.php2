@@ -551,7 +551,7 @@
                           </div>
                           <div class="form-group ">
                               <button class="btn btn_review btn-sub1 delete-btn space20 delGroup" type="button" id="delItem<?php echo $this->record['id']; ?>" alt="<?php echo $this->record['id']; ?>,deleteGroup">Delete Book Group</button>
-                              <a href="<?php echo RootURL."book-groups/".$this->record['slug']?>" class="btn btn_review btn-sub1 pull-right space20" type="submit">View Book Group Page</a>
+                            <a href="<?php echo RootURL."book-groups/".$this->record['slug']?>" class="btn btn_review btn-sub1 pull-right space20" type="submit">View Book Group Page</a>
                           </div>                        
                         </div>
                       </div>  
@@ -580,12 +580,11 @@
 
     <!-- End main sections -->
 
-
+<script>  var RootREL = "<?php echo RootREL; ?>";
 <?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script src="<?php echo RootREL; ?>media/admin/js/form_slug.js"></script>
 <script type="text/javascript" src="<?php echo RootREL; ?>media/libs/ckeditor_v4_full/ckeditor.js"></script>
 <script src="<?php echo RootREL; ?>media/js/encode-character.js"></script>
-<script type="text/javascript" src="<?php echo RootREL; ?>media/js/slugify.js"></script>
 <script src="<?php echo RootREL; ?>media/js/searchBook.js"></script>
 <script>
 
@@ -652,9 +651,8 @@ $(document).ready(function(){
   
 });
 
-var data = <?php echo json_encode($this->records); ?>;
-var book_group_id = <?php echo $this->record['id']; ?>;
-
+var data = "<?php echo json_encode($this->records); ?>";
+var book_group_id = "<?php echo $this->record['id']; ?>";
 var RootREL = "<?php echo RootREL; ?>";
 
 // Current

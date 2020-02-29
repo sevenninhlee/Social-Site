@@ -67,7 +67,7 @@ class login_controller extends vendor_main_controller {
 				$checkemail -> addtocken($tocken,$email);
 
 				$mTo = $email;
-				$title = 'HTML email';
+				$title = 'Forgot your password for Enlight 21';
 				$href = RootABS.
 				  		vendor_app_util::url([
 				  				'ctl'=>'login',
@@ -81,7 +81,7 @@ class login_controller extends vendor_main_controller {
 				$nTo = 'Village ties';
 				
 				vendor_app_util::sendMail($title, $content, $nTo, $mTo);
-				$this->errors = ['message'=>'<a href="#">thank! Please check your email to change password.</a>'];
+				$this->errors = ['message'=>'<a href="#">Request received! Please check your email to change password.</a>'];
 				
 			} else {
 				$this->errors = ['message'=>'Error! Please enter a valid email address.'];

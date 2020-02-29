@@ -69,7 +69,7 @@
                 <div class="media-right" style="width:100%;"> 
                   <h5 style="display: inline-block;width:100%;">
                       <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;"><?= $review['users_firstname'] ?></a>
-                      <p style="float: left ;line-height: 1.8; opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </p>
+                      <span style="float: left ;line-height: 1.8; opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
                   </h5>
                   <p class="review-txt">
                   <?php if(strlen($review['review']) > 300) {
@@ -98,7 +98,7 @@
                       <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
                         <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?= $rp['users_firstname'] ?></a> 
-                        <p style="float: left;line-height: 1.8;opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?></p> 
+                        <span style="float: left;line-height: 1.8;opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?></span> 
                       </h5>
                         <p class="review-txt">
                         <?php

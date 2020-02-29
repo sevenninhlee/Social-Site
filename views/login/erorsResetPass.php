@@ -1,7 +1,6 @@
 <?php include_once 'views/layout/headerLogin.php'; ?>
 <div class="login-box" style="width: 35%; margin: 50px auto;">
   <div class="login-logo" style="text-align: center;font-size: 32px;">
-    <p><b>Village Ties</b> User Side</p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body login-page">

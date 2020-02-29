@@ -174,7 +174,7 @@
           <form >
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter the email you want to invite" required>
+              <input type="email" name="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter and submit just one email at a time." required>
               <small id="emailHelp" class="form-text text-success"></small>
               <small id="errorInvite" class="form-text text-danger"></small>
             </div>

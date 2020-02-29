@@ -1,11 +1,10 @@
 <?php include_once 'views/layout/headerLogin.php'; ?>
 <div class="login-box" style="width: 35%; margin: 50px auto;">
   <div class="login-logo" style="text-align: center;font-size: 32px;">
-    <p><b>Village Ties</b> User Side</p>
+    <p><b>Password Reset</b></p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body login-page">
-    <p style="text-align: center;" class="login-box-msg">Reset Password</p>
     <?php if($this->errors) { ?>
     <div class="alert alert-danger alert-dismissible error-change" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

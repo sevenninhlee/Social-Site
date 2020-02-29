@@ -2,11 +2,10 @@
 
 <div class="login-box" style="width: 35%; margin: 50px auto;">
   <div class="login-logo" style="text-align: center;font-size: 32px;">
-    <p><b>Village Ties</b> User Side</p>
+    <p><b>Password Reset</b></p>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body login-page">
-    <p class="login-box-msg">Forgot password ?</p>
     <p>Enter your email address below and we will send you a link to reset your password.</p>
     <?php if($this->errors) { ?>
     <div class="alert alert-danger alert-dismissible error-change" role="alert">

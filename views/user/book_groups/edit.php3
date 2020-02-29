@@ -585,7 +585,6 @@
 <script src="<?php echo RootREL; ?>media/admin/js/form_slug.js"></script>
 <script type="text/javascript" src="<?php echo RootREL; ?>media/libs/ckeditor_v4_full/ckeditor.js"></script>
 <script src="<?php echo RootREL; ?>media/js/encode-character.js"></script>
-<script type="text/javascript" src="<?php echo RootREL; ?>media/js/slugify.js"></script>
 <script src="<?php echo RootREL; ?>media/js/searchBook.js"></script>
 <script>
 

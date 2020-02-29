@@ -47,7 +47,7 @@
                                         <div class="col-sm-6">
                                           <div class="radio radio-info radio-inline radio-show-name">
                                               <input type="radio" id="showName1" value="0" name="show_name" <?= ($this->user['show_name'] == 0) ? 'checked' : '' ?> >
-                                              <label for="showName1"> Firsname, Lastname </label>
+                                              <label for="showName1"> First Name, Last Name </label>
                                           </div>
                                           <div class="radio radio-inline radio-show-name">
                                               <input type="radio" id="showName2" value="1" name="show_name" <?= ($this->user['show_name'] == 1) ? 'checked' : '' ?>>
@@ -235,7 +235,7 @@
           <form >
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter the email you want to invite" required>
+              <input type="email" name="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter and submit just one email at a time." required>
               <small id="emailHelp" class="form-text text-success"></small>
               <small id="errorInvite" class="form-text text-danger"></small>
             </div>

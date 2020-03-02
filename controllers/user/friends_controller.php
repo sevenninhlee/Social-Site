@@ -77,7 +77,7 @@ class friends_controller extends aside_bar_data_controller
 				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
 				";
-				if($userOwnerBlog['is_disabled_all'] == '0' && $userOwnerBlog['is_notify_friend_request'] == '1')
+				if($userReceiver['is_disabled_all'] == '0' && $userReceiver['is_notify_friend_request'] == '1')
 				vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 				//########## SEND MAIL ########################################################
 

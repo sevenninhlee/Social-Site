@@ -137,14 +137,12 @@ class user_model extends vendor_frap_model
 		// $user = $this->getRecord($user_id, "*", ['conditions'=>"", 'joins'=>['notify_action']]);
 		$notify_action_model = new notify_action_model();
 		$notiActions = $notify_action_model->all('*',['conditions'=>'user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
-
+		$user['is_notify_friend_post'] 		= 1;
+		$user['is_notify_friend_request'] 	= 1;
+		$user['is_notify_post_approved'] 	= 1;
+		$user['is_notify_get_new_comment'] 	= 1;
+		$user['is_disabled_all'] 			= 0;
 		foreach ($notiActions as $key => $value) {
-			$user['is_notify_friend_post'] 		= 1;
-			$user['is_notify_friend_request'] 	= 1;
-			$user['is_notify_post_approved'] 	= 1;
-			$user['is_notify_get_new_comment'] 	= 1;
-			$user['is_disabled_all'] 			= 0;
-
 			if($value['action'] == 1) $user['is_notify_friend_post'] 		= $value['status'];
 			if($value['action'] == 2) $user['is_notify_friend_request'] 	= $value['status'];
 			if($value['action'] == 3) $user['is_notify_post_approved'] 		= $value['status'];

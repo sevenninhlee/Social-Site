@@ -61,29 +61,28 @@
               <h5>Discussion:</h5>
               <hr>
               <div class="reviewRating">
-              <?php foreach ($this->comments['data'] as $review) {  ?>
+               <?php foreach ($this->comments['data'] as $review) {  ?>
                 <div class="media heightclass">
                 <div class="media-left">
                   <img src="<?php echo RootREL; ?>media/upload/<?= ($review['users_avata']) ? 'users/'.$review['users_avata'] : "no_picture.png" ?>" width=150; height=150;>
                 </div>
                 <div class="media-right" style="width:100%;"> 
-                <h5 style="display: inline-block;width:100%;">
-                    <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 20px;font-size: 20px; float: left;"><?php if ($review['users_show_name'] == 0) { echo $review['users_firstname'];} else { echo $review['users_username']; } ?></a>
-                    <span style="float: left ;line-height: 1.8; opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
-                </h5>
-                
-                  <p class="review-txt">
+                  <h5 style="display: inline-block;width:100%;">
+                      <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;"><?= $review['users_firstname'] ?></a>
+                     <div style="float: left ;margin-right: 10px;"></div><span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
+                  </h5>
+                  <div class="review-txt">
                   <?php if(strlen($review['review']) > 300) { ?>
-                    <?php echo substr($review['review'], 0, 300) ?>
-                    <div class="read-more-show ">Read more</i></div>
+                    <?php echo substr($review['review'], 0, 300) ?><span class="read-more-show-dot">...</span>
+                    <div class="read-more-show">Read more</i></div>
                     <div class="read-more-content"> <?php echo substr($review['review'], 300, -1) ?>
                     <div class="read-more-hide ">Less <i class="fa fa-angle-up"></i></div> </div>
                   <?php } else echo $review['review'] ; ?>
-                  </p>
+                  </div>
                   <ul class="list-inline">
-                    <li class="pull-right" ><p><a class="reply-btn" onclick="showRelyComment(<?=$review['id'] ?>)"><span class="fa fa-comment" style="font-size:16px;margin-right: 5px;">Add Reply</span></a></p></li>
-                    <li class="pull-right forreply_hidden <?= $review['id'] ?>" id="" data_id="<?= $review['id'] ?>" data="0"><p><a class="reply-btn disp-btn-<?= $review['id'] ?>"><span class="fa fa-refresh" style="font-size:16px;margin-right: 5px;">Hidden Reply</span></a></p></li>
-                  </ul>
+                      <li class="pull-right" ><p><a class="reply-btn" onclick="showRelyComment(<?=$review['id'] ?>)"><span class="fa fa-comment" style="font-size:16px;margin-right: 5px;">Add Reply</span></a></p></li>
+                      <li class="pull-right forreply_hidden <?= $review['id'] ?>" id="" data_id="<?= $review['id'] ?>" data="0"><p><a class="reply-btn disp-btn-<?= $review['id'] ?>"><span class="fa fa-refresh" style="font-size:16px;margin-right: 5px;">Hidden Reply</span></a></p></li>
+                  </ul>                  
                   <div class="forreply_at <?= $review['id'] ?>" data="<?= $review['id'] ?>">
                     <div class="replayParent <?= $review['id'] ?>">
                       <?php foreach ($this->reply as $rp) {  ?>
@@ -94,24 +93,23 @@
                       </div>
                       <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
-                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?php if ($rp['users_show_name'] == 0) { echo $rp['users_firstname'];} else { echo $rp['users_username']; } ?></a> 
-                        <span style="float: left;line-height: 1.8;opacity: 0.7;"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </span> 
+                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?= $rp['users_firstname'] ?></a> 
+                        <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </span> 
                       </h5>
-                      
-                        <p class="review-txt">
+                        <div class="review-txt">
                         <?php if(strlen($rp['review']) > 200) { ?>
-                          <?php echo substr($rp['review'], 0, 200) ?>
-                          <div class="read-more-show ">Read more</i></div>
+                          <?php echo substr($rp['review'], 0, 200) ?><span class="read-more-show-dot">...</span>
+                          <div class="read-more-show">Read more</i></div>
                           <div class="read-more-content"> <?php echo substr($rp['review'], 200, -1) ?>
                           <div class="read-more-hide ">Less <i class="fa fa-angle-up"></i></div> </div>
                         <?php } else echo $rp['review'] ; ?>
-                        </p>
+                        </div>
                       </div>
                     </div>
                  <?php } ?>
                   <?php } ?>
                   </div>
-                   <div class="forreply <?= $review['id'] ?>">
+                  <div class="forreply <?= $review['id'] ?>">
                     <textarea class="form-control replay" id="reply_<?= $review['id'] ?>" rows="4" placeholder="Add Reply"></textarea>
                     <div class="text-right">
                       <button class="btn btn-review space20 btn-cancle" type="button">Cancel</button>
@@ -131,16 +129,16 @@
               </div>
 						  <?php } ?>
 
-               
+                          
               </div>
-                <h5>Add Comment:</h5>
+              <h5>Add Comment:</h5>
               <hr>
               <form>
 
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-2">
-                      <label>Comment:</label>
+                    <label>Comment:</label>
                     </div>
                     <div class="col-sm-10">
                       <textarea cols="12" rows="7" id="review" class="form-control review"></textarea>
@@ -149,8 +147,8 @@
                 </div>
 
                 <div class="form-group text-right">
-                  
-                    <button
+
+                   <button
                       groupBookId="<?=$app['prs'][1]?>"
                       class="btn btn_review btn_add_comment"
                       type="button" 
@@ -158,8 +156,8 @@
                       data="0,<?= $this->bgr_id ?>,book_article_model"
                     >
                       Add Comment
-                    </button>    
-                                    
+                    </button>     
+
                 </div>
 
               </form>

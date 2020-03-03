@@ -93,7 +93,7 @@ class review_rating_controller extends vendor_main_controller
                     $mainReceiverText = 'Englight21';
                     $href = RootURL."blogs/".$blog['slug'];
                     $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
-                    if($userOwnerBlog['is_disabled_all'] == '0' && $userOwnerBlog['is_notify_get_new_comment'] == '1')
+                    if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_get_new_comment'] == '1')
                     vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
                     //########## SEND MAIL ########################################################
                 }else if($data['table_model'] == 'book_article_model'){
@@ -118,7 +118,7 @@ class review_rating_controller extends vendor_main_controller
                     $mainReceiver = "";
 
                     foreach ($listUserJoined['data'] as $key => $value) {
-                        if($value['is_disabled_all'] == '0' && $value['is_notify_get_new_comment'] == '1'){
+                        if($value['is_disabled_all_email'] == '0' && $value['is_email_get_new_comment'] == '1'){
                             $mainReceiver .= $value['email'].',';
                         }
                         // if($key != 0 ) $mainReceiver .= ','.$value['email'];

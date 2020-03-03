@@ -27,10 +27,40 @@ class profile_controller extends aside_bar_data_controller
 		} else $this->bulletin = "None";
 
 		$notiAction = new notify_action_model();
-		$this->notiActions = $notiAction->all('*',['conditions'=>'user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
+		$this->notiActions = $notiAction->all('*',['conditions'=>' action in (1,2,3,4,5) AND user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
 		if(isset($_POST['btn_save_submit'])) {
 			$datas = $_POST['action'];
 			if(empty($this->notiActions)) {
+				foreach ($datas as $key => $value) {
+					$notiActionData = [
+						'user_id' => $user_id,
+						'action' => $key,
+						'status' => $value
+					];
+					if($notiAction->addRecord($notiActionData)){
+						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+					}	
+				}
+			} else {
+				foreach ($datas as $key => $value) {
+					$getNotiAction = $notiAction->getRecordWhere([
+						'user_id' => $user_id,
+						'action' => $key,
+					]);
+					$notiActionData = [
+						'status' => $value
+					];
+					if($notiAction->editRecord($getNotiAction['id'], $notiActionData)){
+						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+					}
+				}
+			}
+			
+		}
+		$this->emailActions = $notiAction->all('*',['conditions'=>' action in (6,7,8,9,10) AND user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
+		if(isset($_POST['btn_save_submit_email'])) {
+			$datas = $_POST['action'];
+			if(empty($this->emailActions)) {
 				foreach ($datas as $key => $value) {
 					$notiActionData = [
 						'user_id' => $user_id,
@@ -249,7 +279,7 @@ class profile_controller extends aside_bar_data_controller
 				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
 				";
-				if($user_requested['is_disabled_all'] == '0' && $user_requested['is_notify_friend_request'] == '1')
+				if($user_requested['is_disabled_all_email'] == '0' && $user_requested['is_email_friend_request'] == '1')
 				vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 				//########## SEND MAIL ########################################################
 

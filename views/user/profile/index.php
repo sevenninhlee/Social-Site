@@ -140,7 +140,7 @@
                             <h5 class="space30">Notify me when:</h5>
                             <form class="radio-form" action="<?php echo vendor_app_util::url(["area" => "user", "ctl"=>"profile", "act"=>"index"]) ?>" method="post" enctype="multipart/form-data">                
                               <div class="row">
-                                <div class="col-md-8" style="padding: 0 25px;">
+                                <div class="col-md-8" style="padding: 0 25px; font-size: 15px;">
                                   <?php foreach ($app['notify_actions'] as $key => $notify) { 
                                     if(!empty($this->notiActions)) {
                                       foreach ($this->notiActions as $value) {
@@ -193,7 +193,67 @@
                                 </div>
                               </div>
                             </form>  
+
+
+                            <h5 class="space30">Email me when:</h5>
+                            <form class="radio-form" action="<?php echo vendor_app_util::url(["area" => "user", "ctl"=>"profile", "act"=>"index"]) ?>" method="post" enctype="multipart/form-data">                
+                              <div class="row">
+                                <div class="col-md-8" style="padding: 0 25px; font-size: 15px;">
+                                  <?php foreach ($app['email_actions'] as $key => $email) { 
+                                    if(!empty($this->emailActions)) {
+                                      foreach ($this->emailActions as $value) {
+                                        if((int)$key == (int)$value['action']) { ?>
+                                          <div class="form-group">
+                                            <div class="row">
+                                              <div class="col-sm-7">
+                                                <label><?= $email['value'] ?></label>
+                                              </div>
+                                              <div class="col-sm-5">
+                                                <div class="radio radio-info radio-inline">
+                                                    <input type="radio" id="inlineRadio<?= $key ?>" value="1" name="action[<?= $key ?>]" <?= ($value['status'] == 1) ? 'checked' : '' ?> >
+                                                    <label for="inlineRadio<?= $key ?>"> Yes </label>
+                                                </div>
+                                                <div class="radio radio-inline">
+                                                    <input type="radio" id="inlineRadio<?= $key+10 ?>" value="0" name="action[<?= $key ?>]" <?= ($value['status'] == 0) ? 'checked' : '' ?>>
+                                                    <label for="inlineRadio<?= $key+10 ?>"> No </label>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                  <?php 
+                                        }
+                                      }
+                                    } else { 
+                                      ?>
+                                      <div class="form-group">
+                                        <div class="row">
+                                          <div class="col-sm-7">
+                                            <label><?= $email['value'] ?></label>
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <div class="radio radio-info radio-inline">
+                                                <input type="radio" id="inlineRadio<?= $key ?>" value="1" name="action[<?= $key ?>]" <?= ($email['status'] == 1) ? 'checked' : '' ?>>
+                                                <label for="inlineRadio<?= $key ?>"> Yes </label>
+                                            </div>
+                                            <div class="radio radio-inline">
+                                                <input type="radio" id="inlineRadio<?= $key+10 ?>" value="0" name="action[<?= $key ?>]" <?= ($email['status'] == 0) ? 'checked' : '' ?> >
+                                                <label for="inlineRadio<?= $key+10 ?>"> No </label>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  <?php }} ?>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group text-right space100">
+                                    <button type="button" class="btn btn_review" id="invite" data-toggle="modal" data-target="#myModal">Invite Friends</button>
+                                    <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit_email" type="submit">Save</button>
+                                  </div>                  
+                                </div>
+                              </div>
+                            </form>  
                             <?php } ?>
+
                           </div>
                         </div>                        
                       </div>

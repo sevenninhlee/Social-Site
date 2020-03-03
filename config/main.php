@@ -83,7 +83,15 @@ $app['notify_actions'] = [
 	'2' => ['value' => 'I’m getting a new friend request' , 'status' => '1'],
 	'3' => ['value' => 'My post get’s approved' , 'status' => '1'],
 	'4' => ['value' => 'I’m getting a new comment' , 'status' => '1'],
-	'5' => ['value' => 'Disable all email notifications' , 'status' => '0'],
+	'5' => ['value' => 'Disable all notifications' , 'status' => '0'],
+];
+
+$app['email_actions'] = [
+	'6' => ['value' => 'My Friends post a post' , 'status' => '1'],
+	'7' => ['value' => 'I’m getting a new friend request' , 'status' => '1'],
+	'8' => ['value' => 'My post get’s approved' , 'status' => '1'],
+	'9' => ['value' => 'I’m getting a new comment' , 'status' => '1'],
+	'10' => ['value' => 'Disable all email notifications' , 'status' => '0']
 ];
 
 include_once(__DIR__.'/database.php');

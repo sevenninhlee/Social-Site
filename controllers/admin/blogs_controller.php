@@ -289,7 +289,7 @@ class blogs_controller extends vendor_backend_controller {
 			$mainReceiverText = 'Englight21';
 			$href = RootURL."blogs/".$blogData['slug'];
 			$content = "<h3>Your post has just been approved, check detail at: ".$href."</h3>";
-			if($userOwnerBlog['is_disabled_all'] == '0' && $userOwnerBlog['is_notify_post_approved'] == '1')
+			if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_post_approved'] == '1')
 			vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 			//########## SEND MAIL ########################################################
 		}else{
@@ -311,7 +311,7 @@ class blogs_controller extends vendor_backend_controller {
 			$mainReceiverText = 'Englight21';
 			$href = RootURL."blogs/".$blogData['slug'];
 			$content = "<h3>Your post has just been rejected, check detail at: ".$href."</h3>";
-			if($userOwnerBlog['is_disabled_all'] == '0' && $userOwnerBlog['is_notify_post_approved'] == '1')
+			if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_post_approved'] == '1')
 			vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 			//########## SEND MAIL ########################################################
 		}

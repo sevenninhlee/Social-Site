@@ -58,7 +58,7 @@ class blogs_controller extends aside_bar_data_controller
 						$cc = "";
 						$mainReceiver = "";
 						foreach ($users_friend['data'] as $key => $value) {
-							if($value['is_disabled_all'] == '0' && $value['is_notify_friend_post'] == '1'){
+							if($value['is_disabled_all_email'] == '0' && $value['is_email_friend_post'] == '1'){
 								$mainReceiver .= $value['email'].',';
 							}
 							// if($key != 0 ) $mainReceiver .= ','.$value['email'];

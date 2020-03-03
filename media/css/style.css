@@ -502,7 +502,7 @@ input[type="file"]{
 	font-size: 20px;
 }
 .white_box p{
-	font-size: 20px;
+	font-size: 15px;
 	line-height: 30px;
 	/* font-weight: 600; */
   word-wrap: break-word;
@@ -1269,7 +1269,7 @@ h4.organiz{
 	margin-top: 10px;
 }
 .white_box h5,.white_box2 h5{
-	font-size: 20px;
+	font-size: 15px;
 	font-weight: 700;
 	margin-top: 0;
   padding: 15px 0;

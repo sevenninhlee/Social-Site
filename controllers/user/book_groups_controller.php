@@ -128,10 +128,11 @@ class book_groups_controller extends aside_bar_data_controller
 			$dataSearch = $_POST['book'];
 			$action = trim($_POST['action'], " ");
 			if( $_POST['alt'] === 'edit-search-google') {
-				$bookData = $bm->getRecordWhere([
-					'ISBN' => $dataSearch['ISBN'],
-					'in_book_group' => '1'
-				]);
+				// $bookData = $bm->getRecordWhere([
+				// 	'ISBN' => $dataSearch['ISBN'],
+				// 	'in_book_group' => '1'
+				// ])
+				$bookData = [];
 				if(empty($bookData)) {
 					$bcm = new book_category_model();
 					if($bcm->isCategory($dataSearch['book_categories_name'])){
@@ -533,6 +534,16 @@ class book_groups_controller extends aside_bar_data_controller
 		global $app;
 		$ids = $app['prs']['id'];
 		$article = new book_group_article_book_model();
+		$book_article_model = new book_article_model();
+
+		//find books which in bookgroup and delete---------------------------------
+		$arrId = explode(',', $ids);
+		foreach ($arrId as $key => $value) {
+			$record = $article->getRecord($value);
+			$book_article_model->delRecord($record['book_id']);
+		}
+		//------------------------------------------------------------------------
+
 		$this->handleDeleteMany($ids, $article);
 	}
 

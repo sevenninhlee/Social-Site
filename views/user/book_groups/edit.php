@@ -2,30 +2,6 @@
 ?>
     <div class="modal fade" id="myModalSearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalCenterTitle">Result Search System</h4>
-          </div>
-          <div class="modal-body" id="body_1">
-            <div class="form-group">
-              <div class="col-sm-4">
-                <p>
-                  <img src="" alt="">
-                </p>
-              </div>
-              <div class="col-sm-5">
-                <p> <strong>Title:</strong> </p>
-                <p> <strong>Author:</strong> </p>
-              </div>
-              <div class="col-sm-3">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> -->
-          </div>
-        </div>
       </div>
       <!-- Modal google-->
       <div class="modal-dialog modal-dialog-centered" role="document">

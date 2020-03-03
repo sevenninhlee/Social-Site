@@ -193,7 +193,52 @@ class review_rating_controller extends vendor_main_controller
         }
 
     }
-    
+
+    public function editComment()
+    {
+        $id = $_POST['id'];
+        $data['review'] = $_POST['review'];
+        $rm = new review_rating_model();
+
+        if($_POST['review'] != "" ) {
+            if($rm->editRecord($id, $data)) {
+                $data = [
+                    'status' => 1
+                ];
+                http_response_code(200);
+                echo json_encode($data);
+            } else {
+                $data = [
+                    'status' => 0,
+                    'message' => 'An error occurred when editting data!'
+                ];
+                http_response_code(200);
+                echo json_encode($data);
+            }
+        } 
+    }
+    public function deleteComment()
+    {
+        $id = $_POST['id'];
+        $rm = new review_rating_model();
+
+        if($_POST['id'] != "" ) {
+            if($rm->delRecord($id)) {
+                $data = [
+                    'status' => 1
+                ];
+                http_response_code(200);
+                echo json_encode($data);
+            } else {
+                $data = [
+                    'status' => 0,
+                    'message' => 'An error occurred when deleting data!'
+                ];
+                http_response_code(200);
+                echo json_encode($data);
+            }
+        } 
+    }
 }
 
 ?>

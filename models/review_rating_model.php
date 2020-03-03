@@ -59,11 +59,12 @@ class review_rating_model extends vendor_frap_model
 			}
 		} else {
 			if($review != "" ) {
-				if($this->addRecord($ratingData)) {
+				if($id = $this->addRecord($ratingData)) {
 					$data = [
 						'succsess' => 1,
 						'data' => [
 							'text' => $review,
+							'id' => $id,
 							'user' => $_SESSION['user']
 						],
 					];

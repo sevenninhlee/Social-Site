@@ -1795,6 +1795,27 @@ li.remove-line{
 .reply-btn{
   cursor: pointer;
 }
+.edit-delete-comment{
+	position: relative;
+}
+
+.edit-delete-comment .edit-delete-comment-act{
+ font-style: italic;
+ font-size: 14px;
+ text-align: right;
+}
+.edit-delete-comment .edit-delete-comment-act span{
+	color: #337ab7;
+}
+.edit-delete-comment .edit-delete-comment-act span:hover{
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.edit-delete-comment .edit-delete-comment-content{
+	display: none;
+}
+
 /* ===========ALL MEDIA QUERIES============ */
 @media(max-width:1199px){
 	.select_list {

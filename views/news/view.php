@@ -69,7 +69,30 @@
                       <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;"><?= $review['users_firstname'] ?></a>
                       <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
                   </h5>
-                  <p class="review-txt">
+
+                  <?php if($review['user_id'] == $_SESSION['user']['id']){ ?>
+                    <div class="edit-delete-comment">
+                        <div class="edit-delete-comment-act"><span class="CommentItemAction" typeAct="edit" data="<?=$review['id']?>">Edit</span> <span typeAct="delete" class="CommentItemAction" data="<?=$review['id']?>">Delete</span></div>
+                        <div class="edit-delete-comment-content" id="CommentItemAction-<?=$review['id']?>">
+                            <textarea class="form-control replay" id="CommentItemActionContent-<?=$review['id']?>" rows="4" placeholder="Add Reply"><?=trim($review['review'])?></textarea>
+                            <div class="text-right">
+                                <button class="btn btn-review space20 btn-cancle CommentItemAction" type="button" typeAct="cancel" data="<?=$review['id']?>">Cancel</button>
+                                <button 
+                                    class="btn btn-review space20 CommentItemAction" 
+                                    type="button"
+                                    typeAct="submit" 
+                                    data="<?=$review['id']?>"
+                                    RootREL = "<?php echo RootREL; ?>"
+                                    checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>"
+                                >
+                                    Edit
+                                </button>                              
+                            </div> 
+                        </div>
+                    </div>
+                <?php } ?>
+
+                  <div class="review-txt review-txt-<?=$review['id']?>">
                   <?php if(strlen($review['review']) > 300) {
                     $stringCut = substr($review['review'],0,300);
                     $endPoint = strrpos($stringCut, ' ');
@@ -79,7 +102,7 @@
                       <span class="read-more-content"> <?php echo substr($review['review'], $endPoint, -1) ?>
                       <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
                   <?php } else echo $review['review'] ; ?>
-                  </p>
+                  </div>
                   <ul class="list-inline">
                     <li><p></p></li>
                     <li class="pull-right" ><p><a class="reply-btn" onclick="showRelyComment(<?=$review['id'] ?>)"><span class="fa fa-comment" style="font-size:16px;margin-right: 5px;">Add Reply</span></a></p></li>
@@ -98,7 +121,29 @@
                         <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?= $rp['users_firstname'] ?></a> 
                         <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?></span> 
                       </h5>
-                        <p class="review-txt">
+                      <?php if($rp['user_id'] == $_SESSION['user']['id']){ ?>
+                        <div class="edit-delete-comment">
+                            <div class="edit-delete-comment-act"><span class="CommentItemAction" typeAct="edit" data="<?=$rp['id']?>">Edit</span> <span typeAct="delete" class="CommentItemAction" data="<?=$rp['id']?>">Delete</span></div>
+                            <div class="edit-delete-comment-content" id="CommentItemAction-<?=$rp['id']?>">
+                                <textarea class="form-control replay" id="CommentItemActionContent-<?=$rp['id']?>" rows="4" placeholder="Add Reply"><?=trim($rp['review'])?></textarea>
+                                <div class="text-right">
+                                    <button class="btn btn-rp space20 btn-cancle CommentItemAction" type="button" typeAct="cancel" data="<?=$rp['id']?>">Cancel</button>
+                                    <button 
+                                        class="btn btn-rp space20 CommentItemAction" 
+                                        type="button"
+                                        typeAct="submit" 
+                                        data="<?=$rp['id']?>"
+                                        RootREL = "<?php echo RootREL; ?>"
+                                        checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>"
+                                    >
+                                        Edit
+                                    </button>                              
+                                </div> 
+                            </div>
+                        </div>
+                      <?php } ?>
+
+                        <div class="review-txt review-txt-<?=$rp['id']?>">
                         <?php
                           if(strlen($rp['review']) > 200) { 
                             $stringCut = substr($rp['review'], 0, 200);
@@ -109,7 +154,7 @@
                           <span class="read-more-content"> <?php echo substr($rp['review'], $endPoint, -1) ?>
                           <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
                         <?php } else echo $rp['review'] ; ?>
-                        </p>
+                        </div>
                       </div>
                     </div>
                  <?php } ?>

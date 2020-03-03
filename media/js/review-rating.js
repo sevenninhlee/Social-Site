@@ -165,9 +165,30 @@
                             <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${resObject.data.user.firstname}</a> 
                             <span class="text-date-comment"> ` + month + ' ' + d.getDate() + ', ' +  d.getFullYear() + ' ' + time + ` </span> 
                         </h5>
-                        <p class="review-txt">
+
+                        <div class="edit-delete-comment">
+                            <div class="edit-delete-comment-act"><span class="CommentItemAction" typeAct="edit" data="${resObject.data.id}">Edit</span> <span typeAct="delete" class="CommentItemAction" data="${resObject.data.id}">Delete</span></div>
+                                <div class="edit-delete-comment-content" id="CommentItemAction-${resObject.data.id}">
+                                    <textarea class="form-control replay" id="CommentItemActionContent-${resObject.data.id}" rows="4" placeholder="Add Reply">${resObject.data.text}</textarea>
+                                    <div class="text-right">
+                                        <button class="btn btn-review space20 btn-cancle CommentItemAction" type="button" typeAct="cancel" data="${resObject.data.id}">Cancel</button>
+                                        <button 
+                                            class="btn btn-review space20 CommentItemAction" 
+                                            type="button"
+                                            typeAct="submit" 
+                                            data="${resObject.data.id}"
+                                            RootREL = "${RootREL}"
+                                            checkUser="true"
+                                        >
+                                            Edit
+                                        </button>                              
+                                    </div> 
+                                </div>
+                            </div>
+
+                        <div class="review-txt" review-txt-${resObject.data.id}">
                             ${resObject.data.text}
-                        </p>
+                        </div>
                         </div>
                         </div>
                         `);
@@ -219,3 +240,65 @@
         } 
       })
 
+
+        $('body').on('click', '.CommentItemAction', function(){
+            console.log('id=', $(this).attr('data') );
+            let id = $(this).attr('data');
+            let typeact = $(this).attr('typeact');
+            switch (typeact) {
+                case "edit":
+                    $('#CommentItemAction-'+id).css('display', 'block');
+                    $('.review-txt-'+id).css('display', 'none');
+                    break;
+                case "cancel":
+                    $('#CommentItemAction-'+id).css('display', 'none');
+                    $('.review-txt-'+id).css('display', 'block');
+                    break;
+                case "submit":
+                    let review = $('#CommentItemActionContent-'+id).val();
+                    console.log('submit' , review);
+                    $.ajax({
+                        type:"POST",
+                        url:rootUrl+'review_rating/editComment',
+                        data:{
+                            review,
+                            id
+                        },
+                        success: function(res){
+                          var resObject = JSON.parse(res);
+                          console.log('resObject', resObject);
+                          if( resObject.status == 1) {
+                              location.reload();
+                            } else {
+                                confirm(resObject.message);
+                            }
+                        }
+                    });
+                    break;
+                case "delete":
+                    console.log('delete' );
+                    let isDelete = confirm("Are you sure to delete this comment ?");
+                    if(isDelete){
+                        $.ajax({
+                            type:"POST",
+                            url:rootUrl+'review_rating/deleteComment',
+                            data:{
+                                id
+                            },
+                            success: function(res){
+                              var resObject = JSON.parse(res);
+                              console.log('resObject', resObject);
+                              if( resObject.status == 1) {
+                                  location.reload();
+                                } else {
+                                    confirm(resObject.message);
+                                }
+                            }
+                        });
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        })

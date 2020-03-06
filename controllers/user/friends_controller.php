@@ -158,6 +158,31 @@ class friends_controller extends aside_bar_data_controller
 			];
 
 			$user_model = new user_model();
+			$userReceiver = $user_model->getRecordWithSetting($_POST['user_id_friend']);
+			if($userReceiver) $emailReceiver = $userReceiver['email'];
+			else $emailReceiver = $_SESSION['user']['email'];
+
+			//##### SEND MAIL #############################################################
+			//##### $mainReceiver: Nguoi nhan email chinh
+			//#####	$mainReceiverText: Ten nguoi nhan email chinh
+			//#####	$cc: Nguoi duoc CC, thay nhung nguoi khac
+			//#####	$subject: Ten chu de cua email
+			//#####	$content: Noi dung
+			//#############################################################################
+			$mainReceiver = $emailReceiver;
+			$subject="Accepted friend";
+			$mainReceiverText = 'Enlight21';
+			$cc = '';
+			$href = RootURL."user/profile/index?user=".$_SESSION['user']['id'];
+			$content = "
+			<h3>You have just been friend with ".$_SESSION['user']['firstname'].".</h3>
+			<p>Please <a target='_blank' href='".$href."'>click here </a> to check the friend.</p>
+			";
+			if($userReceiver['is_disabled_all_email'] == '0' && $userReceiver['is_email_friend_request'] == '1')
+			vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+			//########## SEND MAIL ########################################################
+
+			$user_model = new user_model();
 			$user = $user_model->getRecord($_SESSION['user']['id']);
 			$notify = new notify_content_model();
 			$dataNotifie = [

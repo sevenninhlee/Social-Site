@@ -282,7 +282,7 @@ class blogs_controller extends vendor_backend_controller {
 			//#############################################################################
 			$blog = $article->getRecord($id);
 			$user_model = new user_model();
-			$userOwnerBlog = $user_model->getRecord($blog['user_id']);
+			$userOwnerBlog = $user_model->getRecordWithSetting($blog['user_id']);
 			$cc = "";
 			$mainReceiver = $userOwnerBlog['email'];
 			$subject="Englight21: Your post has been approved - ". $blog['title'];
@@ -304,7 +304,7 @@ class blogs_controller extends vendor_backend_controller {
 			//#############################################################################
 			$blog = $article->getRecord($id);
 			$user_model = new user_model();
-			$userOwnerBlog = $user_model->getRecord($blog['user_id']);
+			$userOwnerBlog = $user_model->getRecordWithSetting($blog['user_id']);
 			$cc = "";
 			$mainReceiver = $userOwnerBlog['email'];
 			$subject="Englight21: Your post has been rejected - ". $blog['title'];

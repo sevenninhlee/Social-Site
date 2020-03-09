@@ -35,7 +35,7 @@
             success: function(res){
                 var resObject = JSON.parse(res);
                 if( resObject.succsess == 1) {
-                    location.replace(rootUrl+'books/book_review/'+slugObject);
+                    location.replace(rootUrl+'books/'+slugObject);
                 } else {
                     confirm(resObject.message);
                 }

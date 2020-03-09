@@ -22,7 +22,13 @@
             <div class="white_box">                  
               <div class="media heightclass">
                 <div class="media-left" style="width: 160px;">
-                  <img src="<?php echo RootREL; ?>media/upload/<?= ($this->record['featured_image']) ? 'books/'.$this->record['featured_image'] : "no_picture.png" ?>" width=150; height=200; >
+                  <img src="<?php $first = '';
+                        list($first) = explode('://', $this->record['featured_image']);
+                            if($first == 'http' || $first == 'https'){ echo $this->record['featured_image'];
+                            }else {
+                              echo RootREL."media/upload/".($this->record['featured_image']) ? 'books/'.$this->record['featured_image'] : "no_picture.png";
+                            }
+                    ?>" width=150; height=200; >
                       <div class="rating" style=" margin-left: 30px;" id="rate3" value="<?= ($this->getAveRating) ? $this->getAveRating : 0 ?>" enabled="true"></div>
                 </div>
                 <div class="media-right">

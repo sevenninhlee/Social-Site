@@ -28,64 +28,67 @@ class profile_controller extends aside_bar_data_controller
 
 		$notiAction = new notify_action_model();
 		$this->notiActions = $notiAction->all('*',['conditions'=>' action in (1,2,3,4,5) AND user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
+		$this->emailActions = $notiAction->all('*',['conditions'=>' action in (6,7,8,9,10) AND user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
 		if(isset($_POST['btn_save_submit'])) {
 			$datas = $_POST['action'];
 			if(empty($this->notiActions)) {
 				foreach ($datas as $key => $value) {
-					$notiActionData = [
-						'user_id' => $user_id,
-						'action' => $key,
-						'status' => $value
-					];
-					if($notiAction->addRecord($notiActionData)){
-						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
-					}	
+					if($key < 6){
+						$notiActionData = [
+							'user_id' => $user_id,
+							'action' => $key,
+							'status' => $value
+						];
+						if($notiAction->addRecord($notiActionData)){
+							header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+						}	
+					}
 				}
 			} else {
 				foreach ($datas as $key => $value) {
-					$getNotiAction = $notiAction->getRecordWhere([
-						'user_id' => $user_id,
-						'action' => $key,
-					]);
-					$notiActionData = [
-						'status' => $value
-					];
-					if($notiAction->editRecord($getNotiAction['id'], $notiActionData)){
-						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+					if($key < 6){
+						$getNotiAction = $notiAction->getRecordWhere([
+							'user_id' => $user_id,
+							'action' => $key,
+						]);
+						$notiActionData = [
+							'status' => $value
+						];
+						if($notiAction->editRecord($getNotiAction['id'], $notiActionData)){
+							header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+						}
 					}
 				}
 			}
-			
-		}
-		$this->emailActions = $notiAction->all('*',['conditions'=>' action in (6,7,8,9,10) AND user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
-		if(isset($_POST['btn_save_submit_email'])) {
-			$datas = $_POST['action'];
 			if(empty($this->emailActions)) {
 				foreach ($datas as $key => $value) {
-					$notiActionData = [
-						'user_id' => $user_id,
-						'action' => $key,
-						'status' => $value
-					];
-					if($notiAction->addRecord($notiActionData)){
-						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
-					}	
+					if($key >= 6){
+						$notiActionData = [
+							'user_id' => $user_id,
+							'action' => $key,
+							'status' => $value
+						];
+						if($notiAction->addRecord($notiActionData)){
+							header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+						}	
+					}
 				}
 			} else {
 				foreach ($datas as $key => $value) {
-					$getNotiAction = $notiAction->getRecordWhere([
-						'user_id' => $user_id,
-						'action' => $key,
-					]);
-					$notiActionData = [
-						'status' => $value
-					];
-					if($notiAction->editRecord($getNotiAction['id'], $notiActionData)){
-						header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+					if($key >= 6){
+						$getNotiAction = $notiAction->getRecordWhere([
+							'user_id' => $user_id,
+							'action' => $key,
+						]);
+						$notiActionData = [
+							'status' => $value
+						];
+						if($notiAction->editRecord($getNotiAction['id'], $notiActionData)){
+							header("Location: ".vendor_app_util::url(["ctl"=>"profile", "act"=>"index"]));
+						}
 					}
 				}
 			}
-			
 		}
 		$this->display();
 	} 

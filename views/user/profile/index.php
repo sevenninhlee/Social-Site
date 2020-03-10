@@ -185,18 +185,9 @@
                                       </div>
                                   <?php }} ?>
                                 </div>
-                                <div class="col-md-4">
-                                  <div class="form-group text-right space100">
-                                    <button type="button" class="btn btn_review" id="invite" data-toggle="modal" data-target="#myModal">Invite Friends</button>
-                                    <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit" type="submit">Save</button>
-                                  </div>                  
-                                </div>
                               </div>
-                            </form>  
+                              <h5 class="space30">Email me when:</h5>
 
-
-                            <h5 class="space30">Email me when:</h5>
-                            <form class="radio-form" action="<?php echo vendor_app_util::url(["area" => "user", "ctl"=>"profile", "act"=>"index"]) ?>" method="post" enctype="multipart/form-data">                
                               <div class="row">
                                 <div class="col-md-8" style="padding: 0 25px; font-size: 15px;">
                                   <?php foreach ($app['email_actions'] as $key => $email) { 
@@ -247,7 +238,7 @@
                                 <div class="col-md-4">
                                   <div class="form-group text-right space100">
                                     <button type="button" class="btn btn_review" id="invite" data-toggle="modal" data-target="#myModal">Invite Friends</button>
-                                    <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit_email" type="submit">Save</button>
+                                    <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit" type="submit">Save</button>
                                   </div>                  
                                 </div>
                               </div>

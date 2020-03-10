@@ -67,8 +67,36 @@ class book_groups_controller extends aside_bar_data_controller
 			
 			$userData = $_POST['isApprove'];
 			foreach ($userData as $key => $value) {
-				$status = ['status' =>  $value];
-				$bgr_users->editRecord($key, $status);
+				$book_group_article_user = $bgr_users->getRecordWhere(['id' => $key]);
+				if($book_group_article_user['status'] != $value){
+					$status = ['status' =>  $value];
+					$bgr_users->editRecord($key, $status);
+
+					if($value == '1' || $value == '2'){
+						//##### SEND MAIL #############################################################
+						//##### $mTo: Nguoi nhan email chinh
+						//#####	$nTo: Ten nguoi nhan email chinh
+						//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+						//#####	$title: Ten chu de cua email
+						//#####	$content: Noi dung
+						//#####
+						//#####
+						//#############################################################################
+						$user_model = new user_model();
+						$userOwnerBlog = $user_model->getRecordWithSetting($book_group_article_user['user_id']);
+						$cc = "";
+						$mainReceiver = $userOwnerBlog['email'];
+						$statusMsg = ($value == 1)?"approved":"disapproved";
+						$subject="Englight21: Your request to join group ".$this->record['title']." has been ".$statusMsg;
+						$mainReceiverText = 'Englight21';
+						$href = RootURL."book-groups/".$this->record['slug'];
+						$content = "<h3>Check detail at: ".$href."</h3>";
+						if($userOwnerBlog['is_disabled_all_email'] == '0')
+						vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+						//########## SEND MAIL ########################################################
+					}
+				}
+				
 			}
 			// header("Location: ".vendor_app_util::url(["area" => "user","ctl"=>"book_groups", "act"=>"edit/".$id]));
 			header("Location: ".RootURL."user/book-groups/edit/".$id);
@@ -192,6 +220,38 @@ class book_groups_controller extends aside_bar_data_controller
 						}
 					} else {
 						if($actm->addRecord($dataRecord)){
+
+
+							//##### SEND MAIL #############################################################
+							//##### $mTo: Nguoi nhan email chinh
+							//#####	$nTo: Ten nguoi nhan email chinh
+							//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+							//#####	$title: Ten chu de cua email
+							//#####	$content: Noi dung
+							//#####
+							//#####
+							//#############################################################################
+							$usersInGroup = $bgr_users->getAllRecords('*', ['conditions' => "book_group_article_id = ".$_POST['book_group_id'].' AND status = 1']);
+							$user_model = new user_model();
+							$userOwnerBlog = $user_model->getRecordWithSetting($this->record['user_id']);
+							$cc = "";
+							$mainReceiver = "";
+							$user_model = new user_model();
+							foreach ($usersInGroup as $value) {
+								$userInGroup = $user_model->getRecordWithSetting($value['user_id']);
+								if($userInGroup['is_disabled_all_email'] == '0'){
+									$mainReceiver .= $userInGroup['email'].',';
+								}
+							}
+							$subject="Englight21: Your group ".$this->record['title']." has a new book: ".$dataSearch['title'];
+							$mainReceiverText = 'Englight21';
+							$href = RootURL."book-groups/".$this->record['slug'];
+							$content = "<h3>Check detail at: ".$href."</h3>";
+							if($userOwnerBlog['is_disabled_all_email'] == '0')
+							vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+							//########## SEND MAIL ########################################################
+
+
 							if($_POST['alt'] === 'edit-search-google'){
 								// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
 								header("Location: ".RootURL."user/book-groups/edit/".$_POST['book_group_id']);
@@ -210,6 +270,38 @@ class book_groups_controller extends aside_bar_data_controller
 						];
 					} else {
 						if($actm->addRecord($dataRecord)){
+
+
+							//##### SEND MAIL #############################################################
+							//##### $mTo: Nguoi nhan email chinh
+							//#####	$nTo: Ten nguoi nhan email chinh
+							//#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+							//#####	$title: Ten chu de cua email
+							//#####	$content: Noi dung
+							//#####
+							//#####
+							//#############################################################################
+							$usersInGroup = $bgr_users->getAllRecords('*', ['conditions' => "book_group_article_id = ".$_POST['book_group_id'].' AND status = 1']);
+							$user_model = new user_model();
+							$userOwnerBlog = $user_model->getRecordWithSetting($this->record['user_id']);
+							$cc = "";
+							$mainReceiver = "";
+							$user_model = new user_model();
+							foreach ($usersInGroup as $value) {
+								$userInGroup = $user_model->getRecordWithSetting($value['user_id']);
+								if($userInGroup['is_disabled_all_email'] == '0'){
+									$mainReceiver .= $userInGroup['email'].',';
+								}
+							}
+							$subject="Englight21: Your group ".$this->record['title']." has a new book: ".$dataSearch['title'];
+							$mainReceiverText = 'Englight21';
+							$href = RootURL."book-groups/".$this->record['slug'];
+							$content = "<h3>Check detail at: ".$href."</h3>";
+							if($userOwnerBlog['is_disabled_all_email'] == '0')
+							vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+							//########## SEND MAIL ########################################################
+
+
 							if($_POST['alt'] === 'edit-search-google'){
 								// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
 								header("Location: ".RootURL."user/book-groups/edit/".$_POST['book_group_id']);

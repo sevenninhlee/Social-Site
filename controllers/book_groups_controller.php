@@ -76,6 +76,30 @@ class book_groups_controller extends right_bar_data_controller {
         $bgr_user = new book_group_article_user_model();
         $addUser = $bgr_user->addRecord($joinData);
         if ($addUser) {
+
+            $bgm = new book_group_article_model();
+            $this->record = $bgm->getRecord($ob_id);
+            //##### SEND MAIL #############################################################
+            //##### $mTo: Nguoi nhan email chinh
+            //#####	$nTo: Ten nguoi nhan email chinh
+            //#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+            //#####	$title: Ten chu de cua email
+            //#####	$content: Noi dung
+            //#####
+            //#####
+            //#############################################################################
+            $user_model = new user_model();
+            $userOwnerBlog = $user_model->getRecordWithSetting($this->record['user_id']);
+            $cc = "";
+            $mainReceiver = $userOwnerBlog['email'];
+            $subject="Englight21: Your group ".$this->record['title']." have a new request to join by ".$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'];
+            $mainReceiverText = 'Englight21';
+            $href = RootURL."book-groups/".$this->record['slug'];
+            $content = "<h3>Check detail at: ".$href."</h3>";
+            if($userOwnerBlog['is_disabled_all_email'] == '0')
+            vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+            //########## SEND MAIL ########################################################
+
             $data = [
                 'succsess' => 1,
             ];

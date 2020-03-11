@@ -94,6 +94,18 @@ class book_groups_controller extends aside_bar_data_controller
 						if($userOwnerBlog['is_disabled_all_email'] == '0')
 						vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 						//########## SEND MAIL ########################################################
+						
+						$notify = new notify_content_model();
+						if($userOwnerBlog['is_disabled_all_notification'] == '0'){
+							$dataNoti = [
+								'user_id' => $userOwnerBlog['id'],
+								'description' => "Your request to join group ".$this->record['title']." has been ".$statusMsg,
+								'action_id' => 2,
+								'link' => "book-groups/".$this->record['slug'],
+							  ];
+							if($notify->addRecord($dataNoti)){}
+						}
+
 					}
 				}
 				
@@ -237,10 +249,21 @@ class book_groups_controller extends aside_bar_data_controller
 							$cc = "";
 							$mainReceiver = "";
 							$user_model = new user_model();
+							$notify = new notify_content_model();
+
 							foreach ($usersInGroup as $value) {
 								$userInGroup = $user_model->getRecordWithSetting($value['user_id']);
 								if($userInGroup['is_disabled_all_email'] == '0'){
 									$mainReceiver .= $userInGroup['email'].',';
+								}
+								if($userInGroup['is_disabled_all_notification'] == '0'){
+									$dataNoti = [
+										'user_id' => $value['user_id'],
+										'description' => "Your group ".$this->record['title']." has a new book: ".$dataSearch['title'],
+										'action_id' => 2,
+										'link' => "book-groups/".$this->record['slug'],
+									  ];
+									$notify->addRecord($dataNoti);
 								}
 							}
 							$subject="Englight21: Your group ".$this->record['title']." has a new book: ".$dataSearch['title'];
@@ -251,7 +274,7 @@ class book_groups_controller extends aside_bar_data_controller
 							vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
 							//########## SEND MAIL ########################################################
 
-
+							
 							if($_POST['alt'] === 'edit-search-google'){
 								// header("Location: ".vendor_app_util::url(["ctl"=>"book_groups/edit/".$_POST['book_group_id']]));
 								header("Location: ".RootURL."user/book-groups/edit/".$_POST['book_group_id']);
@@ -287,11 +310,22 @@ class book_groups_controller extends aside_bar_data_controller
 							$cc = "";
 							$mainReceiver = "";
 							$user_model = new user_model();
+							$notify = new notify_content_model();
 							foreach ($usersInGroup as $value) {
 								$userInGroup = $user_model->getRecordWithSetting($value['user_id']);
 								if($userInGroup['is_disabled_all_email'] == '0'){
 									$mainReceiver .= $userInGroup['email'].',';
 								}
+								if($userInGroup['is_disabled_all_notification'] == '0'){
+									$dataNoti = [
+										'user_id' => $value['user_id'],
+										'description' => "Your group ".$this->record['title']." has a new book: ".$dataSearch['title'],
+										'action_id' => 2,
+										'link' => "book-groups/".$this->record['slug'],
+									  ];
+									$notify->addRecord($dataNoti);
+								}
+							
 							}
 							$subject="Englight21: Your group ".$this->record['title']." has a new book: ".$dataSearch['title'];
 							$mainReceiverText = 'Englight21';

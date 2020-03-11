@@ -137,12 +137,25 @@ class user_model extends vendor_frap_model
 		// $user = $this->getRecord($user_id, "*", ['conditions'=>"", 'joins'=>['notify_action']]);
 		$notify_action_model = new notify_action_model();
 		$notiActions = $notify_action_model->all('*',['conditions'=>'user_id = '.$user_id, 'joins'=>false, 'order'=> ' action ASC ']);
+
+		$user['is_notification_friend_post'] 		= 1;
+		$user['is_notification_friend_request'] 	= 1;
+		$user['is_notification_post_approved'] 		= 1;
+		$user['is_notification_get_new_comment'] 	= 1;
+		$user['is_disabled_all_notification'] 		= 0;
+
 		$user['is_email_friend_post'] 		= 1;
 		$user['is_email_friend_request'] 	= 1;
 		$user['is_email_post_approved'] 	= 1;
 		$user['is_email_get_new_comment'] 	= 1;
 		$user['is_disabled_all_email'] 		= 0;
 		foreach ($notiActions as $key => $value) {
+			if($value['action'] == 1) $user['is_notification_friend_post'] 		= $value['status'];
+			if($value['action'] == 2) $user['is_notification_friend_request'] 	= $value['status'];
+			if($value['action'] == 3) $user['is_notification_post_approved'] 	= $value['status'];
+			if($value['action'] == 4) $user['is_notification_get_new_comment'] 	= $value['status'];
+			if($value['action'] == 5) $user['is_disabled_all_notification'] 	= $value['status'];
+
 			if($value['action'] == 6) $user['is_email_friend_post'] 		= $value['status'];
 			if($value['action'] == 7) $user['is_email_friend_request'] 		= $value['status'];
 			if($value['action'] == 8) $user['is_email_post_approved'] 		= $value['status'];
@@ -168,11 +181,17 @@ class user_model extends vendor_frap_model
 			$users['data'][$key]['user_avatar'] = $user['avata'];
 			$users['data'][$key]['email'] = $user['email'];
 
+			$users['data'][$key]['is_notification_friend_post'] 	= $user['is_notification_friend_post'];
+			$users['data'][$key]['is_notification_friend_request'] 	= $user['is_notification_friend_request'];
+			$users['data'][$key]['is_notification_post_approved'] 	= $user['is_notification_post_approved'];
+			$users['data'][$key]['is_notification_get_new_comment'] = $user['is_notification_get_new_comment'];
+			$users['data'][$key]['is_disabled_all_notification'] 	= $user['is_disabled_all_notification'];
+
 			$users['data'][$key]['is_email_friend_post'] 		= $user['is_email_friend_post'];
 			$users['data'][$key]['is_email_friend_request'] 	= $user['is_email_friend_request'];
-			$users['data'][$key]['is_email_post_approved'] 	= $user['is_email_post_approved'];
+			$users['data'][$key]['is_email_post_approved'] 		= $user['is_email_post_approved'];
 			$users['data'][$key]['is_email_get_new_comment'] 	= $user['is_email_get_new_comment'];
-			$users['data'][$key]['is_disabled_all_email'] 			= $user['is_disabled_all_email'];
+			$users['data'][$key]['is_disabled_all_email'] 		= $user['is_disabled_all_email'];
 		}
 
 		return $users;
@@ -186,11 +205,17 @@ class user_model extends vendor_frap_model
 			$user = $this->getRecordWithSetting($value['user_id']);
 			$users['data'][$key]['email'] = $user['email'];
 
+			$users['data'][$key]['is_notification_friend_post'] 	= $user['is_notification_friend_post'];
+			$users['data'][$key]['is_notification_friend_request'] 	= $user['is_notification_friend_request'];
+			$users['data'][$key]['is_notification_post_approved'] 	= $user['is_notification_post_approved'];
+			$users['data'][$key]['is_notification_get_new_comment'] = $user['is_notification_get_new_comment'];
+			$users['data'][$key]['is_disabled_all_notification'] 	= $user['is_disabled_all_notification'];
+
 			$users['data'][$key]['is_email_friend_post'] 		= $user['is_email_friend_post'];
 			$users['data'][$key]['is_email_friend_request'] 	= $user['is_email_friend_request'];
-			$users['data'][$key]['is_email_post_approved'] 	= $user['is_email_post_approved'];
+			$users['data'][$key]['is_email_post_approved'] 		= $user['is_email_post_approved'];
 			$users['data'][$key]['is_email_get_new_comment'] 	= $user['is_email_get_new_comment'];
-			$users['data'][$key]['is_disabled_all_email'] 			= $user['is_disabled_all_email'];
+			$users['data'][$key]['is_disabled_all_email'] 		= $user['is_disabled_all_email'];
 		}
 		return $users;
 	}

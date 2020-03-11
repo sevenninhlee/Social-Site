@@ -94,11 +94,22 @@ class book_groups_controller extends right_bar_data_controller {
             $mainReceiver = $userOwnerBlog['email'];
             $subject="Englight21: Your group ".$this->record['title']." have a new request to join by ".$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'];
             $mainReceiverText = 'Englight21';
-            $href = RootURL."book-groups/".$this->record['slug'];
+            $href = RootURL."user/book-groups/edit/".$ob_id;
             $content = "<h3>Check detail at: ".$href."</h3>";
             if($userOwnerBlog['is_disabled_all_email'] == '0')
             vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
             //########## SEND MAIL ########################################################
+
+			if($userOwnerBlog['is_disabled_all_notification'] == '0'){
+                $notify = new notify_content_model();
+                $dataNoti = [
+                  'user_id' => $userOwnerBlog['id'],
+                  'description' => "Your group ".$this->record['title']." have a new request to join by ".$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'],
+                  'action_id' => 2,
+                  'link' => "user/book-groups/edit/".$ob_id,
+                ];
+                $notify->addRecord($dataNoti);
+            }
 
             $data = [
                 'succsess' => 1,

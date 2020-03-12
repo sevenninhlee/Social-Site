@@ -20,6 +20,7 @@ $( document ).ready(function() {
 		
 		firstname       = $(this).find('input[name="user[firstname]"]').val();
         lastname        = $(this).find('input[name="user[lastname]"]').val();
+        username        = $(this).find('input[name="user[username]"]').val();
         email           = $(this).find('input[name="user[email]"]').val();
         password        = $(this).find('input[name="user[password]"]').val();
         repassword      = $(this).find('input[name="user[repassword]"]').val();
@@ -30,6 +31,7 @@ $( document ).ready(function() {
 			user: {
 				firstname,
 				lastname,
+				username,
 				email,
 				password,
 				avata,

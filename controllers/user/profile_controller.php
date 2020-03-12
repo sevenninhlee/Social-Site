@@ -123,6 +123,15 @@ class profile_controller extends aside_bar_data_controller
 		}
 
 		if($um->editRecord($id,$userData)) {
+			if(isset($_POST['firstname'])){
+				$_SESSION['user']['firstname']= $userData['firstname'];
+			}
+			if(isset($_POST['lastname'])){
+				$_SESSION['user']['lastname'] = $userData['lastname'];
+			}
+			if(isset($_POST['username'])){
+				$_SESSION['user']['username'] = $userData['username'];
+			}
 			$valid = [
 				'status' => true,
 				'data' => 'Edit profile successfully'
@@ -183,6 +192,7 @@ class profile_controller extends aside_bar_data_controller
 		// echo "Start <br/>"; echo '<pre>'; print_r($id);echo '</pre>';exit("End Data");
 
 		if($um->editRecord($id,$userData)) {
+			$_SESSION['user']['show_name'] = $userData['show_name'];
 			$valid = [
 				'status' => true,
 				'data' => 'Edit profile successfully'

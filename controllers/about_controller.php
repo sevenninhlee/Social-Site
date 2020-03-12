@@ -23,7 +23,7 @@ class about_controller extends vendor_main_controller
 					$title = "You haven't reported yet";
 					$href = RootURL."reports/add";
 					$content = "
-						<h3> Hi ".$row['firstname']." ".$row['lastname']."</h3>
+						<h3> Hi ".vendor_html_helper::showUserName($row)."</h3>
 					  	<p>Today you have not reported yet. <br>
 					  	Click <a href = ".$href.">".$href."</a> to report.</p>";
 					vendor_app_util::sendMail($title, $content, $nTo, $mTo);

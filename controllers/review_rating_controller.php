@@ -65,7 +65,7 @@ class review_rating_controller extends vendor_main_controller
                 if($data['table_model'] != "book_group_article_book_model" && $postData['user_id'] != $_SESSION['user']['id']) {
                     $dataNoti = [
                         'user_id' => $postData['user_id'],
-                        'description' => ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']). ' has commented on your post' ,
+                        'description' => vendor_html_helper::showUserName($_SESSION['user']). ' has commented on your post' ,
                         'action_id' => 4,
                         'link' => $_POST['pathname'],
                     ];

@@ -353,7 +353,7 @@ class blogs_controller extends vendor_backend_controller {
 						],
 						[
 							'user_id' => $user['id'],
-							'description' => ucwords($user['firstname']).' '.ucwords($user['lastname']).' created a new post ('.$blogData['title'].') ',
+							'description' => vendor_html_helper::showUserName($user).' created a new post ('.$blogData['title'].') ',
 							'action_id' => 1,
 							'link' => 'blogs',
 						]

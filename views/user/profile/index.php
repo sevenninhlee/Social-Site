@@ -64,7 +64,7 @@
 
                                 <?php }else{ ?>
                                   <li>
-                                    <span class="f700 title-part"><?php  if ($this->user['show_name'] == 0){ echo $this->user['firstname'].' '.$this->user['lastname']; } else { echo $this->user['username']; } ?></span>
+                                    <span class="f700 title-part"><?php  echo vendor_html_helper::showUserName($this->user) ?></span>
                                     <span class="deatil-part"></span><?php friends_controller::helpFriend($this->checkfriend); ?>
                                   </li>
                                   <li>

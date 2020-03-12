@@ -175,7 +175,7 @@ class user_model extends vendor_frap_model
 			$userIDFriend = ($value['user_id'] == $userID)?$value['user_id_friend']:$value['user_id'];
 			$user = $this->getRecordWithSetting($userIDFriend);
 
-			$users['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
+			$users['data'][$key]['username'] = vendor_html_helper::showUserName($user);
 			$users['data'][$key]['user_id_friend'] = $userIDFriend;
 			$users['data'][$key]['status_user_admin'] = ($value['user_id'] == $userID)?$value['status_user']:$value['status_user_friend'];
 			$users['data'][$key]['user_avatar'] = $user['avata'];

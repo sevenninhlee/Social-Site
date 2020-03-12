@@ -105,7 +105,7 @@
                       style="cursor: pointer;"
                       checkMember = "<?= $this->checkUser ?>"
                       data = "<?= $currentBook['book_group_id'] ?>, <?= $currentBook['user_id_not_read'] ?>"><h5 class="f700 m0 color555554"><?php echo $currentBook['title'] ?></h5></a>
-                    <p class="f700 by-txt color555554">By: <?php if ( $currentBook['show_name'] == 0) { echo $currentBook['firstname'].' '.$currentBook['lastname'];} else { echo $currentBook['username'];} ?></p>
+                    <p class="f700 by-txt color555554">By: <?php echo vendor_html_helper::showUserName($currentBook); ?></p>
                     <p class="f700 by-txt color555554">ISBN: <?php echo $currentBook['ISBN'] ?></p>
                     <div class="txt_des">
                     <span class="f700 by-txt color555554">Description: </span>

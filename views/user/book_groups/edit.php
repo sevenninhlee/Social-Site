@@ -494,7 +494,7 @@
                                     <div class="form-group">
                                       <div class="row">  
                                         <div class="col-sm-2">
-                                          <label><?php if ($user['show_name'] == 0) { echo $user['firstname'].' '.$user['lastname']; } else { echo $user['username']; } ?></label>
+                                          <label><?php echo vendor_html_helper::showUserName($user); ?></label>
                                         </div>
                                         <div class="col-sm-8">
                                           <div class="radio radio-info radio-inline">

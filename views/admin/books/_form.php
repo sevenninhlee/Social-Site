@@ -255,7 +255,7 @@
 
 													<td class="tabletShow">
 														<a href="<?php echo (vendor_app_util::url(["ctl"=>"users", "act"=>"view/".$record['user_id']])) ?>" id="viewUser<?=$record['user_id'];?>"><p class="andrew text-center" id='name<?=$record['id']?>'>
-															<?php echo $record['users_firstname'].' '.$record['users_lastname']; ?>
+															<?php echo vendor_html_helper::showUserName($record, true); ?>
 														</p></a>
 													</td>
 

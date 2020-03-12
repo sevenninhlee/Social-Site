@@ -13,7 +13,7 @@ class contact_controller extends vendor_main_controller
 				$title="CONTACT_US";
 				$nTo = $contactData['email'];
 				$from = $contactData['email'];
-				$content = "<h3> By ".$contactData['firstname']." ".$contactData['lastname']."</h3>
+				$content = "<h3> By ".vendor_html_helper::showUserName($contactData)."</h3>
 			  	<p>Content :<br>".$contactData['content'];
 				vendor_app_util::sendMailContact($title, $content, $nTo, $mTo,$from);
 				$this->msg = "Thank you !";

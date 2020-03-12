@@ -30,7 +30,7 @@ class review_rating_model extends vendor_frap_model
 	                if($postData['user_id'] != $_SESSION['user']['id']) {
 	                    $dataNoti = [
 	                        'user_id' => $postData['user_id'],
-	                        'description' => ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']). ' has commented on your post' ,
+	                        'description' => vendor_html_helper::showUserName($_SESSION['user']). ' has commented on your post' ,
 	                        'action_id' => 4,
 	                        'link' => $pathname,
 	                    ];
@@ -240,6 +240,8 @@ class review_rating_model extends vendor_frap_model
 			$user = $um->getRecord($item['user_id']);
 			$item['users_firstname'] = $user['firstname'];
 			$item['users_lastname'] = $user['lastname'];
+			$item['users_show_name'] = $user['show_name'];
+			$item['users_username'] = $user['username'];
 			$item['content'] = $item['review'];
 			$arr[] = $item;
 		}
@@ -255,6 +257,8 @@ class review_rating_model extends vendor_frap_model
 			$user = $um->getRecord($item['user_id']);
 			$item['users_firstname'] = $user['firstname'];
 			$item['users_lastname'] = $user['lastname'];
+			$item['users_username'] = $user['show_name'];
+			$item['users_show_name'] = $user['username'];
 			$item['content'] = $item['review'];
 			$arr[] = $item;
 		}

@@ -65,7 +65,7 @@
                                         echo "<a>".rtrim($cat_str," | ")."</a>";
                                       }
                                   ?>
-                                  | <span>Asked By: </span><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname']; } else { echo $_SESSION['user']['username']; } ?></p>
+                                  | <span>Asked By: </span><?php echo vendor_html_helper::showUserName($_SESSION['user']) ?></p>
                                   <div class="txt_des"><?php if(strlen($record['description']) > 300)  echo substr($record['description'], 0, 300).'...'; else echo $record['description'] ; ?></div>
 
                                   <div class="grey_box gray1">

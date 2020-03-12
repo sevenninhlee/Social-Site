@@ -25,7 +25,7 @@ class community_blogs_controller extends right_bar_data_controller
 				$this->records['data'][$key]['ListCate'] = $bcm->getCatOfBologPublic($record['categories_arr']);
 				$um = new user_model();
 				$user = $um->getRecord($record['user_id']);
-				$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] : $user['username'] ;
+				$this->records['data'][$key]['username'] = vendor_html_helper::showUserName($user);
 			}
 		}
         $conditions = 'admin_status = 0 AND owner_status = 1 AND featured_my_blog = 1';
@@ -55,7 +55,7 @@ class community_blogs_controller extends right_bar_data_controller
         }  
 		$um = new user_model();
 		$user = $um->getRecord($this->record['user_id']);
-		$this->record['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] : $user['username'];
+		$this->record['username'] = vendor_html_helper::showUserName($user);
 		$this->record['user_avatar'] = $user['avata'];
 		$bulletin = new bulletin_model();
 		$this->record['user_bulletin'] = mysqli_fetch_assoc($bulletin->getAllRecords(

@@ -219,7 +219,7 @@ class profile_controller extends aside_bar_data_controller
 				$href = RootURL."register";
 						
 				$content = "
-				<h3>This is an invitation to join Enlight21 from ".$_SESSION['user']['firstname'].".</h3>
+				<h3>This is an invitation to join Enlight21 from ".vendor_html_helper::showUserName($_SESSION['user']).".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to register.</p>
 				";
 				$nTo = 'Village ties';
@@ -279,7 +279,7 @@ class profile_controller extends aside_bar_data_controller
 				$cc = '';
 				$href = RootURL."user/friends/index?user=".$checkUser['id'];
 				$content = "
-				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
+				<h3>You just received a friend invitation from ".vendor_html_helper::showUserName($_SESSION['user']).".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
 				";
 				if($user_requested['is_disabled_all_email'] == '0' && $user_requested['is_email_friend_request'] == '1')
@@ -300,7 +300,7 @@ class profile_controller extends aside_bar_data_controller
 					$notify = new notify_content_model();
 					$dataNotifie = [
 							'user_id' => $checkUser['id'],
-							'description' => ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']).' has requested add friend',
+							'description' => vendor_html_helper::showUserName($_SESSION['user']).' has requested add friend',
 							'action_id' => 2,
 							'link' => 'user/friends/index',
 					];

@@ -63,7 +63,7 @@
                     <?php  } ?>
 
                     <!-- <h3 class="f700"><a href="<?php echo RootURL."book-groups/".$record['slug'] ?>" style="color: #333"><?php echo $record['title'] ?></a></h3> -->
-                    <p>By: <span class="f400"><?php if ($record['users_show_name'] == 0) { echo $record['users_firstname'].' '.$record['users_lastname']; } else { echo $record['users_username']; }  ?></span></p>
+                    <p>By: <span class="f400"><?php echo vendor_html_helper::showUserName($record);  ?></span></p>
                     <p>Category: <span class="f400">
                     
                     <?php 

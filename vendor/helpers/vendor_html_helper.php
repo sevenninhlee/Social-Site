@@ -61,5 +61,23 @@ class vendor_html_helper{
 		$query = preg_replace($patterns, $replacements, $query);
 		return $query;
 	}
+
+	//    vendor_html_helper::showUserName($user);
+	public static function showUserName($user=[], $isJoin = false){
+		if($isJoin){
+			if($user['users_show_name'] == 0){
+				return $user['users_firstname'].' '.$user['users_lastname'];
+			}else{
+				return $user['users_username'];
+			}
+		}else{
+			if($user['show_name'] == 0){
+				return $user['firstname'].' '.$user['lastname'];
+			}else{
+				return $user['username'];
+			}
+		}
+		
+	}
 }
 ?>

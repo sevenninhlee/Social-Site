@@ -24,7 +24,7 @@ class books_controller extends right_bar_data_controller
 				$this->records['data'][$key]['ListCate'] = $bcm->getCatOfBook($record['categories_arr']);
 				$um = new user_model();
 				$user = $um->getRecord($record['user_id']);
-				$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
+				$this->records['data'][$key]['username'] = vendor_html_helper::showUserName($user);
 			}
 		}
 		$this->display();

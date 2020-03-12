@@ -5,99 +5,99 @@ class bookshelf_book_controller extends aside_bar_data_controller
 	{
 		if ($this->isUserLogged) {
 
-		$bm = new book_article_model();
-		$rtm = new review_rating_model();
-		$book = new book_category_model();
-		$this->categories = $book->all('*',['conditions'=>'', 'joins'=>false, 'order'=>'id ASC']);
-		$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>'', 'joins'=>['book_category']]);
-		foreach ($this->records as $key => $record) {
-			$this->records[$key]['AvrRating'] = $rtm->getAverageRating($record['id'], 'book_article_model');
-		}
-		$status_name = 'owner_status';
-		$act = new action_model();
-		$this->actionFavorite = $act->getAllAction('book_articles', 'book_article_model', 'favorite', $status_name);
-		$this->actionRecommanded = $act->getAllAction('book_articles', 'book_article_model', 'recommanded', $status_name);
-		$this->actionCurrent = $act->getAllAction('book_articles', 'book_article_model', 'current', $status_name);
-		
-		$rvm = new review_rating_model();
-		$user_id = ($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) ? $_SESSION['user']['id'] : null;
-		$this->revRecords = $rvm->getUserReviews('book_articles', $user_id, 'book_article_model', 'owner_status');
-		
-		if(isset($_POST['btn_submit'])) {
-			$actm = new action_model();
 			$bm = new book_article_model();
-			$userID = isset($_GET['user']) ? $_GET['user'] : $_SESSION['user']['id'];
-			$dataSearch = $_POST['book'];
-			$action = trim($_POST['action'], " ");
-			if( $_POST['alt'] === 'edit-search-google') {
-				$bookData = $bm->getRecordWhere([
-					'ISBN' => $dataSearch['ISBN'],
-				]);
-				if(empty($bookData)) {
-					$bcm = new book_category_model();
-					if($bcm->isCategory($dataSearch['book_categories_name'])){
-						$getCategory = $bcm->getRecordWhere([
-							'name' => $dataSearch['book_categories_name']
-						]);
-						$dataSearch['categories_id'] = $getCategory['id'];
-					}else {
-						$categoryData['name'] = $dataSearch['book_categories_name'];
-						$categoryData['slug'] = vendor_app_util::gen_slug($categoryData['name']);
-						$categoryData['status'] = 1;
-						$dataSearch['categories_id'] = $bcm->addRecord($categoryData);
-					}
-					$dataSearch['user_id'] = $userID;
-					$dataSearch['year'] = explode("-",$dataSearch['year'])[0];
-					$dataSearch['slug'] = vendor_app_util::gen_slug($dataSearch['title']);
-					if(!empty($dataSearch['img_search_api'])) {
-						$dataSearch['featured_image'] = $dataSearch['img_search_api'];
-					}
+			$rtm = new review_rating_model();
+			$book = new book_category_model();
+			$this->categories = $book->all('*',['conditions'=>'', 'joins'=>false, 'order'=>'id ASC']);
+			$this->records = $bm->all('book_articles.*, book_categories.name',['conditions'=>'', 'joins'=>['book_category']]);
+			foreach ($this->records as $key => $record) {
+				$this->records[$key]['AvrRating'] = $rtm->getAverageRating($record['id'], 'book_article_model');
+			}
+			$status_name = 'owner_status';
+			$act = new action_model();
+			$this->actionFavorite = $act->getAllAction('book_articles', 'book_article_model', 'favorite', $status_name);
+			$this->actionRecommanded = $act->getAllAction('book_articles', 'book_article_model', 'recommanded', $status_name);
+			$this->actionCurrent = $act->getAllAction('book_articles', 'book_article_model', 'current', $status_name);
+			
+			$rvm = new review_rating_model();
+			$user_id = ($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) ? $_SESSION['user']['id'] : null;
+			$this->revRecords = $rvm->getUserReviews('book_articles', $user_id, 'book_article_model', 'owner_status');
 
-					if($_FILES['image']['tmp_name']) {
-						$dataSearch['featured_image'] = $this->uploadImg($_FILES);
-					}
-					$valid = $bm->validator($dataSearch);
-					unset($dataSearch['category_search_api']);
-					unset($dataSearch['img_search_api']);
-					unset($dataSearch['book_categories_name']);
-					$dataSearch['id'] = $bm->addRecord($dataSearch);
-				} else {
-					$dataSearch['id'] = $bookData['id'];
-				}
-			}
-			$dataRecord = [
-				'user_id' => $userID,
-				'object_article_id' => $dataSearch['id'],
-				'table_model' => 'book_article_model',
-				$action => 1,
-			];
-			$checkData = $actm->getRecordWhere([
-				'object_article_id' => $dataSearch['id'],
-				$action => 1,
-				'user_id' => $_SESSION['user']['id']
-			]);
-			if(empty($checkData)){
-				if($actm->addRecord($dataRecord)){
-					$newRecord = $actm->getRecordWhere([
-						'object_article_id' => $dataSearch['id'],
-						$action => 1,
-						'user_id' => $_SESSION['user']['id']
+			if(isset($_POST['btn_submit'])) {
+				$actm = new action_model();
+				$bm = new book_article_model();
+				$userID = isset($_GET['user']) ? $_GET['user'] : $_SESSION['user']['id'];
+				$dataSearch = $_POST['book'];
+				$action = trim($_POST['action'], " ");
+				if( $_POST['alt'] === 'edit-search-google') {
+					$bookData = $bm->getRecordWhere([
+						'ISBN' => $dataSearch['ISBN'],
 					]);
-					if($_POST['alt'] === 'edit-search-google'){
-						header("Location: ".vendor_app_util::url(["ctl"=>"bookshelf_book"]));
-					}
-				} else {
-					if($_POST['alt'] === 'edit-search-google'){
-						$this->errors = ['message'=>'An error occurred when Edit data!'];
+					if(empty($bookData)) {
+						$bcm = new book_category_model();
+						if($bcm->isCategory($dataSearch['book_categories_name'])){
+							$getCategory = $bcm->getRecordWhere([
+								'name' => $dataSearch['book_categories_name']
+							]);
+							$dataSearch['categories_id'] = $getCategory['id'];
+						}else {
+							$categoryData['name'] = $dataSearch['book_categories_name'];
+							$categoryData['slug'] = vendor_app_util::gen_slug($categoryData['name']);
+							$categoryData['status'] = 1;
+							$dataSearch['categories_id'] = $bcm->addRecord($categoryData);
+						}
+						$dataSearch['user_id'] = $userID;
+						$dataSearch['year'] = explode("-",$dataSearch['year'])[0];
+						$dataSearch['slug'] = vendor_app_util::gen_slug($dataSearch['title']);
+						if(!empty($dataSearch['img_search_api'])) {
+							$dataSearch['featured_image'] = $dataSearch['img_search_api'];
+						}
+
+						if($_FILES['image']['tmp_name']) {
+							$dataSearch['featured_image'] = $this->uploadImg($_FILES);
+						}
+						$valid = $bm->validator($dataSearch);
+						unset($dataSearch['category_search_api']);
+						unset($dataSearch['img_search_api']);
+						unset($dataSearch['book_categories_name']);
+						$dataSearch['id'] = $bm->addRecord($dataSearch);
+					} else {
+						$dataSearch['id'] = $bookData['id'];
 					}
 				}
-			} 
-			else {
-				if($_POST['alt'] === 'edit-search-google'){
-					$this->errors = ['message'=>'This data was added. Please, select a item to new add!'];
+				$dataRecord = [
+					'user_id' => $userID,
+					'object_article_id' => $dataSearch['id'],
+					'table_model' => 'book_article_model',
+					$action => 1,
+				];
+				$checkData = $actm->getRecordWhere([
+					'object_article_id' => $dataSearch['id'],
+					$action => 1,
+					'user_id' => $_SESSION['user']['id']
+				]);
+				if(empty($checkData)){
+					if($actm->addRecord($dataRecord)){
+						$newRecord = $actm->getRecordWhere([
+							'object_article_id' => $dataSearch['id'],
+							$action => 1,
+							'user_id' => $_SESSION['user']['id']
+						]);
+						if($_POST['alt'] === 'edit-search-google'){
+							header("Location: ".vendor_app_util::url(["ctl"=>"bookshelf_book"]));
+						}
+					} else {
+						if($_POST['alt'] === 'edit-search-google'){
+							$this->errors = ['message'=>'An error occurred when Edit data!'];
+						}
+					}
+				} 
+				else {
+					if($_POST['alt'] === 'edit-search-google'){
+						$this->errors = ['message'=>'This data was added. Please, select a item to new add!'];
+					}
 				}
 			}
-		}
 
 		} else {
 

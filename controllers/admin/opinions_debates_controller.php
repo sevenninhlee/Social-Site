@@ -303,7 +303,7 @@ class opinions_debates_controller extends vendor_backend_controller {
 						],
 						[
 							'user_id' => $user['id'],
-							'description' => ucwords($user['firstname']).' '.ucwords($user['lastname']).' created a new post ('.$opinionData['title'].') ',
+							'description' => vendor_html_helper::showUserName($user).' created a new post ('.$opinionData['title'].') ',
 							'action_id' => 1,
 							'link' => 'opinions_debates',
 						]

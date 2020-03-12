@@ -52,7 +52,7 @@ class queries_controller extends aside_bar_data_controller
 					$notify = new notify_content_model();
 					$dataNoti = [
 						'user_id' => $_SESSION['user']['id'],
-						'description' => 'A post has created by '.$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'],
+						'description' => 'A post has created by '.vendor_html_helper::showUserName($_SESSION['user']),
 						'action_id' => 0,
 						'link' => 'admin/queries/index',
 					];

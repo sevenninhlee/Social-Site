@@ -104,7 +104,7 @@
             <div class="top">
               <span class="title">
                 <a style="color: #333;" href="<?php echo RootURL . "blogs/" . $record['slug'] ?>" title="<?=$record['title']?>"><?php echo $record['title']; ?></a>
-                <br/><span style="font-size:15px" class="author"><?php if ($record['show_name'] == 0) { echo $record['firstname'].' '.$record['lastname']; } else { echo $record['username']; }  ?></span>
+                <br/><span style="font-size:15px" class="author"><?php echo vendor_html_helper::showUserName($record);  ?></span>
               </span>
               <a href="<?php echo RootURL . "blogs/" . $record['slug'] ?>">
                 <img src="<?= UploadURI . 'blogs/' . (($record['featured_image']) ? $record['featured_image'] : 'no_picture.png'); ?>" class="img-responsive center-block" alt="film">
@@ -116,7 +116,7 @@
             <div class="row">
               <span class="title" style="font-weight: 200; color: #333;">
                 <a href="<?php echo RootURL . "blogs/" . $record['slug'] ?>"><?=$record['title']?></a>
-                <br/><span style="font-size:15px" class="author"><?php  if ($record['show_name'] == 0) { echo $record['firstname'].' '.$record['lastname']; } else { echo $record['username']; } ?></span>
+                <br/><span style="font-size:15px" class="author"><?php  echo vendor_html_helper::showUserName($record); ?></span>
               </span>
             </div>
           </div>

@@ -92,7 +92,7 @@ class book_groups_controller extends right_bar_data_controller {
             $userOwnerBlog = $user_model->getRecordWithSetting($this->record['user_id']);
             $cc = "";
             $mainReceiver = $userOwnerBlog['email'];
-            $subject="Englight21: Your group ".$this->record['title']." have a new request to join by ".$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'];
+            $subject="Englight21: Your group ".$this->record['title']." have a new request to join by ".vendor_html_helper::showUserName($_SESSION['user']);;
             $mainReceiverText = 'Englight21';
             $href = RootURL."user/book-groups/edit/".$ob_id;
             $content = "<h3>Check detail at: ".$href."</h3>";
@@ -104,7 +104,7 @@ class book_groups_controller extends right_bar_data_controller {
                 $notify = new notify_content_model();
                 $dataNoti = [
                   'user_id' => $userOwnerBlog['id'],
-                  'description' => "Your group ".$this->record['title']." have a new request to join by ".$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'],
+                  'description' => "Your group ".$this->record['title']." have a new request to join by ".vendor_html_helper::showUserName($_SESSION['user']),
                   'action_id' => 2,
                   'link' => "user/book-groups/edit/".$ob_id,
                 ];

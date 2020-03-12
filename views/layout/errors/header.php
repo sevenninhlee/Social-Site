@@ -67,7 +67,7 @@
 
             <ul class="nav navbar-nav navbar-right">
             <?php if(isset($_SESSION['user'])){ ?>
-              <li><a href="<?php  echo RootURL."user/profile/index?user=".$_SESSION['user']['id']; ?>"><?php if ($_SESSION['user']['show_name'] == 0) { echo $_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname']; } else { echo $_SESSION['user']['username']; } ?></a></li>
+              <li><a href="<?php  echo RootURL."user/profile/index?user=".$_SESSION['user']['id']; ?>"><?php echo vendor_html_helper::showUserName($_SESSION['user']); ?></a></li>
               <li><a href="<?php echo RootURL."login/logout/"; ?>">Log out</a></li>
             <?php }else{ ?>
               <li><a href="<?php echo vendor_app_util::url(['ctl'=>'login']); ?>">Login</a></li>

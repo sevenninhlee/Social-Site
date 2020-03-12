@@ -133,7 +133,7 @@
 
                             <td class="tabletShow">
 								<p class="andrew">
-									<?php echo $record['users_firstname'].' '.$record['users_lastname']; ?>
+									<?php echo vendor_html_helper::showUserName($record, true); ?>
 								</p>
 							</td>
 

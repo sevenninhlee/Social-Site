@@ -18,7 +18,7 @@ class blogs_controller extends aside_bar_data_controller
 		foreach($this->records['data'] as $key => $record) {
 			$um = new user_model();
 			$user = $um->getRecord($record['user_id']);
-			$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
+			$this->records['data'][$key]['username'] = vendor_html_helper::showUserName($user);
 			$this->records['data'][$key]['ListCate'] = $blogCategory->getCatOfBolog($record['categories_arr']);
 		}
 		$this->display();
@@ -65,7 +65,7 @@ class blogs_controller extends aside_bar_data_controller
 							// else $mainReceiver .= $value['email'];
 						}
 						$href = RootURL."blogs/".$blogData['slug'];
-						$subject="Englight21: New post from your friend - ".ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']);
+						$subject="Englight21: New post from your friend - ".vendor_html_helper::showUserName($_SESSION['user']);;
 						$mainReceiverText = 'Englight21';
 						$content = "<h3>Your friend has just posted a new post, check detail at: ".$href."</h3>";
 						vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
@@ -75,7 +75,7 @@ class blogs_controller extends aside_bar_data_controller
 					$notify = new notify_content_model();
 					$dataNoti = [
 						'user_id' => $_SESSION['user']['id'],
-						'description' => 'A post has created by '.$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'],
+						'description' => 'A post has created by '.vendor_html_helper::showUserName($_SESSION['user']),
 						'action_id' => 0,
 						'link' => 'admin/blogs/index',
 					];

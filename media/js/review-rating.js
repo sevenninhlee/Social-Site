@@ -154,6 +154,16 @@
                         month: "long"
                     });
 
+                    function showUserName(user) {
+                        if(user.show_name == '0'){
+                            return `${user.firstname} ${user.lastname}`;
+                        }else{
+                            return user.username;
+                        }
+                    }
+
+                    let name = showUserName(resObject.data.user)
+
                     if( resObject.succsess == 1) {
                         $(`.forreply_at.`+reviewID+` .replayParent`).append(`
                         <div class="media heightclass">
@@ -162,7 +172,7 @@
                         </div>
                         <div class="media-right" style="width:100%;"> 
                         <h5 style="display: inline-block;">
-                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${resObject.data.user.firstname}</a> 
+                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${name}</a> 
                             <span class="text-date-comment"> ` + month + ' ' + d.getDate() + ', ' +  d.getFullYear() + ' ' + time + ` </span> 
                         </h5>
 

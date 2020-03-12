@@ -16,7 +16,7 @@ class friends_controller extends aside_bar_data_controller
 			$userIDFriend = ($value['user_id'] == $userID)?$value['user_id_friend']:$value['user_id'];
 			
 			$user = $user_model->getRecord($userIDFriend);
-			$this->records['data'][$key]['username'] = $user['show_name'] == 0 ? $user['firstname'].' '.$user['lastname'] :$user['username'];
+			$this->records['data'][$key]['username'] = vendor_html_helper::showUserName($user);
 			$this->records['data'][$key]['user_id_friend'] = $userIDFriend;
 			$this->records['data'][$key]['status_user_admin'] = ($value['user_id'] == $userID)?$value['status_user']:$value['status_user_friend'];
 			$this->records['data'][$key]['user_avatar'] = $user['avata'];
@@ -50,7 +50,7 @@ class friends_controller extends aside_bar_data_controller
 			$notify = new notify_content_model();
 			$dataNotifie = [
 					'user_id' => $_POST['user_id_friend'],
-					'description' => ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']).' has requested add friend',
+					'description' => vendor_html_helper::showUserName($_SESSION['user']).' has requested add friend',
 					'action_id' => 2,
 					'link' => 'user/friends/index',
 			];
@@ -74,7 +74,7 @@ class friends_controller extends aside_bar_data_controller
 				$cc = '';
 				$href = RootURL."user/profile/index?user=".$_SESSION['user']['id'];
 				$content = "
-				<h3>You just received a friend invitation from ".$_SESSION['user']['firstname'].".</h3>
+				<h3>You just received a friend invitation from ".vendor_html_helper::showUserName($_SESSION['user']).".</h3>
 				<p>Please <a target='_blank' href='".$href."'>click here </a> to approve the friend.</p>
 				";
 				if($userReceiver['is_disabled_all_email'] == '0' && $userReceiver['is_email_friend_request'] == '1')
@@ -175,7 +175,7 @@ class friends_controller extends aside_bar_data_controller
 			$cc = '';
 			$href = RootURL."user/profile/index?user=".$_SESSION['user']['id'];
 			$content = "
-			<h3>You have just been friend with ".$_SESSION['user']['firstname'].".</h3>
+			<h3>You have just been friend with ".vendor_html_helper::showUserName($_SESSION['user']).".</h3>
 			<p>Please <a target='_blank' href='".$href."'>click here </a> to check the friend.</p>
 			";
 			if($userReceiver['is_disabled_all_email'] == '0' && $userReceiver['is_email_friend_request'] == '1')
@@ -187,7 +187,7 @@ class friends_controller extends aside_bar_data_controller
 			$notify = new notify_content_model();
 			$dataNotifie = [
 					'user_id' => $_POST['user_id_friend'],
-					'description' => ucwords($_SESSION['user']['firstname']).' '.ucwords($_SESSION['user']['lastname']).' has confirmed friends with you',
+					'description' => vendor_html_helper::showUserName($_SESSION['user']).' has confirmed friends with you',
 					'action_id' => 6,
 					'link' => 'user/friends/index',
 			];

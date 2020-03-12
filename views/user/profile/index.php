@@ -23,7 +23,10 @@
                     <div class="tab-content">
                       <div class="tab-pane fade in active" id="profile" value="<?=$this->user['id']?>">
                         <div class="page1">
-                          <div class="white_box">                                          
+                          <div class="white_box">   
+                            <ul class="list-inline">
+                              <li class="pull-right"><button type="button" class="btn btn_review" data-toggle="modal" data-target="#myModal">Invite Friends</button></li>
+                            </ul>                                       
                             <div class="media heightclass">
                               <div class="media-left">
                                 <img style='max-width:200px;height:auto;' src="<?php echo UploadURI.'users/'.$this->user['avata']; ?>">
@@ -237,7 +240,6 @@
                                 </div>
                                 <div class="col-md-4">
                                   <div class="form-group text-right space100">
-                                    <button type="button" class="btn btn_review" id="invite" data-toggle="modal" data-target="#myModal">Invite Friends</button>
                                     <button class="btn btn_review btn-sub1 btn-save1" name="btn_save_submit" type="submit">Save</button>
                                   </div>                  
                                 </div>

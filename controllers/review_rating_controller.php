@@ -67,9 +67,32 @@ class review_rating_controller extends vendor_main_controller
                         'user_id' => $postData['user_id'],
                         'description' => vendor_html_helper::showUserName($_SESSION['user']). ' has commented on your post' ,
                         'action_id' => 4,
-                        'link' => $_POST['pathname'],
+                        'link' => "book-groups/book-review/".$_POST['groupBookId'],
                     ];
                     $notify->addRecord($dataNoti);
+                    //##### SEND MAIL #############################################################
+                    //##### $mTo: Nguoi nhan email chinh
+                    //#####	$nTo: Ten nguoi nhan email chinh
+                    //#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+                    //#####	$title: Ten chu de cua email
+                    //#####	$content: Noi dung
+                    //#####
+                    //#####
+                    //#############################################################################
+                    $article =  new $data['table_model']();
+                    $blog = $article->getRecord($data['object_article_id']);
+                    $user_model = new user_model();
+                    $userOwnerBlog = $user_model->getRecordWithSetting($postData['user_id']);
+                    $cc = "";
+                    $mainReceiver = $userOwnerBlog['email'];
+                    $subject="Englight21: ".vendor_html_helper::showUserName($_SESSION['user']). ' has commented on your post: '. $blog['title'];
+                    $mainReceiverText = 'Englight21';
+                    $href = RootURL."book-groups/book-review/".$_POST['groupBookId'];
+                    $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
+                    if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_get_new_comment'] == '1')
+                    vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+                    //########## SEND MAIL ########################################################
+
                 }
 
                 $commentData = $rm->getRecord($id);
@@ -93,6 +116,18 @@ class review_rating_controller extends vendor_main_controller
                     $mainReceiverText = 'Englight21';
                     $href = RootURL."blogs/".$blog['slug'];
                     $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
+
+                    if($userOwnerBlog['is_disabled_all_notification'] == '0' && $userOwnerBlog['is_notification_get_new_comment'] == '1'){
+                        $notify = new notify_content_model();
+                        $dataNoti = [
+                          'user_id' => $userOwnerBlog['id'],
+                          'description' => "Your post has a new comment - ". $blog['title'],
+                          'action_id' => 2,
+                          'link' => "blogs/".$blog['slug'],
+                        ];
+                        $notify->addRecord($dataNoti);
+                    }
+
                     if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_get_new_comment'] == '1')
                     vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
                     //########## SEND MAIL ########################################################
@@ -116,13 +151,21 @@ class review_rating_controller extends vendor_main_controller
 
                     $listUserJoined = $user_model->getListUserJoinedBookGroup($bookGroupId);
                     $mainReceiver = "";
+                    $notify = new notify_content_model();
 
                     foreach ($listUserJoined['data'] as $key => $value) {
-                        if($value['is_disabled_all_email'] == '0' && $value['is_email_get_new_comment'] == '1'){
+                        if($value['is_disabled_all_email'] == '0' && $value['is_email_get_new_comment'] == '1' && $value['user_id'] != $_SESSION['user']['id']){
                             $mainReceiver .= $value['email'].',';
                         }
-                        // if($key != 0 ) $mainReceiver .= ','.$value['email'];
-                        // else $mainReceiver .= $value['email'];
+                        if($value['is_disabled_all_notification'] == '0' && $value['is_notification_get_new_comment'] == '1' && $value['user_id'] != $_SESSION['user']['id']){
+                            $dataNoti = [
+                              'user_id' => $value['user_id'],
+                              'description' => "A book in a group you're disscussing has a new comment - ". $blog['title'],
+                              'action_id' => 2,
+                              'link' => "book-groups/book-review/".$data['groupBookId'],
+                            ];
+                            $notify->addRecord($dataNoti);
+                        }
                     }
                     $cc = "";
                     $subject="Englight21: A book in a group you're disscussing has a new comment - ". $blog['title'];

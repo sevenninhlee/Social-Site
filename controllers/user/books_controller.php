@@ -125,12 +125,23 @@ class books_controller extends aside_bar_data_controller
 
 	public function handleDeleteMany($ids, $model) {
 		if ($model->delRelativeRecords($ids, null, $this->controller)){
-			$data = [
-				'status' => true,
-				'message' => 'Delete successful!'
-			];
-			http_response_code(200);
-			echo json_encode($data);
+      if($this->deleteReviewRatingRl($ids)){
+        $data = [
+          'status' => true,
+          'message' => 'Delete successful!'
+        ];
+        
+        http_response_code(200);
+        echo json_encode($data);
+      } else {
+        $data = [
+          'status' => false,
+          'error' => 'An error occurred when delete data!'
+        ];
+        http_response_code(200);
+        echo json_encode($data);
+      }
+		
 		} else {
 			$data = [
 				'status' => false,
@@ -139,7 +150,16 @@ class books_controller extends aside_bar_data_controller
 			http_response_code(200);
 			echo json_encode($data);
 		}
-	}
+  }
+  
+  public function deleteReviewRatingRl($ids){
+    $arr_ids = explode(",", $ids);
+    $article = new review_rating_model();
+    foreach ($arr_ids as $value) {
+      $article->delRecordByCond(" object_article_id = {$value} AND table_model = 'book_article_model'");
+    }
+    return true;
+  }
 
 	public function changeOwnerStatus()
 	{

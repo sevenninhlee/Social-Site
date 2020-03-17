@@ -47,11 +47,11 @@ if(isset($_GET["pr"])) {
 			if ($prs[1] && strlen($prs[1]) > 0 && count(explode("-", $prs[1])) > 1 ) {
 				$prs[1] = str_replace("-", "_", $prs[1]);
 			}
-			if ($prs[0] == "privacy_policy" || $prs[0] == "terms_of_use" || $prs[0] == "about" ) {
-				$prs[2] = str_replace("_", "-", $prs[0]);
-				$prs[0] = "page";
-				$prs[1] = "index";
-			}
+			// if ($prs[0] == "privacy_policy" || $prs[0] == "terms_of_use" || $prs[0] == "about" ) {
+			// 	$prs[2] = str_replace("_", "-", $prs[0]);
+			// 	$prs[0] = "page";
+			// 	$prs[1] = "index";
+			// }
 
 			$link_url = $_SERVER['REQUEST_URI'];
 
@@ -78,7 +78,26 @@ if(isset($_GET["pr"])) {
 					$prs = explode("/","must_reads/view/".$matches[1]);
 				} else if(preg_match('/environment\/(.*)/', $link_url, $matches) && !preg_match('/user\/environment/', $link_url) && !preg_match('/admin/', $link_url) ){
 					$prs = explode("/","environment/view/".$matches[1]);
-				} 
+        } 
+        else {
+          $arrCtrl = [
+            'news',
+            'films',
+            'books',
+            'book_groups',
+            'blogs',
+            'opinions_debates',
+            'queries',
+            'home',
+            'login',
+            'register'
+          ];
+          if(!preg_match('/user\//', $link_url) && !preg_match('/admin/', $link_url) && !in_array( $prs[0], $arrCtrl)){
+            $prs[2] = str_replace("_", "-", $prs[0]);
+            $prs[0] = "page";
+            $prs[1] = "index";
+          }
+        }
 			}
 
 		}

@@ -90,7 +90,14 @@ if(isset($_GET["pr"])) {
             'queries',
             'home',
             'login',
-            'register'
+            'register',
+            'review_rating',
+            'contact',
+            'environment',
+            'likes',
+            'must_reads',
+            'notifications',
+            'community_blogs'
           ];
           if(!preg_match('/user\//', $link_url) && !preg_match('/admin/', $link_url) && !in_array( $prs[0], $arrCtrl)){
             $prs[2] = str_replace("_", "-", $prs[0]);

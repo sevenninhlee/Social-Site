@@ -93,7 +93,13 @@
               <?php } ?>
               <div class="media-body">
                 <p><a href="<?php echo RootURL."queries/".$this->query[0]['slug'] ?>"><?php echo $this->query[0]['title'] ; ?></a></p>
-
-                <p><?php if(strlen($this->query[0]['description']) > 20)  echo substr($this->query[0]['description'], 0, 20).'...'; else echo $this->query[0]['description'] ; ?></p>
+                <div>
+                  <?php if(strlen($this->query[0]['description']) > 30) { 
+                    $stringCut = substr($this->query[0]['description'], 0, 30);
+                    $endPoint = strrpos($stringCut, ' ');
+                  ?>
+                    <?php echo substr($this->query[0]['description'], 0, $endPoint) ?>
+                  <?php } else echo $this->query[0]['description'] ; ?>
+                </div>
               </div>
             </div>

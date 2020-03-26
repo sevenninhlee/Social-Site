@@ -11,9 +11,10 @@
             <h3>Links</h3>
 
             <ul class="list-unstyled">
-              <li><a href="<?=vendor_app_util::url(array('ctl'=>'page', 'act'=>'index/team-of-use')); ?>">Terms of Use</a></li>
-              <li><a href="<?=vendor_app_util::url(array('ctl'=>'page', 'act'=>'index/stack-exchange-inc-privacy-policy')); ?>">Privacy Policy</a></li>
+              <li><a href="<?php echo RootREL; ?>terms-of-use">Terms of Use</a></li>
+              <li><a href="<?php echo RootREL; ?>privacy-policy">Privacy Policy</a></li>
               <li><a href="<?=vendor_app_util::url(array('ctl'=>'contact')); ?>">Contact</a></li>
+              <li><a href="<?php echo RootREL; ?>about-us">About Us</a></li>
               <li><a href="#">Sitemap</a></li>
             </ul>
           </div>

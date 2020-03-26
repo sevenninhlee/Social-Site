@@ -313,7 +313,6 @@
 
 
     <!-- start footer -->
-<?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script type="text/javascript">
   var rootUrl   = "<?=RootURL;?>";
 
@@ -353,3 +352,4 @@
 </script>   
 <script src="<?php echo RootREL; ?>media/js/profile.js"></script>
 <script src="<?php echo RootREL; ?>media/js/friend.js"></script>
+<?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>

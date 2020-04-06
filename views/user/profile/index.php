@@ -26,7 +26,9 @@
                           <div class="white_box">   
                             <ul class="list-inline">
                               <li class="pull-right"><button type="button" class="btn btn_review" data-toggle="modal" data-target="#myModal">Invite Friends</button></li>
-                            </ul>                                       
+                            </ul> 
+                          </div>
+                          <div class="white_box">   
                             <div class="media heightclass">
                               <div class="media-left">
                                 <img style='max-width:200px;height:auto;' src="<?php echo UploadURI.'users/'.$this->user['avata']; ?>">
@@ -313,6 +315,7 @@
 
 
     <!-- start footer -->
+<?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>
 <script type="text/javascript">
   var rootUrl   = "<?=RootURL;?>";
 
@@ -352,4 +355,3 @@
 </script>   
 <script src="<?php echo RootREL; ?>media/js/profile.js"></script>
 <script src="<?php echo RootREL; ?>media/js/friend.js"></script>
-<?php include_once 'views/layout/'.$this->layout.'footerPublic.php'; ?>

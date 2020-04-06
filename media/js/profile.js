@@ -8,14 +8,14 @@ $( document ).ready(function() {
             url = rootUrl+"user/profile/edit";
             let formData = {
                 id: $('#profile').attr('value'),
-                [act]: $('input[name="'+act+'"]').val() || $('textarea[name="'+act+'"]').val() || $('select[name="'+act+'"]').val()
+                [act]: $('input[name="'+act+'"]').val() || $('textarea[name="'+act+'"]').val() || $('select[name="'+act+'"]').val() || ""
             }
 			$.ajax({
 			    url: url,
 			    data: formData,
 			    type: "POST",
 			    success: function (data) {
-					location.reload();
+					  location.reload();
 			    },
 			    error: function (err) {
                     alert('Error');

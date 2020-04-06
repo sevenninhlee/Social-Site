@@ -1163,6 +1163,9 @@ footer ul li a:hover{
     width: 172px;
     margin-left: 0;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+
 }
 .social_ul li {
     width: 30px;

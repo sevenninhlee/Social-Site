@@ -159,9 +159,10 @@ class book_groups_controller extends right_bar_data_controller {
     $this->loadmoreData = [
       'slug' => $this->record['slug'],
       'model' => 'book',
-      'id' => $id[1],
+      'id' => $this->bgr_id,
       'page' => 2,
-      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
+      'is_show_loadmore' => intval($this->comments['nocurp']) < intval($this->comments['nopp'])?false:true
     ];
 
 		$this->display();

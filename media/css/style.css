@@ -445,7 +445,9 @@ input[type="file"]{
 
 .white_box{
 	background-color: #ffffff;
-	padding: 0px;
+  padding: 20px;
+  /* text-align: justify;
+  text-justify: inter-word; */
 }
 .f700{
 	font-weight: 700;
@@ -2012,7 +2014,8 @@ li.remove-line{
 		width: 100%;
 	}
 	.main_section h2 {
-	    font-size: 20px;
+      font-size: 20px;
+      margin-left: 20px;
   }
   
   .media.heightclass{

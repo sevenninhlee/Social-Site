@@ -72,7 +72,8 @@ class blogs_controller extends right_bar_data_controller
       'model' => 'blog',
       'ctl' => 'blogs',
       'id' => $id[1],
-      'page' => 2
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
     ];
 
 		$rpCondition .= " AND table_model = 'blog_article_model' AND object_article_id = {$id[1]} AND review_parent_id != 0";

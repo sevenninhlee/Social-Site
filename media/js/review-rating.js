@@ -237,7 +237,7 @@
           success: function(res){
             let data = JSON.parse(res)
             let html = '';
-            user_logged = '1';
+            user_logged = data.user_logged;
             data.data.forEach(item=>{
               let RootREL = data.RootREL
 

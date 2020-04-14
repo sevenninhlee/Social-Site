@@ -92,7 +92,8 @@ class right_bar_data_controller extends vendor_main_controller
       'model' => 'blog',
       'ctl' => 'blogs',
       'id' => $_POST['id'],
-      'page' => intval($_POST['page'])+1
+      'page' => intval($_POST['page'])+1,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
     ];
     $this->records['loadmoreData'] = $loadmoreData;
 

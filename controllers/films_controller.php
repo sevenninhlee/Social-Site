@@ -75,7 +75,16 @@ class films_controller extends right_bar_data_controller {
 		
 		$conditions .= " AND table_model = 'film_article_model' AND object_article_id = {$id[1]} AND review_parent_id = 0";
 		$this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
-		$this->newFilms = [];
+    
+    $this->loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'film',
+      'id' => $id[1],
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+    ];
+    
+    $this->newFilms = [];
 		if(count($this->category)){
         	$conditions = "admin_status = 1 AND owner_status = 1 AND categories_arr like '%,".$this->category[0]['id'].",%' AND film_articles.id!=".$id[1];
 			$this->newFilms = $fm->all('*,film_articles.id as film_articles_id, film_articles.slug as slug',['conditions'=>$conditions, 'joins'=>null, 'order'=> ' created DESC LIMIT 0,3']);

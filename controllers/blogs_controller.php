@@ -70,7 +70,6 @@ class blogs_controller extends right_bar_data_controller
     $this->loadmoreData = [
       'slug' => $this->record['slug'],
       'model' => 'blog',
-      'ctl' => 'blogs',
       'id' => $id[1],
       'page' => 2,
       'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
@@ -107,11 +106,6 @@ class blogs_controller extends right_bar_data_controller
 			}
 		}		
 		$this->display();
-  }
-  
-  public function loadmore()
-  {
-    parent::loadmore();
   }
 }
 ?>

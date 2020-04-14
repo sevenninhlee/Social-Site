@@ -78,6 +78,14 @@ class must_reads_controller extends right_bar_data_controller
 
 		$this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
 
+    $this->loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'must_reads',
+      'id' => $id[1],
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+    ];
+
 		$lkm = new like_model();
 		foreach($this->records['data'] as $key => $record){
 			$this->records['data'][$key]['total_like'] = $lkm->totalLike($record['id'], 'review_rating_model');

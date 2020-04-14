@@ -71,7 +71,16 @@ class opinions_debates_controller extends right_bar_data_controller
 		$conditions .= " AND table_model = 'opinion_debate_article_model' AND object_article_id = {$id[1]} AND review_parent_id = 0";
 
 		$this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
-		$lkm = new like_model();
+    
+    $this->loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'opinion_debate',
+      'id' => $id[1],
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+    ];
+
+    $lkm = new like_model();
 		foreach($this->records['data'] as $key => $record){
 			$this->records['data'][$key]['total_like'] = $lkm->totalLike($record['id'], 'review_rating_model');
 			$this->records['data'][$key]['checkUserLike'] = $lkm->checkUserLike($userID, $record['id'], 'review_rating_model');

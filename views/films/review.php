@@ -130,6 +130,15 @@
               </div>
 						  <?php } ?>
               </div>
+
+              <div class="LoadmoreContent">
+              </div>
+              <div class="text-center">
+                <button
+                  class="btn btn-review space20 LoadmoreReview" data='<?=json_encode($this->loadmoreData)?>'
+                >Showmore</button>
+              </div>
+              
               <h5>Add Review:</h5>
               <hr>
               <form>

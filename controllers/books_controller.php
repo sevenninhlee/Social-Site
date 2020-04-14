@@ -56,7 +56,15 @@ class books_controller extends right_bar_data_controller
 			foreach($this->records['data'] as $key => $record){
 				$this->records['data'][$key]['total_like'] = $lkm->totalLike($record['id'], 'review_rating_model');
 				$this->records['data'][$key]['checkUserLike'] = $lkm->checkUserLike($userID, $record['id'], 'review_rating_model');
-			}
+      }
+      
+      $this->loadmoreData = [
+        'slug' => $this->record['slug'],
+        'model' => 'book',
+        'id' => $id[1],
+        'page' => 2,
+        'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+      ];
 			
 			$this->display();
 		} else {

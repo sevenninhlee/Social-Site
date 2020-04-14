@@ -131,32 +131,38 @@ class book_groups_controller extends right_bar_data_controller {
     public function book_review($id){
 		global $app;
 		$conditions = "owner_status = 1 AND admin_status = 1";
-        $rpCondition = "owner_status = 1 AND admin_status = 1";
+    $rpCondition = "owner_status = 1 AND admin_status = 1";
 		$userID = ($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) ? $_SESSION['user']['id'] : null;
         
 		$bm = new book_group_article_book_model();
 		$this->record = $bm->getRecord($id,'*',['conditions'=>'','joins'=>['book_article','book_group_article']]);
-        $this->bgr_id =  $this->record['book_id'];
-                
-        $bgum = new book_group_article_user_model();
-        if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])){    
-            $this->checkUser = $bgum->checkUserInGroup($this->record['book_group_article_id']);
-        } else {
-            $this->checkUser = false;
-        }
+    $this->bgr_id =  $this->record['book_id'];
+            
+    $bgum = new book_group_article_user_model();
+    if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])){    
+        $this->checkUser = $bgum->checkUserInGroup($this->record['book_group_article_id']);
+    } else {
+        $this->checkUser = false;
+    }
 
 		$book = new book_category_model(); 
-        $this->category = $book->getCatOfBook($this->record['book_articles_categories_arr']);
-		
-        $reviews = new review_rating_model();
+    $this->category = $book->getCatOfBook($this->record['book_articles_categories_arr']);
+
+    $reviews = new review_rating_model();
         
 		$rpCondition .= " AND table_model = 'book_article_model' AND object_article_id = {$this->bgr_id} AND review_parent_id != 0";
 		$this->reply = $reviews->getAllRecords('users.*, review_ratings.*', ['conditions'=>$rpCondition, 'joins'=>['user'], 'order'=>'created ASC']);
         
-        // echo "Start <br/>"; echo '<pre>'; print_r($this->reply);echo '</pre>';exit("End Data");
-
-        $conditionsCmt = "table_model = 'book_article_model' AND object_article_id = {$this->bgr_id} AND review_parent_id = 0 AND value = 0 AND owner_status = 1 AND admin_status = 1";
-        $this->comments = $reviews->allp('*',['conditions'=>$conditionsCmt, 'joins'=>['user'], 'order'=>'updated DESC']);
+    $conditionsCmt = "table_model = 'book_article_model' AND object_article_id = {$this->bgr_id} AND review_parent_id = 0 AND value = 0 AND owner_status = 1 AND admin_status = 1";
+    $this->comments = $reviews->allp('*',['conditions'=>$conditionsCmt, 'joins'=>['user'], 'order'=>'updated DESC']);
+    
+    $this->loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'book',
+      'id' => $id[1],
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+    ];
 
 		$this->display();
 	}

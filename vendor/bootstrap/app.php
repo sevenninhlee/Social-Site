@@ -56,7 +56,7 @@ if(isset($_GET["pr"])) {
 			$link_url = $_SERVER['REQUEST_URI'];
 
 			if (!preg_match('/index\?cat=/', $link_url, $matches) && !preg_match('/index\?page=/', $link_url, $matches) && !preg_match('/index\?search=/', $link_url, $matches) ) {
-				if(preg_match('/blogs\/loadmore/', $link_url, $matches)){
+				if(preg_match('/review_rating\/loadmore/', $link_url, $matches)){
         }else if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){
           $prs = explode("/","blogs/view/".$matches[1]);
 				}else if(preg_match('/community-blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){

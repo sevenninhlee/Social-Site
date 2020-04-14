@@ -232,7 +232,7 @@
         data = JSON.parse(data)
         $.ajax({
           type:"POST",
-          url:rootUrl+data.ctl+'/loadmore',
+          url:rootUrl+'review_rating/loadmore',
           data,
           success: function(res){
             let data = JSON.parse(res)
@@ -246,12 +246,14 @@
               if(review.length>300){
 
                 let stringCut = review.substring(0,300);// substr($review['review'], 0, 300);
-                let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
+                // let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
+                
+                var endPoint = stringCut.lastIndexOf(" ");
 
                 reviewHtml = `
                   ${review.substring(0, endPoint)}
                   <span class="read-more-show "><span style="color: black;">...</span>Read more <i class="fa fa-angle-down"></i></span>
-                  <span class="read-more-content"> ${review.substring(endPoint, -1)}
+                  <span class="read-more-content hide_content"> ${review.substring(endPoint)}
                   <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
                 `
               }else{
@@ -261,23 +263,6 @@
               let repliesHtml = '';
               data.replies.forEach(reply=>{
                 let commentHtml = '';
-
-                let review1 = item.review;
-                let replyHtml = ''
-                if(review1.length>200){
-  
-                  let stringCut = review1.substring(0,200);// substr($review1['review1'], 0, 200);
-                  let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
-  
-                  replyHtml = `
-                    ${review1.substring(0, endPoint)}
-                    <span class="read-more-show "><span style="color: black;">...</span>Read more <i class="fa fa-angle-down"></i></span>
-                    <span class="read-more-content"> ${review1.substring(endPoint, -1)}
-                    <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
-                  `
-                }else{
-                  replyHtml = review1
-                }
 
                 if(reply.user_id == user_logged){
                   commentHtml = 
@@ -304,6 +289,26 @@
                   `
                 }
                 if(item.id == reply.review_parent_id){
+                 
+                  let review1 = reply.review;
+                  let replyHtml = ''
+                  if(review1.length>200){
+    
+                    let stringCut = review1.substring(0,200);// substr($review1['review1'], 0, 200);
+                    // let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
+
+                    var endPoint = stringCut.lastIndexOf(" ");
+
+                    replyHtml = `
+                      ${review1.substring(0, endPoint)}
+                      <span class="read-more-show "><span style="color: black;">...</span>Read more <i class="fa fa-angle-down"></i></span>
+                      <span class="read-more-content hide_content"> ${review1.substring(endPoint)}
+                      <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
+                    `
+                  }else{
+                    replyHtml = review1
+                  }
+
                   repliesHtml +=
                   `
                   <div class="media heightclass reply_rating">

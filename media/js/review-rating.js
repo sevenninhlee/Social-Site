@@ -16,6 +16,27 @@
         });
     });
 
+    function showUserName(user) {
+      if(user.show_name == '0'){
+          return `${user.firstname} ${user.lastname}`;
+      }else{
+          return user.username;
+      }
+    }
+
+    function strpos (haystack, needle, offset) {
+      //  discuss at: https://locutus.io/php/strpos/
+      // original by: Kevin van Zonneveld (https://kvz.io)
+      // improved by: Onno Marsman (https://twitter.com/onnomarsman)
+      // improved by: Brett Zamir (https://brett-zamir.me)
+      // bugfixed by: Daniel Esteban
+      //   example 1: strpos('Kevin van Zonneveld', 'e', 5)
+      //   returns 1: 14
+    
+      var i = (haystack + '')
+        .indexOf(needle, (offset || 0))
+      return i === -1 ? false : i
+    }
 
     $('.btn_editrv').click(function(e) {
         var slugObject = $(this).attr('slugObject');
@@ -101,7 +122,7 @@
     }    
 
 
-    $('.forreply_hidden').click( function() {
+    $('body').on('click', '.forreply_hidden', function() {
       let id = $(this).attr('data_id');
       let content = $(this).attr('data')==1?'Hidden Reply':'Show Reply';
       let data = $(this).attr('data')==1?0:1;
@@ -117,7 +138,7 @@
     });
     
 
-    $('.btn_reply').click(function(e) {
+    $('body').on('click', '.btn_reply', function(e) {
         var data = $(this).attr('data');
         var RootREL = $(this).attr('RootREL');
         var data = data.split(',');
@@ -154,14 +175,7 @@
                         month: "long"
                     });
 
-                    function showUserName(user) {
-                        if(user.show_name == '0'){
-                            return `${user.firstname} ${user.lastname}`;
-                        }else{
-                            return user.username;
-                        }
-                    }
-
+                   
                     let name = showUserName(resObject.data.user)
 
                     if( resObject.succsess == 1) {
@@ -211,6 +225,187 @@
             });
         } 
           
+      })
+
+      $('.LoadmoreReview').on('click', function(){
+        let data = $(this).attr('data');
+        data = JSON.parse(data)
+        $.ajax({
+          type:"POST",
+          url:rootUrl+data.ctl+'/loadmore',
+          data,
+          success: function(res){
+            let data = JSON.parse(res)
+            let html = '';
+            user_logged = '1';
+            data.data.forEach(item=>{
+              let RootREL = data.RootREL
+
+              let review = item.review;
+              let reviewHtml = ''
+              if(review.length>300){
+
+                let stringCut = review.substring(0,300);// substr($review['review'], 0, 300);
+                let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
+
+                reviewHtml = `
+                  ${review.substring(0, endPoint)}
+                  <span class="read-more-show "><span style="color: black;">...</span>Read more <i class="fa fa-angle-down"></i></span>
+                  <span class="read-more-content"> ${review.substring(endPoint, -1)}
+                  <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
+                `
+              }else{
+                reviewHtml = review
+              }
+
+              let repliesHtml = '';
+              data.replies.forEach(reply=>{
+                let commentHtml = '';
+
+                let review1 = item.review;
+                let replyHtml = ''
+                if(review1.length>200){
+  
+                  let stringCut = review1.substring(0,200);// substr($review1['review1'], 0, 200);
+                  let endPoint = strpos(stringCut, ' ', 0);//   strrpos($stringCut, ' ');
+  
+                  replyHtml = `
+                    ${review1.substring(0, endPoint)}
+                    <span class="read-more-show "><span style="color: black;">...</span>Read more <i class="fa fa-angle-down"></i></span>
+                    <span class="read-more-content"> ${review1.substring(endPoint, -1)}
+                    <span class="read-more-hide ">Less <i class="fa fa-angle-up"></i></span> </span>
+                  `
+                }else{
+                  replyHtml = review1
+                }
+
+                if(reply.user_id == user_logged){
+                  commentHtml = 
+                  `
+                  <div class="edit-delete-comment">
+                    <div class="edit-delete-comment-act"><span class="CommentItemAction" typeAct="edit" data="${reply.id}">Edit</span> <span typeAct="delete" class="CommentItemAction" data="${reply.id}">Delete</span></div>
+                    <div class="edit-delete-comment-content" id="CommentItemAction-${reply.id}">
+                      <textarea class="form-control replay" id="CommentItemActionContent-${reply.id}" rows="4" placeholder="Add Reply">${reply.review.trim()}</textarea>
+                      <div class="text-right">
+                        <button class="btn btn-rp space20 btn-cancle CommentItemAction" type="button" typeAct="cancel" data="${reply.id}">Cancel</button>
+                        <button 
+                            class="btn btn-rp space20 CommentItemAction" 
+                            type="button"
+                            typeAct="submit" 
+                            data="${reply.id}"
+                            RootREL = "${RootREL}"
+                            checkUser="${user_logged?true:false}"
+                        >
+                            Edit
+                        </button>                              
+                      </div> 
+                    </div>
+                  </div>
+                  `
+                }
+                if(item.id == reply.review_parent_id){
+                  repliesHtml +=
+                  `
+                  <div class="media heightclass reply_rating">
+                    <div class="media-left">
+                      <img src="${RootREL}media/upload/${reply.avata?'users/'+reply.avata:'no_picture.png'}" width=50; height=50;>
+                    </div>
+                    <div class="media-right" style="width:100%;"> 
+                      <h5 style="display: inline-block;">
+                        <a href="user/profile/index?user=${reply.users_id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${showUserName(reply)}</a> 
+                        <span class="text-date-comment"> ${reply.created} </span> 
+                      </h5>
+                      ${commentHtml}
+                      <div class="review-txt review-txt-${reply.id}">
+                        ${replyHtml}
+                      </div>
+                    </div>
+                  </div>
+                  `
+                }
+              })
+
+              html += 
+              `
+              <div class="media heightclass">
+                <div class="media-left">
+                  <img src="${RootREL}media/upload/`+ (item.users_avata ? 'users/'+ item.users_avata : "no_picture.png") +`" width=150; height=150;>
+                </div>
+                <div class="media-right" style="width:100%;"> 
+                  <h5 style="display: inline-block;width:100%;">
+                    <a href="user/profile/index?user=${item.user_id}" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;">${showUserName({
+                      firstname: item.users_firstname,
+                      lastname: item.users_lastname,
+                      username: item.users_username,
+                      show_name: item.users_show_name
+                    })}</a>
+                  </h5>
+                  ${
+                    item.user_id == user_logged ?
+                    `
+                    <div class="edit-delete-comment">
+                      <div class="edit-delete-comment-act"><span class="CommentItemAction" typeAct="edit" data="${item.id}">Edit</span> <span typeAct="delete" class="CommentItemAction" data="${item.id}">Delete</span></div>
+                      <div class="edit-delete-comment-content" id="CommentItemAction-${item.id}">
+                        <textarea class="form-control replay" id="CommentItemActionContent-${item.id}" rows="4" placeholder="Add Reply">${review.review && review.review.trim()}</textarea>
+                        <div class="text-right">
+                          <button class="btn btn-review space20 btn-cancle CommentItemAction" type="button" typeAct="cancel" data="${item.id}">Cancel</button>
+                          <button 
+                              class="btn btn-review space20 CommentItemAction" 
+                              type="button"
+                              typeAct="submit" 
+                              data="${item.id}"
+                              RootREL = "${RootREL}"
+                              checkUser="${user_logged?true:false}"
+                          >
+                              Edit
+                          </button>                              
+                        </div> 
+                      </div>
+                    </div>
+                    
+                    ` : ``
+                  }
+                  <div class="review-txt review-txt-${item.id}">
+                  ${reviewHtml}
+                  </div>
+
+                  <ul class="list-inline">
+                    <li><p></p></li>
+                    <li class="pull-right" ><p><a class="reply-btn" onclick="showRelyComment(${item.id})"><span class="fa fa-comment" style="font-size:16px;margin-right: 5px;">Add Reply</span></a></p></li>
+                    <li class="pull-right forreply_hidden ${item.id}" id="" data_id="${item.id}" data="0"><p><a class="reply-btn disp-btn-${item.id}"><span class="fa fa-refresh" style="font-size:16px;margin-right: 5px;">Hidden Reply</span></a></p></li>
+                  </ul>
+                            
+                  <div class="forreply_at ${item.id}" data="${item.id}">
+                    <div class="replayParent ${item.id}">
+                    ${repliesHtml}
+                    </div>
+                    <div class="forreply ${item.id}">
+                      <textarea class="form-control replay" id="reply_${item.id}" rows="4" placeholder="Add Reply"></textarea>
+                      <div class="text-right">
+                        <button class="btn btn-review space20 btn-cancle" type="button">Cancel</button>
+                        <button 
+                            class="btn btn-review space20 btn_reply" 
+                            type="button"
+                            RootREL = "${RootREL}"
+                            checkUser="${user_logged?true:false}"
+                            data="${item.id},${item.object_article_id},blog_article_model"
+                        >
+                            Add reply
+                        </button>                              
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              `
+            })
+            $('.reviewRating').append(html)
+            if(data.data.length>0)
+              $('.LoadmoreReview').attr('data', JSON.stringify(data.loadmoreData))
+            else $('.LoadmoreReview').remove();
+          }
+        });
       })
 
       $('.btn_add_comment').click(function(e) {

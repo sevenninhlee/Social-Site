@@ -56,10 +56,11 @@ if(isset($_GET["pr"])) {
 			$link_url = $_SERVER['REQUEST_URI'];
 
 			if (!preg_match('/index\?cat=/', $link_url, $matches) && !preg_match('/index\?page=/', $link_url, $matches) && !preg_match('/index\?search=/', $link_url, $matches) ) {
-				if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){
-					$prs = explode("/","blogs/view/".$matches[1]);
+				if(preg_match('/blogs\/loadmore/', $link_url, $matches)){
+        }else if(preg_match('/blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){
+          $prs = explode("/","blogs/view/".$matches[1]);
 				}else if(preg_match('/community-blogs\/(.*)/', $link_url, $matches) && !preg_match('/user\/blogs/', $link_url) && !preg_match('/admin/', $link_url) ){
-					$prs = explode("/","community_blogs/view/".$matches[1]);
+          $prs = explode("/","community_blogs/view/".$matches[1]);
 				} else if(preg_match('/news\/(.*)/', $link_url, $matches) && !preg_match('/user\/news/', $link_url) && !preg_match('/admin/', $link_url) ){
 					$prs = explode("/","news/view/".$matches[1]);
 				} else if(preg_match('/films\/(.*)/', $link_url, $matches) && !preg_match('/user\/films/', $link_url) && !preg_match('/admin/', $link_url) ){

@@ -66,14 +66,21 @@ class blogs_controller extends right_bar_data_controller
 
 		$reviews = new review_rating_model();
 		$this->getAveRating = $reviews->getAverageRating($id[1], "blog_article_model");
-		$this->reviews = $reviews->getUserRating($userID, $id[1], "blog_article_model");
+    $this->reviews = $reviews->getUserRating($userID, $id[1], "blog_article_model");
+    $this->loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'blog',
+      'ctl' => 'blogs',
+      'id' => $id[1],
+      'page' => 2
+    ];
 
 		$rpCondition .= " AND table_model = 'blog_article_model' AND object_article_id = {$id[1]} AND review_parent_id != 0";
 		$this->reply = $reviews->getAllRecords('users.*, review_ratings.*', ['conditions'=>$rpCondition, 'joins'=>['user'], 'order'=>'created ASC']);
 		
 		$conditions .= " AND table_model = 'blog_article_model' AND object_article_id = {$id[1]} AND review_parent_id = 0";
-		$this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
-
+    $this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
+    
 		$lkm = new like_model();
 		foreach($this->records['data'] as $key => $record){
 			$this->records['data'][$key]['total_like'] = $lkm->totalLike($record['id'], 'review_rating_model');
@@ -99,6 +106,11 @@ class blogs_controller extends right_bar_data_controller
 			}
 		}		
 		$this->display();
-	}
+  }
+  
+  public function loadmore()
+  {
+    parent::loadmore();
+  }
 }
 ?>

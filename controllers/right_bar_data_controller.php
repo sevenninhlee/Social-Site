@@ -67,6 +67,37 @@ class right_bar_data_controller extends vendor_main_controller
 		}
 
 		parent::__construct();
-	}
+  }
+  
+  public function loadmore(){
+    $conditions = "owner_status = 1 AND admin_status = 1";
+    $model = $_POST['model'];
+		$conditions .= " AND table_model = '{$model}_article_model' AND object_article_id = {$_POST['id']} AND review_parent_id = 0";
+    $reviews = new review_rating_model();
+    $this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC', 'pagination'=>['nopp'=>10, 'page'=>intval($_POST['page'])]]);
+
+    $rpCondition = "owner_status = 1 AND admin_status = 1";
+		$rpCondition .= " AND table_model = '{$model}_article_model' AND object_article_id = {$_POST['id']} AND review_parent_id != 0";
+		$this->reply = $reviews->getAllRecords('users.*, review_ratings.*', ['conditions'=>$rpCondition, 'joins'=>['user'], 'order'=>'created ASC']);
+
+    $replies = [];
+    foreach ($this->reply as $rp) {
+      $replies[] = $rp;
+    }
+    $this->records['replies'] = $replies;
+    $this->records['RootREL'] = RootREL;
+
+    $loadmoreData = [
+      'slug' => $this->record['slug'],
+      'model' => 'blog',
+      'ctl' => 'blogs',
+      'id' => $_POST['id'],
+      'page' => intval($_POST['page'])+1
+    ];
+    $this->records['loadmoreData'] = $loadmoreData;
+
+    http_response_code(200);
+    echo json_encode($this->records);
+  }
 }
 ?>

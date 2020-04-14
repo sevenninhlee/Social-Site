@@ -89,10 +89,10 @@
     </script>
 
     <script type="text/javascript">
-      $('.reply-btn').click(function(){
+       $('body').on('click', '.reply-btn', function(){
         $(this).parents('.media-right').find('.forreply').show();
       });
-      $('.btn-cancle').click(function(){
+      $('body').on('click', '.btn-cancle', function(){
         $(this).parents('.media-right').find('.forreply').hide();
       });
     </script>

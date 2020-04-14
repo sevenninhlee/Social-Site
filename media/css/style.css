@@ -1281,6 +1281,18 @@ h4.organiz{
 .media.heightclass{
 	height: auto;
 }
+.media.heightclass .media-right h5 a.review-css1{
+  float: left; 
+  font-weight: 700;
+  margin-right: 20px;
+  font-size: 20px;
+}
+.media.heightclass .media-right h5 a.review-css2{
+  font-weight: 700;
+  margin-right: 10px;
+  font-size: 20px; 
+  float: left;
+}
 .m0{
 	margin: 0 !important;
 }
@@ -2001,12 +2013,40 @@ li.remove-line{
 	}
 	.main_section h2 {
 	    font-size: 20px;
-	}
+  }
+  
+  .media.heightclass{
+    border: 1px solid rgba(0, 0, 0, 0.169);
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .media.heightclass .media-left{
+    text-align: center;
+  }
+  .media.heightclass .media-right{
+    width: 100%;
+    display: block;
+  }
+  .media.heightclass .media-right h5{
+    width: 100%;
+  }
+  .media.heightclass .media-right h5 .text-date-comment{
+    display: block;
+  }
+  .media.heightclass .media-right h5 a.review-css1{
+    float: unset;
+    padding-left: 0;
+  }
+  .media.heightclass .media-right h5 a.review-css2{
+    float: unset;
+    padding-left: 0;
+  }
 	.media.heightclass .media-left{
 		display: block;
 	}
 	.media.heightclass .media-left img{
-		margin: 0 auto;
+		/* margin: 0 auto; */
 		display: block;
 		margin-bottom: 20px;
 	}

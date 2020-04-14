@@ -78,7 +78,7 @@
                 </div>
                 <div class="media-right" style="width:100%;"> 
                   <h5 style="display: inline-block;width:100%;">
-                      <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;"><?= vendor_html_helper::showUserName($review, true) ?></a>
+                      <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$review['users_id']])) ?>"  class="review-css2"><?= vendor_html_helper::showUserName($review, true) ?></a>
                      <div style="float: left ;margin-right: 10px;">rated it <div class="rating"  id="rate3" value="<?= $review['value'] ?>" enabled="true">
                      </div></div><span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($review['created']));?> </span>
                   </h5>
@@ -104,7 +104,7 @@
                       </div>
                       <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
-                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;"><?=vendor_html_helper::showUserName($rp, true) ?></a> 
+                        <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>"  class="review-css1"><?=vendor_html_helper::showUserName($rp, true) ?></a> 
                         <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </span> 
                       </h5>
                         <div class="review-txt">

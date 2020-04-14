@@ -186,7 +186,7 @@
                         </div>
                         <div class="media-right" style="width:100%;"> 
                         <h5 style="display: inline-block;">
-                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${name}</a> 
+                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}"  >${name}</a> 
                             <span class="text-date-comment"> ` + month + ' ' + d.getDate() + ', ' +  d.getFullYear() + ' ' + time + ` </span> 
                         </h5>
 
@@ -317,7 +317,7 @@
                     </div>
                     <div class="media-right" style="width:100%;"> 
                       <h5 style="display: inline-block;">
-                        <a href="user/profile/index?user=${reply.users_id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${showUserName(reply)}</a> 
+                        <a href="user/profile/index?user=${reply.users_id}"  >${showUserName(reply)}</a> 
                         <span class="text-date-comment"> ${reply.created} </span> 
                       </h5>
                       ${commentHtml}
@@ -338,7 +338,7 @@
                 </div>
                 <div class="media-right" style="width:100%;"> 
                   <h5 style="display: inline-block;width:100%;">
-                    <a href="user/profile/index?user=${item.user_id}" style="font-weight: 700;margin-right: 10px;font-size: 20px; float: left;">${showUserName({
+                    <a href="user/profile/index?user=${item.user_id}"  class="review-css2">${showUserName({
                       firstname: item.users_firstname,
                       lastname: item.users_lastname,
                       username: item.users_username,

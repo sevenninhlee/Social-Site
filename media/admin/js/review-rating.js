@@ -162,7 +162,7 @@
                         </div>
                         <div class="media-right" style="width:100%;"> 
                         <h5 style="display: inline-block;">
-                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}" style="float: left; font-weight: 700;margin-right: 20px;font-size: 20px;">${resObject.data.user.firstname}</a> 
+                            <a href="${rootUrl}user/profile/index?user=${resObject.data.user.id}"  >${resObject.data.user.firstname}</a> 
                             <span class="text-date-comment"> ` + month + ' ' + d.getDate() + ', ' +  d.getFullYear() + ' ' + time + ` </span> 
                         </h5>
                         <p class="review-txt">

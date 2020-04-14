@@ -306,7 +306,8 @@ class review_rating_controller extends vendor_main_controller
         'model' => $model,
         'id' => $_POST['id'],
         'page' => intval($_POST['page'])+1,
-        'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+        'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
+        'is_show_loadmore' => intval($this->records['nocurp']) < intval($this->records['nopp'])?false:true
       ];
       $this->records['loadmoreData'] = $loadmoreData;
   

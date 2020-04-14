@@ -139,13 +139,15 @@ include_once 'views/layout/outside/' . $this->layout . 'headerOutside.php';
             <?php } ?>
           </div>
 
-          <div class="LoadmoreContent">
-          </div>
-          <div class="text-center">
-            <button
-              class="btn btn-review space20 LoadmoreReview" data='<?=json_encode($this->loadmoreData)?>'
-            >Showmore</button>
-          </div>
+          <?php if($this->loadmoreData['is_show_loadmore']){ ?>
+            <div class="LoadmoreContent">
+            </div>
+            <div class="text-center">
+              <button
+                class="btn btn-review space20 LoadmoreReview" data='<?=json_encode($this->loadmoreData)?>'
+              >Showmore</button>
+            </div>
+          <?php } ?>
 
           <hr>
           <form>

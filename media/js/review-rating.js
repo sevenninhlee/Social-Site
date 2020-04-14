@@ -406,7 +406,7 @@
               `
             })
             $('.reviewRating').append(html)
-            if(data.data.length>0)
+            if(data.loadmoreData && data.loadmoreData.is_show_loadmore)
               $('.LoadmoreReview').attr('data', JSON.stringify(data.loadmoreData))
             else $('.LoadmoreReview').remove();
           }

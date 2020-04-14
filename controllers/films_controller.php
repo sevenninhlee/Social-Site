@@ -81,7 +81,8 @@ class films_controller extends right_bar_data_controller {
       'model' => 'film',
       'id' => $id[1],
       'page' => 2,
-      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:''
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
+      'is_show_loadmore' => intval($this->records['nocurp']) < intval($this->records['nopp'])?false:true
     ];
     
     $this->newFilms = [];

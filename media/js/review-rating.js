@@ -415,7 +415,7 @@
 
       $('.btn_add_comment').click(function(e) {
         var data = $(this).attr('data');
-        var groupBookId = $(this).attr('groupBookId');
+        var groupBookId = $(this).attr('groupBookId') || 0;
         var RootREL = $(this).attr('RootREL');
         var data = data.split(',');
         var reviewID = parseInt(data[0]);
@@ -430,8 +430,8 @@
               type:"POST",
               url:rootUrl+'review_rating/addComment',
               data:{
-                  review_parent_id: reviewID,
-                  object_article_id: ItemObjectID,
+                review_parent_id: reviewID,
+                object_article_id: ItemObjectID,
                   table_model: ItemModel,
                   value: 0,
                   review: rwData,

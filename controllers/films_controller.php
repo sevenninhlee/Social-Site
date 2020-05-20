@@ -73,16 +73,30 @@ class films_controller extends right_bar_data_controller {
 		$rpCondition .= " AND table_model = 'film_article_model' AND object_article_id = {$id[1]} AND review_parent_id != 0";
 		$this->reply = $reviews->getAllRecords('users.*, review_ratings.*', ['conditions'=>$rpCondition, 'joins'=>['user'], 'order'=>'created ASC']);
 		
-		$conditions .= " AND table_model = 'film_article_model' AND object_article_id = {$id[1]} AND review_parent_id = 0";
-		$this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC']);
+    $conditions .= " AND table_model = 'film_article_model' AND object_article_id = {$id[1]} AND review_parent_id = 0";
+    $conditionsRating = $conditions.' AND value != 0';
+    $conditionsComment = $conditions.' AND value = 0';
+		$this->recordsRating = $reviews->allp('*',['conditions'=>$conditionsRating, 'joins'=>['user'], 'order'=>'updated DESC']);
+		$this->recordsComment = $reviews->allp('*',['conditions'=>$conditionsComment, 'joins'=>['user'], 'order'=>'updated DESC']);
     
-    $this->loadmoreData = [
+    $this->loadmoreDataRating = [
       'slug' => $this->record['slug'],
       'model' => 'film',
       'id' => $id[1],
       'page' => 2,
       'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
-      'is_show_loadmore' => intval($this->records['nocurp']) < intval($this->records['nopp'])?false:true
+      'is_show_loadmore_rating' => intval($this->recordsRating['nocurp']) < intval($this->recordsRating['nopp'])?false:true,
+      'loadmore_link' => 'loadmoreRating'
+    ];
+    
+    $this->loadmoreDataComment = [
+      'slug' => $this->record['slug'],
+      'model' => 'film',
+      'id' => $id[1],
+      'page' => 2,
+      'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
+      'is_show_loadmore_comment' => intval($this->recordsComment['nocurp']) < intval($this->recordsComment['nopp'])?false:true,
+      'loadmore_link' => 'loadmoreComment'
     ];
     
     $this->newFilms = [];

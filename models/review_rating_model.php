@@ -96,7 +96,7 @@ class review_rating_model extends vendor_frap_model
 					FROM  " . $this->table . " ave_ra  
 					WHERE  ave_ra.table_model = '{$model}' 
 					AND ave_ra.object_article_id = {$object_id}
-					AND ave_ra.review_parent_id = 0 AND ave_ra.owner_status = 1 AND ave_ra.admin_status = 1";
+					AND ave_ra.review_parent_id = 0 AND ave_ra.owner_status = 1 AND ave_ra.admin_status = 1 AND value != 0";
 
 		$result = $this->con->query($query);
 		$rows = array();
@@ -121,6 +121,7 @@ class review_rating_model extends vendor_frap_model
 				WHERE rev_ra.table_model = '{$model}' 
 				AND rev_ra.object_article_id = {$object_id} 
 				AND rev_ra.review_parent_id = 0
+				AND rev_ra.value != 0
 				ORDER BY rev_ra.created ASC";
 
 
@@ -216,7 +217,7 @@ class review_rating_model extends vendor_frap_model
                 	*
 	            FROM
 	                " . $this->table . "
-	            WHERE object_article_id = {$obJectID} AND table_model = '{$model}' AND review_parent_id = 0 ";
+	            WHERE object_article_id = {$obJectID} AND table_model = '{$model}' AND review_parent_id = 0 AND value != 0";
 		$result = $this->con->query($query);
 		$rows = array();
 		while($row = mysqli_fetch_assoc($result)) {

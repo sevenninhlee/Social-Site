@@ -117,7 +117,7 @@
     });
     
 
-    $('.btn_reply').click(function(e) {
+    $('body').on('click', '.btn_reply', function(e) {
         var data = $(this).attr('data');
         var RootREL = $(this).attr('RootREL');
         var data = data.split(',');

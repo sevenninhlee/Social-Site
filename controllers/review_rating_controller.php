@@ -3,7 +3,7 @@ class review_rating_controller extends vendor_main_controller
 {
 	public function getRating()
 	{
-		$rm = new review_rating_model();
+        $rm = new review_rating_model();
         $user_id = ($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) ? $_SESSION['user']['id'] : null;
         $review_parent_id = isset($_POST['review_parent_id']) ? $_POST['review_parent_id'] : 0 ;
 		$object_article_id = $_POST['object_article_id'];
@@ -55,10 +55,14 @@ class review_rating_controller extends vendor_main_controller
                 }
         }
            
-
         if ($_POST['review'] != "") {
             if( $id = $rm->addRecord($data)){
-                $data['groupBookId'] = $_POST['groupBookId'];
+                if(isset($_POST['groupBookId'])){
+                    $data['groupBookId'] = $_POST['groupBookId'];
+                }
+                else{
+                    $data['groupBoolId']= 0;
+                }
                 $notify = new notify_content_model();
                 $postm = new $data['table_model']();
                 $postData = $postm->getRecord($data['object_article_id']);
@@ -283,10 +287,14 @@ class review_rating_controller extends vendor_main_controller
         } 
     }
 
-    public function loadmore(){
+    public function loadmore($con = ''){
       $conditions = "owner_status = 1 AND admin_status = 1";
       $model = $_POST['model'];
       $conditions .= " AND table_model = '{$model}_article_model' AND object_article_id = {$_POST['id']} AND review_parent_id = 0";
+      if($con != ''){
+        if($con == 'rating') $conditions .= ' AND value != 0';
+        if($con == 'comment') $conditions .= ' AND value = 0';
+      }
       $reviews = new review_rating_model();
       $this->records = $reviews->allp('*',['conditions'=>$conditions, 'joins'=>['user'], 'order'=>'updated DESC', 'pagination'=>['nopp'=>10, 'page'=>intval($_POST['page'])]]);
   
@@ -302,18 +310,31 @@ class review_rating_controller extends vendor_main_controller
       $this->records['RootREL'] = RootREL;
   
       $loadmoreData = [
-        'slug' => $this->record['slug'],
+        // 'slug' => $this->record['slug'],
         'model' => $model,
         'id' => $_POST['id'],
         'page' => intval($_POST['page'])+1,
         'user_logged' => isset($_SESSION['user'])?$_SESSION['user']['id']:'',
         'is_show_loadmore' => intval($this->records['nocurp']) < intval($this->records['nopp'])?false:true
       ];
+      if($con != ''){
+        if($con == 'rating') $loadmoreData['loadmore_link'] = 'loadmoreRating';
+        if($con == 'comment') $loadmoreData['loadmore_link'] = 'loadmoreComment';
+      }
       $this->records['loadmoreData'] = $loadmoreData;
   
       http_response_code(200);
       echo json_encode($this->records);
     }
+
+    public function loadmoreRating(){
+      $this->loadmore('rating');
+    }
+
+    public function loadmoreComment(){
+      $this->loadmore('comment');
+    }
+
 }
 
 ?>

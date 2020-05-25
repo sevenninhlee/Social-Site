@@ -10,7 +10,7 @@
                 events: {
                 change: function (e) { 
                     raValue = e.target.value();
-                    document.getElementById(""+btn_submit).disabled = false;
+                    // document.getElementById(""+btn_submit).disabled = false;
                 }
             }
         });
@@ -204,7 +204,7 @@
                                             RootREL = "${RootREL}"
                                             checkUser="true"
                                         >
-                                            Edit
+                                            Save
                                         </button>                              
                                     </div> 
                                 </div>
@@ -291,7 +291,7 @@
                                           RootREL = "${RootREL}"
                                           checkUser="true"
                                       >
-                                          Edit
+                                          Save
                                       </button>                              
                                   </div> 
                               </div>
@@ -380,7 +380,7 @@
                               RootREL = "${RootREL}"
                               checkUser="${user_logged?true:false}"
                           >
-                              Edit
+                              Save
                           </button>                              
                         </div> 
                       </div>
@@ -469,7 +469,7 @@
                                   RootREL = "${RootREL}"
                                   checkUser="${user_logged?true:false}"
                               >
-                                  Edit
+                                  Save
                               </button>                              
                             </div> 
                           </div>
@@ -562,7 +562,7 @@
                             RootREL = "${RootREL}"
                             checkUser="${user_logged?true:false}"
                         >
-                            Edit
+                            Save
                         </button>                              
                       </div> 
                     </div>
@@ -645,7 +645,7 @@
                                 RootREL = "${RootREL}"
                                 checkUser="${user_logged?true:false}"
                             >
-                                Edit
+                                Save
                             </button>                              
                           </div> 
                         </div>
@@ -737,7 +737,7 @@
                               RootREL = "${RootREL}"
                               checkUser="${user_logged?true:false}"
                           >
-                              Edit
+                              Save
                           </button>                              
                         </div> 
                       </div>
@@ -818,7 +818,7 @@
                                   RootREL = "${RootREL}"
                                   checkUser="${user_logged?true:false}"
                               >
-                                  Edit
+                                  Save
                               </button>                              
                             </div> 
                           </div>
@@ -870,6 +870,7 @@
         });
       })
 
+      // Add comment in FILM 
       $('.btn_add_comment_films').click(function(e) {
         var data = $(this).attr('data');
         var groupBookId = $(this).attr('groupBookId') || 0;
@@ -898,7 +899,7 @@
               success: function(res){
                 var resObject = JSON.parse(res);
                 if( resObject.status == 1) {
-                    location.reload();
+                  location.reload();
                   } else {
                       confirm(resObject.message);
                   }
@@ -935,7 +936,7 @@
               success: function(res){
                 var resObject = JSON.parse(res);
                 if( resObject.status == 1) {
-                    location.reload();
+                  location.reload();
                   } else {
                       confirm(resObject.message);
                   }
@@ -944,7 +945,8 @@
         } 
       })
 
-      
+
+      // Edit, Delete comment 
         $('body').on('click', '.CommentItemAction', function(){
             console.log('id=', $(this).attr('data') );
             let id = $(this).attr('data');
@@ -960,19 +962,25 @@
                     break;
                 case "submit":
                     let review = $('#CommentItemActionContent-'+id).val();
-                    console.log('submit' , review);
+                    let data = {
+                      review,
+                      id
+                    }
+                    if(raValue && raValue !== 0){
+                      data.value = raValue
+                    }else{
+                      
+                    }
                     $.ajax({
                         type:"POST",
                         url:rootUrl+'review_rating/editComment',
-                        data:{
-                            review,
-                            id
-                        },
+                        data,
                         success: function(res){
                           var resObject = JSON.parse(res);
                           console.log('resObject', resObject);
                           if( resObject.status == 1) {
-                              location.reload();
+                            location.reload();
+                            // $('#review-'+id).html(review)
                             } else {
                                 confirm(resObject.message);
                             }

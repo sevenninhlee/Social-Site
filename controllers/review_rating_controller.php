@@ -245,6 +245,7 @@ class review_rating_controller extends vendor_main_controller
     {
         $id = $_POST['id'];
         $data['review'] = $_POST['review'];
+        if(isset($_POST['value'])) $data['value'] = $_POST['value'];
         $rm = new review_rating_model();
 
         if($_POST['review'] != "" ) {

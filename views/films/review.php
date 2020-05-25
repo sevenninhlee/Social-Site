@@ -74,7 +74,49 @@
                                     <?php echo date("F j, Y g:i a", strtotime($review['created']));?>
                                     </span>
                                  </h5>
-                                 <p class="review-txt">
+
+                                 <?php if(isset($_SESSION['user']) && $review['user_id'] == $_SESSION['user']['id']){ ?>
+                                    <div class="edit-delete-comment">
+                                      <div class="edit-delete-comment-act"><span class="CommentItemAction"
+                                          typeAct="edit" data="<?=$review['id']?>">Edit</span> <span
+                                          typeAct="delete" class="CommentItemAction"
+                                          data="<?=$review['id']?>">Delete</span></div>
+                                      <div class="edit-delete-comment-content"
+                                          id="CommentItemAction-<?=$review['id']?>">
+                                          <textarea class="form-control replay"
+                                            id="CommentItemActionContent-<?=$review['id']?>" rows="4"
+                                            placeholder="Add Reply"><?=trim($review['review'])?></textarea>
+
+                                          <div class="form-group">
+                                              <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label>Rating:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="rating" id="rate3" value="<?= $review['value'] ?>" enabled="1" ></div> 
+                                                    <?php if( isset($this->errors['value'])) { ?>
+                                                    <p class="text-danger"><?=$this->errors['value']; ?></p>
+                                                    <?php } ?>
+                                                </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="text-right">
+                                            <button class="btn btn-review space20 btn-cancle CommentItemAction"
+                                                type="button" typeAct="cancel"
+                                                data="<?=$review['id']?>">Cancel</button>
+                                            <button class="btn btn-review space20 CommentItemAction"
+                                                type="button" typeAct="submit" data="<?=$review['id']?>"
+                                                RootREL="<?php echo RootREL; ?>"
+                                                checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>">
+                                            Save
+                                            </button>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  <?php } ?>
+                                    
+                                 <p class="review-txt" id="review-<?=$review['id']?>">
                                     <?php if(strlen($review['review']) > 300) { 
                                        $stringCut = substr($review['review'], 0, 300);
                                        $endPoint = strrpos($stringCut, ' ');
@@ -104,7 +146,34 @@
                                               <a href="<?php echo (vendor_app_util::url(["ctl"=>"user", "act"=>"profile/index?user=".$rp['users_id']])) ?>"  class="review-css1"><?=vendor_html_helper::showUserName($rp, true) ?></a> 
                                               <span class="text-date-comment"> <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?> </span> 
                                              </h5>
-                                             <p class="review-txt">
+
+                                             <?php if($rp['users_id'] == $_SESSION['user']['id']){ ?>
+                                                <div class="edit-delete-comment">
+                                                  <div class="edit-delete-comment-act"><span class="CommentItemAction"
+                                                      typeAct="edit" data="<?=$rp['id']?>">Edit</span> <span
+                                                      typeAct="delete" class="CommentItemAction"
+                                                      data="<?=$rp['id']?>">Delete</span></div>
+                                                  <div class="edit-delete-comment-content"
+                                                      id="CommentItemAction-<?=$rp['id']?>">
+                                                      <textarea class="form-control replay"
+                                                        id="CommentItemActionContent-<?=$rp['id']?>" rows="4"
+                                                        placeholder="Add Reply"><?=$rp['review']?></textarea>
+                                                      <div class="text-right">
+                                                        <button class="btn btn-rp space20 btn-cancle CommentItemAction"
+                                                            type="button" typeAct="cancel"
+                                                            data="<?=$rp['id']?>">Cancel</button>
+                                                        <button class="btn btn-rp space20 CommentItemAction"
+                                                            type="button" typeAct="submit" data="<?=$rp['id']?>"
+                                                            RootREL="<?php echo RootREL; ?>"
+                                                            checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>">
+                                                        Save
+                                                        </button>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                              <?php } ?>
+
+                                             <p  id="review-<?=$rp['id']?>">
                                                 <?php
                                                    if(strlen($rp['review']) > 200) { 
                                                        $stringCut = substr($rp['review'], 0, 200);
@@ -152,7 +221,7 @@
                         <div class="text-center">
                            <button class="btn btn-review space20 LoadmoreReview btn-2" type="rating"
                               data='<?=json_encode($this->loadmoreDataRating)?>'>Showmore</button>
-                              
+
                         </div>
                         <?php } ?>
                         
@@ -217,7 +286,7 @@
                            <button class="btn btn_review btn_add_comment_films" type="button"
                               checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>"
                               data="<?= $this->record['id'] ?>,film_article_model">
-                           Add Commemt
+                           Add Comment
                            </button>
                         </div>
                      </form>
@@ -237,7 +306,7 @@
                                  <?php echo date("F j, Y g:i a", strtotime($review['created']));?>
                                  </span>
                               </h5>
-                              <?php if($review['user_id'] == $_SESSION['user']['id']){ ?>
+                              <?php if(isset($_SESSION['user']) && $review['user_id'] == $_SESSION['user']['id']){ ?>
                               <div class="edit-delete-comment">
                                  <div class="edit-delete-comment-act"><span class="CommentItemAction"
                                     typeAct="edit" data="<?=$review['id']?>">Edit</span> <span
@@ -256,13 +325,13 @@
                                           type="button" typeAct="submit" data="<?=$review['id']?>"
                                           RootREL="<?php echo RootREL; ?>"
                                           checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>">
-                                       Edit
+                                       Save
                                        </button>
                                     </div>
                                  </div>
                               </div>
                               <?php } ?>
-                              <p class="review-txt">
+                              <p class="review-txt" id="review-<?=$review['id']?>">
                                  <?php if(strlen($review['review']) > 300) { 
                                     $stringCut = substr($review['review'], 0, 300);
                                     $endPoint = strrpos($stringCut, ' ');
@@ -314,7 +383,34 @@
                                              <?php echo date("F j, Y g:i a", strtotime($rp['created'])); ?>
                                              </span>
                                           </h5>
-                                          <p class="review-txt">
+
+                                          <?php if(isset($_SESSION['user']) && $rp['users_id'] == $_SESSION['user']['id']){ ?>
+                                            <div class="edit-delete-comment">
+                                              <div class="edit-delete-comment-act"><span class="CommentItemAction"
+                                                  typeAct="edit" data="<?=$rp['id']?>">Edit</span> <span
+                                                  typeAct="delete" class="CommentItemAction"
+                                                  data="<?=$rp['id']?>">Delete</span></div>
+                                              <div class="edit-delete-comment-content"
+                                                  id="CommentItemAction-<?=$rp['id']?>">
+                                                  <textarea class="form-control replay"
+                                                    id="CommentItemActionContent-<?=$rp['id']?>" rows="4"
+                                                    placeholder="Add Reply"><?=$rp['review']?></textarea>
+                                                  <div class="text-right">
+                                                    <button class="btn btn-rp space20 btn-cancle CommentItemAction"
+                                                        type="button" typeAct="cancel"
+                                                        data="<?=$rp['id']?>">Cancel</button>
+                                                    <button class="btn btn-rp space20 CommentItemAction"
+                                                        type="button" typeAct="submit" data="<?=$rp['id']?>"
+                                                        RootREL="<?php echo RootREL; ?>"
+                                                        checkUser="<?php if($_SESSION && isset($_SESSION['user']) && isset($_SESSION['user']['id'])) echo true; else echo false; ?>">
+                                                    Save
+                                                    </button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                          <?php } ?>
+
+                                          <p class="review-txt" id="review-<?=$rp['id']?>">
                                              <?php
                                                 if(strlen($rp['review']) > 200) { 
                                                   $stringCut = substr($rp['review'], 0, 200);

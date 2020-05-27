@@ -29,9 +29,9 @@ define('RootURI', dirname($_SERVER['SCRIPT_FILENAME'])."/");
 define('ControllerREL', 'controllers/');
 define('AdminPath', 'admin');
 define('ControllerAdminREL', ControllerREL."/".AdminPath);
-define('AdminEmail', 'duongqhai@gmail.com');
-define('PSCDEmail', 'no-reply@enlight21.com');
-define('PassEmail', 'Claudiu33!');
+define('AdminEmail', 'mail2020demo');
+define('PSCDEmail', 'mail2020demo');
+define('PassEmail', 'A123123z!');
 
 // Global variables
 $app = [];

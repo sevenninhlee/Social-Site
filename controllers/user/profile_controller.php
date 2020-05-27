@@ -96,56 +96,117 @@ class profile_controller extends aside_bar_data_controller
 	public function edit(){
 		$um = new user_model();
 		$id = $_SESSION['user']['id'];
-		if(isset($_POST['firstname'])){
-			$userData['firstname'] = $_POST['firstname'];
-		}else if(isset($_POST['lastname'])){
-			$userData['lastname'] = $_POST['lastname'];
-		}else if(isset($_POST['username'])){
-			$userData['username'] = $_POST['username'];
-		}else if(isset($_POST['datebirth'])){
-			$userData['datebirth'] = $_POST['datebirth'];
-		}else if(isset($_POST['gender'])){
-			$userData['gender'] = $_POST['gender'];
-		}else if(isset($_POST['country'])){
-			$userData['country'] = $_POST['country'];
-		}else if(isset($_POST['website'])){
-			$userData['website'] = $_POST['website'];
-		}else if(isset($_POST['interest'])){
-			$userData['interest'] = $_POST['interest'];
-		}else if(isset($_POST['favorite_book'])){
-			$userData['favorite_book'] = $_POST['favorite_book'];
-		}else if(isset($_POST['bulletin'])){
-			$userData['bulletin'] = $_POST['bulletin'];
-		}else if(isset($_POST['notifies'])){
-			$userData['notifies'] = $_POST['notifies'];
-		}else if(isset($_POST['latest-blog'])){
-			$userData['latest_blog'] = $_POST['latest-blog'];
-		}
+		if(isset($_POST['email'])){
+			$email = $_POST['email'];
+			$fgpm = new forgotpass_model();
+			if( !($fgpm->checkOldEmail($email))) {	
+				$tokenRemember = time().rand(10000,99999);
+				$fgpm -> addRememberToken($tokenRemember, $_SESSION['user']['email']);
+				$mTo = $email;
+				$cc = "";
+				$title = 'CONFIRM EDIT EMAIL';
+				$href = RootABS.
+				vendor_app_util::url([
+					'ctl'=>'profile',
+					'act'=> 'changesEmail?remember_active_token='.$tokenRemember.'&emailOld='.$_SESSION['user']['email'].'&emailNew='.$_POST['email'],
+					]);
+				$content = "
+				<h3>What's Next?</h3>
+				<p>Please <a target='_blank' href='".$href."'>Click On This link </a> to activate  your account.</p>
+				";
+				$nTo = 'Enlight21';
+				if (vendor_app_util::sendMail($title, $content, $nTo, $mTo, $cc)) {
+					$valid = [
+						'status' => true,
+						'message'=>'Changes email successfully. Please check your email to activate  your account.'
+					];
+					
+					http_response_code(200);
+					echo json_encode($valid);
+				} else {
+					$this->errors = ['database'=>'An error occurred when send request data! '];
+					$data = [
+						'status' => 0,
+						'data' => $this->errors
+					];
+					http_response_code(501);
+					echo json_encode($data);
+				}
 
-		if($um->editRecord($id,$userData)) {
+			}
+		}else {
 			if(isset($_POST['firstname'])){
-				$_SESSION['user']['firstname']= $userData['firstname'];
+				$userData['firstname'] = $_POST['firstname'];
+			}else if(isset($_POST['lastname'])){
+				$userData['lastname'] = $_POST['lastname'];
+			}else if(isset($_POST['username'])){
+				$userData['username'] = $_POST['username'];
+			}else if(isset($_POST['datebirth'])){
+				$userData['datebirth'] = $_POST['datebirth'];
+			}else if(isset($_POST['gender'])){
+				$userData['gender'] = $_POST['gender'];
+			}else if(isset($_POST['country'])){
+				$userData['country'] = $_POST['country'];
+			}else if(isset($_POST['website'])){
+				$userData['website'] = $_POST['website'];
+			}else if(isset($_POST['interest'])){
+				$userData['interest'] = $_POST['interest'];
+			}else if(isset($_POST['favorite_book'])){
+				$userData['favorite_book'] = $_POST['favorite_book'];
+			}else if(isset($_POST['bulletin'])){
+				$userData['bulletin'] = $_POST['bulletin'];
+			}else if(isset($_POST['notifies'])){
+				$userData['notifies'] = $_POST['notifies'];
+			}else if(isset($_POST['latest-blog'])){
+				$userData['latest_blog'] = $_POST['latest-blog'];
 			}
-			if(isset($_POST['lastname'])){
-				$_SESSION['user']['lastname'] = $userData['lastname'];
+
+			if($um->editRecord($id, $userData)) {
+				if(isset($_POST['firstname'])){
+					$_SESSION['user']['firstname']= $userData['firstname'];
+				}
+				if(isset($_POST['lastname'])){
+					$_SESSION['user']['lastname'] = $userData['lastname'];
+				}
+				if(isset($_POST['username'])){
+					$_SESSION['user']['username'] = $userData['username'];
+				}
+				$valid = [
+					'status' => true,
+					'data' => 'Edit profile successfully'
+				];
+				http_response_code(200);
+				echo json_encode($valid);
+			} else {
+				$valid = [
+					'status' => false,
+					'errors' => ['data' => 'Error while edit profile !']
+				];
+				http_response_code(400);
+				echo json_encode($valid);
 			}
-			if(isset($_POST['username'])){
-				$_SESSION['user']['username'] = $userData['username'];
-			}
-			$valid = [
-				'status' => true,
-				'data' => 'Edit profile successfully'
-			];
-			http_response_code(200);
-			echo json_encode($valid);
-		} else {
-			$valid = [
-				'status' => false,
-				'errors' => ['data' => 'Error while edit profile !']
-			];
-			http_response_code(400);
-			echo json_encode($valid);
 		}
+	}
+
+
+	public function changesEmail(){
+		global $app;
+		$tokenActive = $_GET['remember_active_token'];
+		$emailOld = $_GET['emailOld'];
+		$emailNew =  $_GET['emailNew'];
+		$id = $_SESSION['user']['id'];
+		$um = new user_model();
+		$result = $um->getRecord($id);
+		if($tokenActive == $result['remember_active_token'] && $emailOld == $_SESSION['user']['email']){
+			if($result) {
+				$datas['email'] = $emailNew;
+				$um->editRecord($result['id'], $datas);
+			}else {
+				$this->errors['message'] = "The token does not exist. Please try again!";
+			}
+			header( "Location: ".vendor_app_util::url(['ctl'=>'profile']));
+		}
+		
 	}
 
 	public function editAvatar(){

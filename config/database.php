@@ -1,6 +1,6 @@
 <?php
 define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASSWORD','password');
-define('DB_NAME','enlight2_db');
+define('DB_USER','mynguyen');
+define('DB_PASSWORD','mynguyen98');
+define('DB_NAME','enlight2_db.25.05');
 ?>

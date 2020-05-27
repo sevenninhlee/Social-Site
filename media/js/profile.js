@@ -13,8 +13,10 @@ $( document ).ready(function() {
 			$.ajax({
 			    url: url,
 			    data: formData,
-			    type: "POST",
+                type: "POST",
+                dataType:'text',
 			    success: function (data) {
+                    // console.log(data);
 					  location.reload();
 			    },
 			    error: function (err) {
@@ -112,7 +114,7 @@ $( document ).ready(function() {
 		reader.readAsDataURL(file);
     });
     $('.Edit-avata').on('click', function(){
-        url = rootUrl+"user/profile/editAvatar";
+        url = rootUrl+"Avatar";
         $.ajax({
             url: url,
             data: {avata: avata},

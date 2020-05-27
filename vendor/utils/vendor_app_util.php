@@ -139,9 +139,14 @@ class vendor_app_util {
 		$mail->CharSet 	= "utf-8";
 		$mail->SMTPDebug  = 0;                     
 		$mail->SMTPAuth   = true;                  
-		$mail->SMTPSecure = "tls";                 
-		$mail->Host       = "mail.enlight21.com";      	
-		$mail->Port       = 26;
+		// $mail->SMTPSecure = "tls";
+		// $mail->Host = "mail.enlight21.com";
+		// $mail->Port = 26;
+
+		$mail->IsSMTP();
+		$mail->SMTPSecure = "ssl";
+		$mail->Host = "smtp.gmail.com";
+		$mail->Port = 465;
 		$mail->Username   = $mFrom;  
 		$mail->Password   = $mPass;           
 		$mail->SetFrom($mFrom, $nFrom);
@@ -164,7 +169,6 @@ class vendor_app_util {
 		$mail->Subject = $title;
 		$mail->MsgHTML($body);
 		$mail->AddReplyTo('info@enlight21.com', 'Enlight21');
-
 		if(!$mail->Send()) {
 			return 0;
 		} else {

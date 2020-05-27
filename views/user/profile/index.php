@@ -37,6 +37,7 @@
                                 <ul class="list-unstyled edit-list">
                                 <?php if($this->isLogged){ ?>
 
+                                  <li><span class="f700 title-part">Email:</span><span class="deatil-part edit-email"><?=$this->user['email']?></span><a href="javascript:void(0)" class='Edit' act='email' value='<?=$this->user['email']?>'><?='Edit'?></a></li>
                                   <li><span class="f700 title-part">First Name:</span><span class="deatil-part edit-firstname"><?=$this->user['firstname']?></span><a href="javascript:void(0)" class='Edit' act='firstname' value='<?=$this->user['firstname']?>'><?='Edit'?></a></li>
 
                                   <li><span class="f700 title-part">Last Name:</span><span class="deatil-part edit-lastname"><?=$this->user['lastname']?></span><a href="javascript:void(0)" class='Edit' act='lastname' value='<?=$this->user['lastname']?>'><?='Edit'?></a></li>

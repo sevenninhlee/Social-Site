@@ -39,7 +39,6 @@ class review_rating_controller extends vendor_main_controller
         $data['table_model'] = $_POST['table_model'];
         $data['value'] = 0;
         $data['review'] = $_POST['review'];
-
         if ($data['table_model'] == "queries_article_model") {
             $this->usersRating = $rm->getUserRating($data['user_id'], $data['object_article_id'], $data['table_model']);
             // echo "Start <br/>"; echo '<pre>'; print_r($this->usersRating);echo '</pre>';exit("End Data");
@@ -66,7 +65,7 @@ class review_rating_controller extends vendor_main_controller
                 $notify = new notify_content_model();
                 $postm = new $data['table_model']();
                 $postData = $postm->getRecord($data['object_article_id']);
-                if($data['table_model'] != "book_group_article_book_model" && $postData['user_id'] != $_SESSION['user']['id']) {
+                if(($data['table_model'] != "book_group_article_book_model" && $postData['user_id'] != $_SESSION['user']['id'])) {
                     $dataNoti = [
                         'user_id' => $postData['user_id'],
                         'description' => vendor_html_helper::showUserName($_SESSION['user']). ' has commented on your post' ,
@@ -100,7 +99,7 @@ class review_rating_controller extends vendor_main_controller
                 }
 
                 $commentData = $rm->getRecord($id);
-                if($data['table_model'] == 'blog_article_model'){
+                if($data['table_model'] == 'blog_article_model' ){
                     //##### SEND MAIL #############################################################
                     //##### $mTo: Nguoi nhan email chinh
                     //#####	$nTo: Ten nguoi nhan email chinh
@@ -135,8 +134,46 @@ class review_rating_controller extends vendor_main_controller
                     if($userOwnerBlog['is_disabled_all_email'] == '0' && $userOwnerBlog['is_email_get_new_comment'] == '1')
                     vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
                     //########## SEND MAIL ########################################################
-                }else if($data['table_model'] == 'book_article_model'){
-                    
+                }
+                
+                if($data['table_model'] == 'film_article_model' ){
+                    //##### SEND MAIL #############################################################
+                    //##### $mTo: Nguoi nhan email chinh
+                    //#####	$nTo: Ten nguoi nhan email chinh
+                    //#####	$from: Nguoi duoc CC, thay nhung nguoi khac
+                    //#####	$title: Ten chu de cua email
+                    //#####	$content: Noi dung
+                    //#####
+                    //#####
+                    //#############################################################################
+                    $article =  new $data['table_model']();
+                    $blog = $article->getRecord($data['object_article_id']);
+                    $user_model = new user_model();
+                    $userOwnerBlog = $user_model->getRecordWithSetting($blog['user_id']);
+                    $cc = "";
+                    $mainReceiver = $userOwnerBlog['email'];
+                    $subject="Englight21: Your post has a new comment - ". $blog['title'];
+                    $mainReceiverText = 'Englight21';
+                    $href = RootURL."films/".$blog['slug'];
+                    $content = "<h3>Your post has just a new comment, check detail at: ".$href."</h3>";
+
+                    if($userOwnerBlog['is_disabled_all_notification'] == '0' && $userOwnerBlog['is_notification_get_new_comment'] == '0'){
+                        $notify = new notify_content_model();
+                        $dataNoti = [
+                          'user_id' => $userOwnerBlog['id'],
+                          'description' => "Your post has a new comment - ". $blog['title'],
+                          'action_id' => 2,
+                          'link' => "films/".$blog['slug'],
+                        ];
+                        $notify->addRecord($dataNoti);
+                    }
+
+                    if($userOwnerBlog['is_disabled_all_email'] == '1' && $userOwnerBlog['is_email_get_new_comment'] == '1')
+                    vendor_app_util::sendMail($subject, $content, $mainReceiverText, $mainReceiver,$cc);
+                    //########## SEND MAIL ########################################################
+                }
+                
+                else if($data['table_model'] == 'book_article_model' ){
                     //##### SEND MAIL #############################################################
                     //##### $mTo: Nguoi nhan email chinh
                     //#####	$nTo: Ten nguoi nhan email chinh

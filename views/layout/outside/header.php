@@ -15,7 +15,7 @@
                 <span class="fa fa-bell" style="font-size:18px;"></span>
               </a>
               <ul class="dropdown-menu dropdown-notifi" style="right: 0; left: auto">
-                <li style="padding: 0 5px;"><a href="#">Data not found</a></li>
+                <li style="padding: 0 5px;"><a href="<?php echo RootURL . "user/notifications/index?user=" . $_SESSION['user']['id']; ?>"><?php echo notifications_controller::index() ?></a></li>
               </ul>
             </li>
           <?php } else { ?>
